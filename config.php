@@ -1,7 +1,7 @@
 <?php
 	$dbServer = 'localhost';
 	$dbUsername = 'root';
-	$dbPassword = '';
+	$dbPassword = 'Gaspode1!';
 	$dbDatabase = 'sixtyforty';
 
 	$adminConfig = array(
