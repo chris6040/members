@@ -1,0 +1,15 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the  and  formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the address_init() hook (in hooks/address.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="address-address1-<%%VALUE(id)%%>" class="address-address1"><%%VALUE(address1)%%></td>
+		<td id="address-address2-<%%VALUE(id)%%>" class="address-address2"><%%VALUE(address2)%%></td>
+		<td id="address-address3-<%%VALUE(id)%%>" class="address-address3"><%%VALUE(address3)%%></td>
+		<td id="address-town-<%%VALUE(id)%%>" class="address-town"><%%VALUE(town)%%></td>
+		<td id="address-county-<%%VALUE(id)%%>" class="address-county"><%%VALUE(county)%%></td>
+		<td id="address-country-<%%VALUE(id)%%>" class="address-country"><%%VALUE(country)%%></td>
+		<td id="address-postcode1-<%%VALUE(id)%%>" class="address-postcode1"><%%VALUE(postcode1)%%></td>
+		<td id="address-postcode2-<%%VALUE(id)%%>" class="address-postcode2"><%%VALUE(postcode2)%%></td>

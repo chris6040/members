@@ -1,0 +1,18 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the  and  formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the leads_init() hook (in hooks/leads.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="leads-date_entered-<%%VALUE(id)%%>" class="leads-date_entered"><%%VALUE(date_entered)%%></td>
+		<td id="leads-referer-<%%VALUE(id)%%>" class="leads-referer"><%%VALUE(referer)%%></td>
+		<td id="leads-lead_name-<%%VALUE(id)%%>" class="leads-lead_name"><%%VALUE(lead_name)%%></td>
+		<td id="leads-contact-<%%VALUE(id)%%>" class="leads-contact"><%%VALUE(contact)%%></td>
+		<td id="leads-prop_area-<%%VALUE(id)%%>" class="leads-prop_area"><%%VALUE(prop_area)%%></td>
+		<td id="leads-estimated_value-<%%VALUE(id)%%>" class="leads-estimated_value text-right"><%%VALUE(estimated_value)%%></td>
+		<td id="leads-tenanted-<%%VALUE(id)%%>" class="leads-tenanted text-right"><%%VALUE(tenanted)%%></td>
+		<td id="leads-rental_income-<%%VALUE(id)%%>" class="leads-rental_income"><%%VALUE(rental_income)%%></td>
+		<td id="leads-notes-<%%VALUE(id)%%>" class="leads-notes"><%%VALUE(notes)%%></td>
+		<td id="leads-est_commission-<%%VALUE(id)%%>" class="leads-est_commission text-right"><%%VALUE(est_commission)%%></td>
+		<td id="leads-date_contacted-<%%VALUE(id)%%>" class="leads-date_contacted"><%%VALUE(date_contacted)%%></td>

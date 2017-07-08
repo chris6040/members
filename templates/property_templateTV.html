@@ -1,0 +1,18 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the property_init() hook (in hooks/property.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="property-id-<%%VALUE(id)%%>" class="property-id text-right"><%%SELECT%%><%%VALUE(id)%%><%%ENDSELECT%%></td>
+		<td id="property-partner_id-<%%VALUE(id)%%>" class="property-partner_id"><%%SELECT%%><%%VALUE(partner_id)%%><%%ENDSELECT%%></td>
+		<td id="property-referer-<%%VALUE(id)%%>" class="property-referer"><%%SELECT%%><%%VALUE(referer)%%><%%ENDSELECT%%></td>
+		<td id="property-address_id-<%%VALUE(id)%%>" class="property-address_id"><%%SELECT%%><%%VALUE(address_id)%%><%%ENDSELECT%%></td>
+		<td id="property-contact_date-<%%VALUE(id)%%>" class="property-contact_date"><%%SELECT%%><%%VALUE(contact_date)%%><%%ENDSELECT%%></td>
+		<td id="property-purchase_date-<%%VALUE(id)%%>" class="property-purchase_date"><%%SELECT%%><%%VALUE(purchase_date)%%><%%ENDSELECT%%></td>
+		<td id="property-detachment-<%%VALUE(id)%%>" class="property-detachment"><%%SELECT%%><%%VALUE(detachment)%%><%%ENDSELECT%%></td>
+		<td id="property-type-<%%VALUE(id)%%>" class="property-type"><%%SELECT%%><%%VALUE(type)%%><%%ENDSELECT%%></td>
+		<td id="property-tenancy_type-<%%VALUE(id)%%>" class="property-tenancy_type"><%%SELECT%%><%%VALUE(tenancy_type)%%><%%ENDSELECT%%></td>
+		<td id="property-no_beds-<%%VALUE(id)%%>" class="property-no_beds text-right"><%%SELECT%%><%%VALUE(no_beds)%%><%%ENDSELECT%%></td>
+		<td id="property-notes-<%%VALUE(id)%%>" class="property-notes"><%%SELECT%%><%%VALUE(notes)%%><%%ENDSELECT%%></td>

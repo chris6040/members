@@ -1,0 +1,18 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the leads_init() hook (in hooks/leads.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="leads-date_entered-<%%VALUE(id)%%>" class="leads-date_entered"><%%SELECT%%><%%VALUE(date_entered)%%><%%ENDSELECT%%></td>
+		<td id="leads-referer-<%%VALUE(id)%%>" class="leads-referer"><%%SELECT%%><%%VALUE(referer)%%><%%ENDSELECT%%></td>
+		<td id="leads-lead_name-<%%VALUE(id)%%>" class="leads-lead_name"><%%SELECT%%><%%VALUE(lead_name)%%><%%ENDSELECT%%></td>
+		<td id="leads-contact-<%%VALUE(id)%%>" class="leads-contact"><%%SELECT%%><%%VALUE(contact)%%><%%ENDSELECT%%></td>
+		<td id="leads-prop_area-<%%VALUE(id)%%>" class="leads-prop_area"><%%SELECT%%><%%VALUE(prop_area)%%><%%ENDSELECT%%></td>
+		<td id="leads-estimated_value-<%%VALUE(id)%%>" class="leads-estimated_value text-right"><%%SELECT%%><%%VALUE(estimated_value)%%><%%ENDSELECT%%></td>
+		<td id="leads-tenanted-<%%VALUE(id)%%>" class="leads-tenanted text-right"><%%SELECT%%><%%VALUE(tenanted)%%><%%ENDSELECT%%></td>
+		<td id="leads-rental_income-<%%VALUE(id)%%>" class="leads-rental_income"><%%SELECT%%><%%VALUE(rental_income)%%><%%ENDSELECT%%></td>
+		<td id="leads-notes-<%%VALUE(id)%%>" class="leads-notes"><%%SELECT%%><%%VALUE(notes)%%><%%ENDSELECT%%></td>
+		<td id="leads-est_commission-<%%VALUE(id)%%>" class="leads-est_commission text-right"><%%SELECT%%><%%VALUE(est_commission)%%><%%ENDSELECT%%></td>
+		<td id="leads-date_contacted-<%%VALUE(id)%%>" class="leads-date_contacted"><%%SELECT%%><%%VALUE(date_contacted)%%><%%ENDSELECT%%></td>

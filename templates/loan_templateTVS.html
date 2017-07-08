@@ -1,0 +1,17 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the  and  formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the loan_init() hook (in hooks/loan.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="loan-loan_type-<%%VALUE(id)%%>" class="loan-loan_type"><%%VALUE(loan_type)%%></td>
+		<td id="loan-property_id-<%%VALUE(id)%%>" class="loan-property_id"><%%VALUE(property_id)%%></td>
+		<td id="loan-broker_id-<%%VALUE(id)%%>" class="loan-broker_id"><%%VALUE(broker_id)%%></td>
+		<td id="loan-date-<%%VALUE(id)%%>" class="loan-date"><%%VALUE(date)%%></td>
+		<td id="loan-amount-<%%VALUE(id)%%>" class="loan-amount"><%%VALUE(amount)%%></td>
+		<td id="loan-costs-<%%VALUE(id)%%>" class="loan-costs"><%%VALUE(costs)%%></td>
+		<td id="loan-apr-<%%VALUE(id)%%>" class="loan-apr"><%%VALUE(apr)%%></td>
+		<td id="loan-outstanding-<%%VALUE(id)%%>" class="loan-outstanding"><%%VALUE(outstanding)%%></td>
+		<td id="loan-lender_id-<%%VALUE(id)%%>" class="loan-lender_id"><%%VALUE(lender_id)%%></td>
+		<td id="loan-lender_ref-<%%VALUE(id)%%>" class="loan-lender_ref"><%%VALUE(lender_ref)%%></td>
