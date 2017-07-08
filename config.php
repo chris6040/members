@@ -7,7 +7,7 @@
 	$adminConfig = array(
 		'adminUsername' => "admin",
 		'adminPassword' => "5d42706dbe96158b7792de24b80c1819",
-		'notifyAdminNewMembers' => "",
+		'notifyAdminNewMembers' => "0",
 		'defaultSignUp' => "1",
 		'anonymousGroup' => "anonymous",
 		'anonymousMember' => "guest",
@@ -24,13 +24,13 @@
 		'senderName' => "Membership management",
 		'senderEmail' => "chrisnelson.nhi@gmail.com",
 		'approvalSubject' => "Your membership is now approved",
-		'approvalMessage' => "Dear member,\n\nYour membership is now approved by the admin. You can log in to your account here:\nhttp://127.0.0.1\n\nRegards,\nAdmin",
-		'hide_twitter_feed' => "",
+		'approvalMessage' => "Dear member,\r\n\r\nYour membership is now approved by the admin. You can log in to your account here:\r\nhttp://127.0.0.1\r\n\r\nRegards,\r\nAdmin",
+		'hide_twitter_feed' => "1",
 		'maintenance_mode_message' => "<b>Our website is currently down for maintenance</b><br>\r\nWe expect to be back in a couple hours. Thanks for your patience.",
-		'mail_function' => "mail",
-		'smtp_server' => "",
-		'smtp_encryption' => "",
-		'smtp_port' => "25",
-		'smtp_user' => "",
-		'smtp_pass' => ""
+		'mail_function' => "smtp",
+		'smtp_server' => "smtp.boost-property-profits.uk",
+		'smtp_encryption' => "tls",
+		'smtp_port' => "587",
+		'smtp_user' => "chris@boost-property-profits.uk",
+		'smtp_pass' => "gaspode"
 	);
