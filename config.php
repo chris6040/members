@@ -28,9 +28,9 @@
 		'hide_twitter_feed' => "1",
 		'maintenance_mode_message' => "<b>Our website is currently down for maintenance</b><br>\r\nWe expect to be back in a couple hours. Thanks for your patience.",
 		'mail_function' => "smtp",
-		'smtp_server' => "smtp.boost-property-profits.uk",
-		'smtp_encryption' => "tls",
-		'smtp_port' => "587",
-		'smtp_user' => "chris@boost-property-profits.uk",
-		'smtp_pass' => "gaspode"
+		'smtp_server' => "smtp.gmail.com",
+		'smtp_encryption' => "ssl",
+		'smtp_port' => "465",
+		'smtp_user' => "chrisnelson.nhi@gmail.com",
+		'smtp_pass' => "Gaspode1!"
 	);
