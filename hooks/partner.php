@@ -181,6 +181,9 @@
 
 	function partner_after_insert($data, $memberInfo, &$args){
 
+	#	INSERT INTO membership_users(memberID, passMD5, email, signupDate, groupID, isBanned, isApproved) 
+	#	VALUES($data['username'], $data['password'], $data['email'], CURDATE(), 3, 0, 1);
+
 		return TRUE;
 	}
 

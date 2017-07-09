@@ -32,5 +32,5 @@
 		'smtp_encryption' => "ssl",
 		'smtp_port' => "465",
 		'smtp_user' => "chrisnelson.nhi@gmail.com",
-		'smtp_pass' => "Gaspode1!"
+		'smtp_pass' => "R5TqigTM6tjd"
 	);
