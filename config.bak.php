@@ -29,8 +29,8 @@
 		'maintenance_mode_message' => "<b>Our website is currently down for maintenance</b><br>\r\nWe expect to be back in a couple hours. Thanks for your patience.",
 		'mail_function' => "smtp",
 		'smtp_server' => "smtp.boost-property-profits.uk",
-		'smtp_encryption' => "tls",
+		'smtp_encryption' => "ssl",
 		'smtp_port' => "587",
-		'smtp_user' => "chris",
-		'smtp_pass' => "ijfj"
+		'smtp_user' => "chris@boost-property-profits.uk",
+		'smtp_pass' => "Gaspode1!"
 	);
