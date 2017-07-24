@@ -61,7 +61,8 @@
 				'county' => 'County',
 				'country' => 'Country',
 				'psn_type' => 'Psn type',
-				'leads' => 'Leads'
+				'leads' => 'Leads',
+				'member_group' => 'Member group'
 			);
 
 			return $arrTables;

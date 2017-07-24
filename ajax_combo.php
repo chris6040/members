@@ -38,7 +38,7 @@
 				'parent_table' => 'partner',
 				'parent_pk_field' => 'id',
 				'parent_caption' => 'IF(CHAR_LENGTH(`partner`.`company_name`) || CHAR_LENGTH(`partner`.`mailname`), CONCAT_WS(\'\', `partner`.`company_name`, \' - \', `partner`.`mailname`), \'\')',
-				'parent_from' => '`partner` LEFT JOIN `psn_title` as psn_title1 ON `psn_title1`.`id`=`partner`.`title` LEFT JOIN `address` as address1 ON `address1`.`id`=`partner`.`address_id` LEFT JOIN `psn_type` as psn_type1 ON `psn_type1`.`id`=`partner`.`type1` LEFT JOIN `psn_type` as psn_type2 ON `psn_type2`.`id`=`partner`.`type2` LEFT JOIN `psn_type` as psn_type3 ON `psn_type3`.`id`=`partner`.`type3` ',
+				'parent_from' => '`partner` LEFT JOIN `psn_title` as psn_title1 ON `psn_title1`.`id`=`partner`.`title` LEFT JOIN `address` as address1 ON `address1`.`id`=`partner`.`address_id` LEFT JOIN `psn_type` as psn_type1 ON `psn_type1`.`id`=`partner`.`type1` LEFT JOIN `psn_type` as psn_type2 ON `psn_type2`.`id`=`partner`.`type2` LEFT JOIN `psn_type` as psn_type3 ON `psn_type3`.`id`=`partner`.`type3` LEFT JOIN `member_group` as member_group1 ON `member_group1`.`id`=`partner`.`membergroupid` ',
 				'filterers' => array(),
 				'custom_query' => '',
 				'inherit_permissions' => false,
@@ -49,7 +49,7 @@
 				'parent_table' => 'partner',
 				'parent_pk_field' => 'id',
 				'parent_caption' => 'IF(CHAR_LENGTH(`partner`.`company_name`) || CHAR_LENGTH(`partner`.`mailname`), CONCAT_WS(\'\', `partner`.`company_name`, \' - \', `partner`.`mailname`), \'\')',
-				'parent_from' => '`partner` LEFT JOIN `psn_title` as psn_title1 ON `psn_title1`.`id`=`partner`.`title` LEFT JOIN `address` as address1 ON `address1`.`id`=`partner`.`address_id` LEFT JOIN `psn_type` as psn_type1 ON `psn_type1`.`id`=`partner`.`type1` LEFT JOIN `psn_type` as psn_type2 ON `psn_type2`.`id`=`partner`.`type2` LEFT JOIN `psn_type` as psn_type3 ON `psn_type3`.`id`=`partner`.`type3` ',
+				'parent_from' => '`partner` LEFT JOIN `psn_title` as psn_title1 ON `psn_title1`.`id`=`partner`.`title` LEFT JOIN `address` as address1 ON `address1`.`id`=`partner`.`address_id` LEFT JOIN `psn_type` as psn_type1 ON `psn_type1`.`id`=`partner`.`type1` LEFT JOIN `psn_type` as psn_type2 ON `psn_type2`.`id`=`partner`.`type2` LEFT JOIN `psn_type` as psn_type3 ON `psn_type3`.`id`=`partner`.`type3` LEFT JOIN `member_group` as member_group1 ON `member_group1`.`id`=`partner`.`membergroupid` ',
 				'filterers' => array(),
 				'custom_query' => '',
 				'inherit_permissions' => false,
@@ -118,6 +118,17 @@
 				'parent_pk_field' => 'id',
 				'parent_caption' => '`psn_type`.`type`',
 				'parent_from' => '`psn_type` ',
+				'filterers' => array(),
+				'custom_query' => '',
+				'inherit_permissions' => false,
+				'list_type' => 0,
+				'not_null' => false
+			),
+			'membergroupid' => array(
+				'parent_table' => 'member_group',
+				'parent_pk_field' => 'id',
+				'parent_caption' => 'IF(CHAR_LENGTH(`member_group`.`id`) || CHAR_LENGTH(`member_group`.`name`), CONCAT_WS(\'\', `member_group`.`id`, `member_group`.`name`), \'\')',
+				'parent_from' => '`member_group` ',
 				'filterers' => array(),
 				'custom_query' => '',
 				'inherit_permissions' => false,
@@ -195,7 +206,7 @@
 				'parent_table' => 'partner',
 				'parent_pk_field' => 'id',
 				'parent_caption' => '`partner`.`company_name`',
-				'parent_from' => '`partner` LEFT JOIN `psn_title` as psn_title1 ON `psn_title1`.`id`=`partner`.`title` LEFT JOIN `address` as address1 ON `address1`.`id`=`partner`.`address_id` LEFT JOIN `psn_type` as psn_type1 ON `psn_type1`.`id`=`partner`.`type1` LEFT JOIN `psn_type` as psn_type2 ON `psn_type2`.`id`=`partner`.`type2` LEFT JOIN `psn_type` as psn_type3 ON `psn_type3`.`id`=`partner`.`type3` ',
+				'parent_from' => '`partner` LEFT JOIN `psn_title` as psn_title1 ON `psn_title1`.`id`=`partner`.`title` LEFT JOIN `address` as address1 ON `address1`.`id`=`partner`.`address_id` LEFT JOIN `psn_type` as psn_type1 ON `psn_type1`.`id`=`partner`.`type1` LEFT JOIN `psn_type` as psn_type2 ON `psn_type2`.`id`=`partner`.`type2` LEFT JOIN `psn_type` as psn_type3 ON `psn_type3`.`id`=`partner`.`type3` LEFT JOIN `member_group` as member_group1 ON `member_group1`.`id`=`partner`.`membergroupid` ',
 				'filterers' => array(),
 				'custom_query' => '',
 				'inherit_permissions' => false,
@@ -206,7 +217,7 @@
 				'parent_table' => 'partner',
 				'parent_pk_field' => 'id',
 				'parent_caption' => '`partner`.`company_name`',
-				'parent_from' => '`partner` LEFT JOIN `psn_title` as psn_title1 ON `psn_title1`.`id`=`partner`.`title` LEFT JOIN `address` as address1 ON `address1`.`id`=`partner`.`address_id` LEFT JOIN `psn_type` as psn_type1 ON `psn_type1`.`id`=`partner`.`type1` LEFT JOIN `psn_type` as psn_type2 ON `psn_type2`.`id`=`partner`.`type2` LEFT JOIN `psn_type` as psn_type3 ON `psn_type3`.`id`=`partner`.`type3` ',
+				'parent_from' => '`partner` LEFT JOIN `psn_title` as psn_title1 ON `psn_title1`.`id`=`partner`.`title` LEFT JOIN `address` as address1 ON `address1`.`id`=`partner`.`address_id` LEFT JOIN `psn_type` as psn_type1 ON `psn_type1`.`id`=`partner`.`type1` LEFT JOIN `psn_type` as psn_type2 ON `psn_type2`.`id`=`partner`.`type2` LEFT JOIN `psn_type` as psn_type3 ON `psn_type3`.`id`=`partner`.`type3` LEFT JOIN `member_group` as member_group1 ON `member_group1`.`id`=`partner`.`membergroupid` ',
 				'filterers' => array(),
 				'custom_query' => '',
 				'inherit_permissions' => false,
@@ -223,6 +234,8 @@
 		'psn_type' => array(  
 		),
 		'leads' => array(  
+		),
+		'member_group' => array(  
 		)
 	);
 

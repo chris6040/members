@@ -35,7 +35,8 @@
 			'type1' => array('appgini' => 'INT unsigned '),
 			'type2' => array('appgini' => 'INT unsigned '),
 			'type3' => array('appgini' => 'INT unsigned '),
-			'commission_rate' => array('appgini' => 'DOUBLE(3,2) default \'0.50\' ')
+			'commission_rate' => array('appgini' => 'DOUBLE(3,2) default \'0.50\' '),
+			'membergroupid' => array('appgini' => 'SMALLINT unsigned ')
 		),
 		'address' => array(   
 			'id' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
@@ -114,6 +115,11 @@
 			'notes' => array('appgini' => 'TEXT '),
 			'est_commission' => array('appgini' => 'DOUBLE(10,2) '),
 			'date_contacted' => array('appgini' => 'DATE ')
+		),
+		'member_group' => array(   
+			'id' => array('appgini' => 'SMALLINT unsigned not null primary key auto_increment '),
+			'name' => array('appgini' => 'VARCHAR(40) '),
+			'description' => array('appgini' => 'CHAR(60) ')
 		)
 	);
 

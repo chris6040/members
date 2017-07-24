@@ -43,6 +43,8 @@ function partner_insert(){
 		if($data['type3'] == empty_lookup_value){ $data['type3'] = ''; }
 	$data['commission_rate'] = makeSafe($_REQUEST['commission_rate']);
 		if($data['commission_rate'] == empty_lookup_value){ $data['commission_rate'] = ''; }
+	$data['membergroupid'] = makeSafe($_REQUEST['membergroupid']);
+		if($data['membergroupid'] == empty_lookup_value){ $data['membergroupid'] = ''; }
 	if($data['commission_rate'] == '') $data['commission_rate'] = "0.50";
 
 	// hook: partner_before_insert
@@ -52,7 +54,7 @@ function partner_insert(){
 	}
 
 	$o = array('silentErrors' => true);
-	sql('insert into `partner` set       `company_name`=' . (($data['company_name'] !== '' && $data['company_name'] !== NULL) ? "'{$data['company_name']}'" : 'NULL') . ', `title`=' . (($data['title'] !== '' && $data['title'] !== NULL) ? "'{$data['title']}'" : 'NULL') . ', `fname`=' . (($data['fname'] !== '' && $data['fname'] !== NULL) ? "'{$data['fname']}'" : 'NULL') . ', `lname`=' . (($data['lname'] !== '' && $data['lname'] !== NULL) ? "'{$data['lname']}'" : 'NULL') . ', `mailname`=' . (($data['mailname'] !== '' && $data['mailname'] !== NULL) ? "'{$data['mailname']}'" : 'NULL') . ', `email`=' . (($data['email'] !== '' && $data['email'] !== NULL) ? "'{$data['email']}'" : 'NULL') . ', `phone`=' . (($data['phone'] !== '' && $data['phone'] !== NULL) ? "'{$data['phone']}'" : 'NULL') . ', `mobile`=' . (($data['mobile'] !== '' && $data['mobile'] !== NULL) ? "'{$data['mobile']}'" : 'NULL') . ', `address_id`=' . (($data['address_id'] !== '' && $data['address_id'] !== NULL) ? "'{$data['address_id']}'" : 'NULL') . ', `username`=' . (($data['username'] !== '' && $data['username'] !== NULL) ? "'{$data['username']}'" : 'NULL') . ', `password`=' . (($data['password'] !== '' && $data['password'] !== NULL) ? "'{$data['password']}'" : 'NULL') . ', `type1`=' . (($data['type1'] !== '' && $data['type1'] !== NULL) ? "'{$data['type1']}'" : 'NULL') . ', `type2`=' . (($data['type2'] !== '' && $data['type2'] !== NULL) ? "'{$data['type2']}'" : 'NULL') . ', `type3`=' . (($data['type3'] !== '' && $data['type3'] !== NULL) ? "'{$data['type3']}'" : 'NULL') . ', `commission_rate`=' . (($data['commission_rate'] !== '' && $data['commission_rate'] !== NULL) ? "'{$data['commission_rate']}'" : 'NULL'), $o);
+	sql('insert into `partner` set       `company_name`=' . (($data['company_name'] !== '' && $data['company_name'] !== NULL) ? "'{$data['company_name']}'" : 'NULL') . ', `title`=' . (($data['title'] !== '' && $data['title'] !== NULL) ? "'{$data['title']}'" : 'NULL') . ', `fname`=' . (($data['fname'] !== '' && $data['fname'] !== NULL) ? "'{$data['fname']}'" : 'NULL') . ', `lname`=' . (($data['lname'] !== '' && $data['lname'] !== NULL) ? "'{$data['lname']}'" : 'NULL') . ', `mailname`=' . (($data['mailname'] !== '' && $data['mailname'] !== NULL) ? "'{$data['mailname']}'" : 'NULL') . ', `email`=' . (($data['email'] !== '' && $data['email'] !== NULL) ? "'{$data['email']}'" : 'NULL') . ', `phone`=' . (($data['phone'] !== '' && $data['phone'] !== NULL) ? "'{$data['phone']}'" : 'NULL') . ', `mobile`=' . (($data['mobile'] !== '' && $data['mobile'] !== NULL) ? "'{$data['mobile']}'" : 'NULL') . ', `address_id`=' . (($data['address_id'] !== '' && $data['address_id'] !== NULL) ? "'{$data['address_id']}'" : 'NULL') . ', `username`=' . (($data['username'] !== '' && $data['username'] !== NULL) ? "'{$data['username']}'" : 'NULL') . ', `password`=' . (($data['password'] !== '' && $data['password'] !== NULL) ? "'{$data['password']}'" : 'NULL') . ', `type1`=' . (($data['type1'] !== '' && $data['type1'] !== NULL) ? "'{$data['type1']}'" : 'NULL') . ', `type2`=' . (($data['type2'] !== '' && $data['type2'] !== NULL) ? "'{$data['type2']}'" : 'NULL') . ', `type3`=' . (($data['type3'] !== '' && $data['type3'] !== NULL) ? "'{$data['type3']}'" : 'NULL') . ', `commission_rate`=' . (($data['commission_rate'] !== '' && $data['commission_rate'] !== NULL) ? "'{$data['commission_rate']}'" : 'NULL') . ', `membergroupid`=' . (($data['membergroupid'] !== '' && $data['membergroupid'] !== NULL) ? "'{$data['membergroupid']}'" : 'NULL'), $o);
 	if($o['error']!=''){
 		echo $o['error'];
 		echo "<a href=\"partner_view.php?addNew_x=1\">{$Translation['< back']}</a>";
@@ -230,6 +232,8 @@ function partner_update($selected_id){
 		if($data['type3'] == empty_lookup_value){ $data['type3'] = ''; }
 	$data['commission_rate'] = makeSafe($_REQUEST['commission_rate']);
 		if($data['commission_rate'] == empty_lookup_value){ $data['commission_rate'] = ''; }
+	$data['membergroupid'] = makeSafe($_REQUEST['membergroupid']);
+		if($data['membergroupid'] == empty_lookup_value){ $data['membergroupid'] = ''; }
 	$data['selectedID']=makeSafe($selected_id);
 
 	// hook: partner_before_update
@@ -239,7 +243,7 @@ function partner_update($selected_id){
 	}
 
 	$o=array('silentErrors' => true);
-	sql('update `partner` set       `company_name`=' . (($data['company_name'] !== '' && $data['company_name'] !== NULL) ? "'{$data['company_name']}'" : 'NULL') . ', `title`=' . (($data['title'] !== '' && $data['title'] !== NULL) ? "'{$data['title']}'" : 'NULL') . ', `fname`=' . (($data['fname'] !== '' && $data['fname'] !== NULL) ? "'{$data['fname']}'" : 'NULL') . ', `lname`=' . (($data['lname'] !== '' && $data['lname'] !== NULL) ? "'{$data['lname']}'" : 'NULL') . ', `mailname`=' . (($data['mailname'] !== '' && $data['mailname'] !== NULL) ? "'{$data['mailname']}'" : 'NULL') . ', `email`=' . (($data['email'] !== '' && $data['email'] !== NULL) ? "'{$data['email']}'" : 'NULL') . ', `phone`=' . (($data['phone'] !== '' && $data['phone'] !== NULL) ? "'{$data['phone']}'" : 'NULL') . ', `mobile`=' . (($data['mobile'] !== '' && $data['mobile'] !== NULL) ? "'{$data['mobile']}'" : 'NULL') . ', `address_id`=' . (($data['address_id'] !== '' && $data['address_id'] !== NULL) ? "'{$data['address_id']}'" : 'NULL') . ', `username`=' . (($data['username'] !== '' && $data['username'] !== NULL) ? "'{$data['username']}'" : 'NULL') . ', `password`=' . (($data['password'] !== '' && $data['password'] !== NULL) ? "'{$data['password']}'" : 'NULL') . ', `type1`=' . (($data['type1'] !== '' && $data['type1'] !== NULL) ? "'{$data['type1']}'" : 'NULL') . ', `type2`=' . (($data['type2'] !== '' && $data['type2'] !== NULL) ? "'{$data['type2']}'" : 'NULL') . ', `type3`=' . (($data['type3'] !== '' && $data['type3'] !== NULL) ? "'{$data['type3']}'" : 'NULL') . ', `commission_rate`=' . (($data['commission_rate'] !== '' && $data['commission_rate'] !== NULL) ? "'{$data['commission_rate']}'" : 'NULL') . " where `id`='".makeSafe($selected_id)."'", $o);
+	sql('update `partner` set       `company_name`=' . (($data['company_name'] !== '' && $data['company_name'] !== NULL) ? "'{$data['company_name']}'" : 'NULL') . ', `title`=' . (($data['title'] !== '' && $data['title'] !== NULL) ? "'{$data['title']}'" : 'NULL') . ', `fname`=' . (($data['fname'] !== '' && $data['fname'] !== NULL) ? "'{$data['fname']}'" : 'NULL') . ', `lname`=' . (($data['lname'] !== '' && $data['lname'] !== NULL) ? "'{$data['lname']}'" : 'NULL') . ', `mailname`=' . (($data['mailname'] !== '' && $data['mailname'] !== NULL) ? "'{$data['mailname']}'" : 'NULL') . ', `email`=' . (($data['email'] !== '' && $data['email'] !== NULL) ? "'{$data['email']}'" : 'NULL') . ', `phone`=' . (($data['phone'] !== '' && $data['phone'] !== NULL) ? "'{$data['phone']}'" : 'NULL') . ', `mobile`=' . (($data['mobile'] !== '' && $data['mobile'] !== NULL) ? "'{$data['mobile']}'" : 'NULL') . ', `address_id`=' . (($data['address_id'] !== '' && $data['address_id'] !== NULL) ? "'{$data['address_id']}'" : 'NULL') . ', `username`=' . (($data['username'] !== '' && $data['username'] !== NULL) ? "'{$data['username']}'" : 'NULL') . ', `password`=' . (($data['password'] !== '' && $data['password'] !== NULL) ? "'{$data['password']}'" : 'NULL') . ', `type1`=' . (($data['type1'] !== '' && $data['type1'] !== NULL) ? "'{$data['type1']}'" : 'NULL') . ', `type2`=' . (($data['type2'] !== '' && $data['type2'] !== NULL) ? "'{$data['type2']}'" : 'NULL') . ', `type3`=' . (($data['type3'] !== '' && $data['type3'] !== NULL) ? "'{$data['type3']}'" : 'NULL') . ', `commission_rate`=' . (($data['commission_rate'] !== '' && $data['commission_rate'] !== NULL) ? "'{$data['commission_rate']}'" : 'NULL') . ', `membergroupid`=' . (($data['membergroupid'] !== '' && $data['membergroupid'] !== NULL) ? "'{$data['membergroupid']}'" : 'NULL') . " where `id`='".makeSafe($selected_id)."'", $o);
 	if($o['error']!=''){
 		echo $o['error'];
 		echo '<a href="partner_view.php?SelectedID='.urlencode($selected_id)."\">{$Translation['< back']}</a>";
@@ -286,6 +290,7 @@ function partner_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Al
 	$filterer_type1 = thisOr(undo_magic_quotes($_REQUEST['filterer_type1']), '');
 	$filterer_type2 = thisOr(undo_magic_quotes($_REQUEST['filterer_type2']), '');
 	$filterer_type3 = thisOr(undo_magic_quotes($_REQUEST['filterer_type3']), '');
+	$filterer_membergroupid = thisOr(undo_magic_quotes($_REQUEST['filterer_membergroupid']), '');
 
 	// populate filterers, starting from children to grand-parents
 
@@ -301,6 +306,8 @@ function partner_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Al
 	$combo_type2 = new DataCombo;
 	// combobox: type3
 	$combo_type3 = new DataCombo;
+	// combobox: membergroupid
+	$combo_membergroupid = new DataCombo;
 
 	if($selected_id){
 		// mm: check member permissions
@@ -336,12 +343,14 @@ function partner_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Al
 		$combo_type1->SelectedData = $row['type1'];
 		$combo_type2->SelectedData = $row['type2'];
 		$combo_type3->SelectedData = $row['type3'];
+		$combo_membergroupid->SelectedData = $row['membergroupid'];
 	}else{
 		$combo_title->SelectedData = $filterer_title;
 		$combo_address_id->SelectedData = $filterer_address_id;
 		$combo_type1->SelectedData = $filterer_type1;
 		$combo_type2->SelectedData = $filterer_type2;
 		$combo_type3->SelectedData = $filterer_type3;
+		$combo_membergroupid->SelectedData = $filterer_membergroupid;
 	}
 	$combo_title->HTML = $combo_title->MatchText = '<span id="title-container' . $rnd1 . '"></span>';
 	$combo_address_id->HTML = '<span id="address_id-container' . $rnd1 . '"></span><input type="hidden" name="address_id" id="address_id' . $rnd1 . '" value="' . html_attr($combo_address_id->SelectedData) . '">';
@@ -352,6 +361,8 @@ function partner_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Al
 	$combo_type2->MatchText = '<span id="type2-container-readonly' . $rnd1 . '"></span><input type="hidden" name="type2" id="type2' . $rnd1 . '" value="' . html_attr($combo_type2->SelectedData) . '">';
 	$combo_type3->HTML = '<span id="type3-container' . $rnd1 . '"></span><input type="hidden" name="type3" id="type3' . $rnd1 . '" value="' . html_attr($combo_type3->SelectedData) . '">';
 	$combo_type3->MatchText = '<span id="type3-container-readonly' . $rnd1 . '"></span><input type="hidden" name="type3" id="type3' . $rnd1 . '" value="' . html_attr($combo_type3->SelectedData) . '">';
+	$combo_membergroupid->HTML = '<span id="membergroupid-container' . $rnd1 . '"></span><input type="hidden" name="membergroupid" id="membergroupid' . $rnd1 . '" value="' . html_attr($combo_membergroupid->SelectedData) . '">';
+	$combo_membergroupid->MatchText = '<span id="membergroupid-container-readonly' . $rnd1 . '"></span><input type="hidden" name="membergroupid" id="membergroupid' . $rnd1 . '" value="' . html_attr($combo_membergroupid->SelectedData) . '">';
 
 	ob_start();
 	?>
@@ -363,6 +374,7 @@ function partner_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Al
 		AppGini.current_type1__RAND__ = { text: "", value: "<?php echo addslashes($selected_id ? $urow['type1'] : $filterer_type1); ?>"};
 		AppGini.current_type2__RAND__ = { text: "", value: "<?php echo addslashes($selected_id ? $urow['type2'] : $filterer_type2); ?>"};
 		AppGini.current_type3__RAND__ = { text: "", value: "<?php echo addslashes($selected_id ? $urow['type3'] : $filterer_type3); ?>"};
+		AppGini.current_membergroupid__RAND__ = { text: "", value: "<?php echo addslashes($selected_id ? $urow['membergroupid'] : $filterer_membergroupid); ?>"};
 
 		jQuery(function() {
 			setTimeout(function(){
@@ -371,6 +383,7 @@ function partner_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Al
 				if(typeof(type1_reload__RAND__) == 'function') type1_reload__RAND__();
 				if(typeof(type2_reload__RAND__) == 'function') type2_reload__RAND__();
 				if(typeof(type3_reload__RAND__) == 'function') type3_reload__RAND__();
+				if(typeof(membergroupid_reload__RAND__) == 'function') membergroupid_reload__RAND__();
 			}, 10); /* we need to slightly delay client-side execution of the above code to allow AppGini.ajaxCache to work */
 		});
 		function title_reload__RAND__(){
@@ -703,6 +716,83 @@ function partner_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Al
 		<?php } ?>
 
 		}
+		function membergroupid_reload__RAND__(){
+		<?php if(($AllowUpdate || $AllowInsert) && !$dvprint){ ?>
+
+			$j("#membergroupid-container__RAND__").select2({
+				/* initial default value */
+				initSelection: function(e, c){
+					$j.ajax({
+						url: 'ajax_combo.php',
+						dataType: 'json',
+						data: { id: AppGini.current_membergroupid__RAND__.value, t: 'partner', f: 'membergroupid' },
+						success: function(resp){
+							c({
+								id: resp.results[0].id,
+								text: resp.results[0].text
+							});
+							$j('[name="membergroupid"]').val(resp.results[0].id);
+							$j('[id=membergroupid-container-readonly__RAND__]').html('<span id="membergroupid-match-text">' + resp.results[0].text + '</span>');
+							if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=member_group_view_parent]').hide(); }else{ $j('.btn[id=member_group_view_parent]').show(); }
+
+
+							if(typeof(membergroupid_update_autofills__RAND__) == 'function') membergroupid_update_autofills__RAND__();
+						}
+					});
+				},
+				width: ($j('fieldset .col-xs-11').width() - select2_max_width_decrement()) + 'px',
+				formatNoMatches: function(term){ return '<?php echo addslashes($Translation['No matches found!']); ?>'; },
+				minimumResultsForSearch: 10,
+				loadMorePadding: 200,
+				ajax: {
+					url: 'ajax_combo.php',
+					dataType: 'json',
+					cache: true,
+					data: function(term, page){ return { s: term, p: page, t: 'partner', f: 'membergroupid' }; },
+					results: function(resp, page){ return resp; }
+				},
+				escapeMarkup: function(str){ return str; }
+			}).on('change', function(e){
+				AppGini.current_membergroupid__RAND__.value = e.added.id;
+				AppGini.current_membergroupid__RAND__.text = e.added.text;
+				$j('[name="membergroupid"]').val(e.added.id);
+				if(e.added.id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=member_group_view_parent]').hide(); }else{ $j('.btn[id=member_group_view_parent]').show(); }
+
+
+				if(typeof(membergroupid_update_autofills__RAND__) == 'function') membergroupid_update_autofills__RAND__();
+			});
+
+			if(!$j("#membergroupid-container__RAND__").length){
+				$j.ajax({
+					url: 'ajax_combo.php',
+					dataType: 'json',
+					data: { id: AppGini.current_membergroupid__RAND__.value, t: 'partner', f: 'membergroupid' },
+					success: function(resp){
+						$j('[name="membergroupid"]').val(resp.results[0].id);
+						$j('[id=membergroupid-container-readonly__RAND__]').html('<span id="membergroupid-match-text">' + resp.results[0].text + '</span>');
+						if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=member_group_view_parent]').hide(); }else{ $j('.btn[id=member_group_view_parent]').show(); }
+
+						if(typeof(membergroupid_update_autofills__RAND__) == 'function') membergroupid_update_autofills__RAND__();
+					}
+				});
+			}
+
+		<?php }else{ ?>
+
+			$j.ajax({
+				url: 'ajax_combo.php',
+				dataType: 'json',
+				data: { id: AppGini.current_membergroupid__RAND__.value, t: 'partner', f: 'membergroupid' },
+				success: function(resp){
+					$j('[id=membergroupid-container__RAND__], [id=membergroupid-container-readonly__RAND__]').html('<span id="membergroupid-match-text">' + resp.results[0].text + '</span>');
+					if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=member_group_view_parent]').hide(); }else{ $j('.btn[id=member_group_view_parent]').show(); }
+
+					if(typeof(membergroupid_update_autofills__RAND__) == 'function') membergroupid_update_autofills__RAND__();
+				}
+			});
+		<?php } ?>
+
+		}
 	</script>
 	<?php
 
@@ -782,6 +872,8 @@ function partner_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Al
 		$jsReadOnly .= "\tjQuery('#type3').prop('disabled', true).css({ color: '#555', backgroundColor: '#fff' });\n";
 		$jsReadOnly .= "\tjQuery('#type3_caption').prop('disabled', true).css({ color: '#555', backgroundColor: 'white' });\n";
 		$jsReadOnly .= "\tjQuery('#commission_rate').replaceWith('<div class=\"form-control-static\" id=\"commission_rate\">' + (jQuery('#commission_rate').val() || '') + '</div>');\n";
+		$jsReadOnly .= "\tjQuery('#membergroupid').prop('disabled', true).css({ color: '#555', backgroundColor: '#fff' });\n";
+		$jsReadOnly .= "\tjQuery('#membergroupid_caption').prop('disabled', true).css({ color: '#555', backgroundColor: 'white' });\n";
 		$jsReadOnly .= "\tjQuery('.select2-container').hide();\n";
 
 		$noUploads = true;
@@ -806,9 +898,12 @@ function partner_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Al
 	$templateCode=str_replace('<%%COMBO(type3)%%>', $combo_type3->HTML, $templateCode);
 	$templateCode=str_replace('<%%COMBOTEXT(type3)%%>', $combo_type3->MatchText, $templateCode);
 	$templateCode=str_replace('<%%URLCOMBOTEXT(type3)%%>', urlencode($combo_type3->MatchText), $templateCode);
+	$templateCode=str_replace('<%%COMBO(membergroupid)%%>', $combo_membergroupid->HTML, $templateCode);
+	$templateCode=str_replace('<%%COMBOTEXT(membergroupid)%%>', $combo_membergroupid->MatchText, $templateCode);
+	$templateCode=str_replace('<%%URLCOMBOTEXT(membergroupid)%%>', urlencode($combo_membergroupid->MatchText), $templateCode);
 
 	/* lookup fields array: 'lookup field name' => array('parent table name', 'lookup field caption') */
-	$lookup_fields = array(  'title' => array('psn_title', 'Title'), 'address_id' => array('address', 'Address id'), 'type1' => array('psn_type', 'Type1'), 'type2' => array('psn_type', 'Type2'), 'type3' => array('psn_type', 'Type3'));
+	$lookup_fields = array(  'title' => array('psn_title', 'Title'), 'address_id' => array('address', 'Address id'), 'type1' => array('psn_type', 'Type1'), 'type2' => array('psn_type', 'Type2'), 'type3' => array('psn_type', 'Type3'), 'membergroupid' => array('member_group', 'Member Area Group'));
 	foreach($lookup_fields as $luf => $ptfc){
 		$pt_perm = getTablePermissions($ptfc[0]);
 
@@ -840,6 +935,7 @@ function partner_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Al
 	$templateCode=str_replace('<%%UPLOADFILE(type2)%%>', '', $templateCode);
 	$templateCode=str_replace('<%%UPLOADFILE(type3)%%>', '', $templateCode);
 	$templateCode=str_replace('<%%UPLOADFILE(commission_rate)%%>', '', $templateCode);
+	$templateCode=str_replace('<%%UPLOADFILE(membergroupid)%%>', '', $templateCode);
 
 	// process values
 	if($selected_id){
@@ -879,6 +975,8 @@ function partner_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Al
 		$templateCode=str_replace('<%%URLVALUE(type3)%%>', urlencode($urow['type3']), $templateCode);
 		$templateCode=str_replace('<%%VALUE(commission_rate)%%>', html_attr($row['commission_rate']), $templateCode);
 		$templateCode=str_replace('<%%URLVALUE(commission_rate)%%>', urlencode($urow['commission_rate']), $templateCode);
+		$templateCode=str_replace('<%%VALUE(membergroupid)%%>', html_attr($row['membergroupid']), $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(membergroupid)%%>', urlencode($urow['membergroupid']), $templateCode);
 	}else{
 		$templateCode=str_replace('<%%VALUE(id)%%>', '', $templateCode);
 		$templateCode=str_replace('<%%URLVALUE(id)%%>', urlencode(''), $templateCode);
@@ -912,6 +1010,8 @@ function partner_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Al
 		$templateCode=str_replace('<%%URLVALUE(type3)%%>', urlencode(''), $templateCode);
 		$templateCode=str_replace('<%%VALUE(commission_rate)%%>', '0.50', $templateCode);
 		$templateCode=str_replace('<%%URLVALUE(commission_rate)%%>', urlencode('0.50'), $templateCode);
+		$templateCode=str_replace('<%%VALUE(membergroupid)%%>', '', $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(membergroupid)%%>', urlencode(''), $templateCode);
 	}
 
 	// process translations

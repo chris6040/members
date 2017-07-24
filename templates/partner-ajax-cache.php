@@ -8,7 +8,8 @@
 			address_id: { id: '<?php echo $rdata['address_id']; ?>', value: '<?php echo $rdata['address_id']; ?>', text: '<?php echo $jdata['address_id']; ?>' },
 			type1: { id: '<?php echo $rdata['type1']; ?>', value: '<?php echo $rdata['type1']; ?>', text: '<?php echo $jdata['type1']; ?>' },
 			type2: { id: '<?php echo $rdata['type2']; ?>', value: '<?php echo $rdata['type2']; ?>', text: '<?php echo $jdata['type2']; ?>' },
-			type3: { id: '<?php echo $rdata['type3']; ?>', value: '<?php echo $rdata['type3']; ?>', text: '<?php echo $jdata['type3']; ?>' }
+			type3: { id: '<?php echo $rdata['type3']; ?>', value: '<?php echo $rdata['type3']; ?>', text: '<?php echo $jdata['type3']; ?>' },
+			membergroupid: { id: '<?php echo $rdata['membergroupid']; ?>', value: '<?php echo $rdata['membergroupid']; ?>', text: '<?php echo $jdata['membergroupid']; ?>' }
 		};
 
 		/* initialize or continue using AppGini.cache for the current table */
@@ -45,6 +46,14 @@
 			if(u != 'ajax_combo.php') return false;
 			if(d.t == tn && d.f == 'type3' && d.id == data.type3.id)
 				return { results: [ data.type3 ], more: false, elapsed: 0.01 };
+			return false;
+		});
+
+		/* saved value for membergroupid */
+		cache.addCheck(function(u, d){
+			if(u != 'ajax_combo.php') return false;
+			if(d.t == tn && d.f == 'membergroupid' && d.id == data.membergroupid.id)
+				return { results: [ data.membergroupid ], more: false, elapsed: 0.01 };
 			return false;
 		});
 

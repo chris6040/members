@@ -209,6 +209,9 @@ jQuery(function(){
 
 	/* remove empty email links from TV, TVP */
 	$j('a[href="mailto:"]').remove();
+
+	/* for RTL languages, flip *-right and *-left classes */
+	jQuery('.navbar-left, .navbar-right, .pull-left, .pull-right').addClass('flip');
 });
 
 /* show/hide TV action buttons based on whether records are selected or not */
@@ -286,6 +289,10 @@ function psn_type_validateData(){
 	return true;
 }
 function leads_validateData(){
+	$j('.has-error').removeClass('has-error');
+	return true;
+}
+function member_group_validateData(){
 	$j('.has-error').removeClass('has-error');
 	return true;
 }

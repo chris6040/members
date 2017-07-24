@@ -37,7 +37,8 @@
 		"IF(    CHAR_LENGTH(`psn_type1`.`type`), CONCAT_WS('',   `psn_type1`.`type`), '') /* Type1 */" => "type1",
 		"IF(    CHAR_LENGTH(`psn_type2`.`type`), CONCAT_WS('',   `psn_type2`.`type`), '') /* Type2 */" => "type2",
 		"IF(    CHAR_LENGTH(`psn_type3`.`type`), CONCAT_WS('',   `psn_type3`.`type`), '') /* Type3 */" => "type3",
-		"`partner`.`commission_rate`" => "commission_rate"
+		"`partner`.`commission_rate`" => "commission_rate",
+		"IF(    CHAR_LENGTH(`member_group1`.`id`) || CHAR_LENGTH(`member_group1`.`name`), CONCAT_WS('',   `member_group1`.`id`, `member_group1`.`name`), '') /* Member Area Group */" => "membergroupid"
 	);
 	// mapping incoming sort by requests to actual query fields
 	$x->SortFields = array(   
@@ -56,7 +57,8 @@
 		13 => '`psn_type1`.`type`',
 		14 => '`psn_type2`.`type`',
 		15 => '`psn_type3`.`type`',
-		16 => '`partner`.`commission_rate`'
+		16 => '`partner`.`commission_rate`',
+		17 => 17
 	);
 
 	// Fields that can be displayed in the csv file
@@ -76,7 +78,8 @@
 		"IF(    CHAR_LENGTH(`psn_type1`.`type`), CONCAT_WS('',   `psn_type1`.`type`), '') /* Type1 */" => "type1",
 		"IF(    CHAR_LENGTH(`psn_type2`.`type`), CONCAT_WS('',   `psn_type2`.`type`), '') /* Type2 */" => "type2",
 		"IF(    CHAR_LENGTH(`psn_type3`.`type`), CONCAT_WS('',   `psn_type3`.`type`), '') /* Type3 */" => "type3",
-		"`partner`.`commission_rate`" => "commission_rate"
+		"`partner`.`commission_rate`" => "commission_rate",
+		"IF(    CHAR_LENGTH(`member_group1`.`id`) || CHAR_LENGTH(`member_group1`.`name`), CONCAT_WS('',   `member_group1`.`id`, `member_group1`.`name`), '') /* Member Area Group */" => "membergroupid"
 	);
 	// Fields that can be filtered
 	$x->QueryFieldsFilters = array(   
@@ -95,7 +98,8 @@
 		"IF(    CHAR_LENGTH(`psn_type1`.`type`), CONCAT_WS('',   `psn_type1`.`type`), '') /* Type1 */" => "Type1",
 		"IF(    CHAR_LENGTH(`psn_type2`.`type`), CONCAT_WS('',   `psn_type2`.`type`), '') /* Type2 */" => "Type2",
 		"IF(    CHAR_LENGTH(`psn_type3`.`type`), CONCAT_WS('',   `psn_type3`.`type`), '') /* Type3 */" => "Type3",
-		"`partner`.`commission_rate`" => "Commission (transaction %)"
+		"`partner`.`commission_rate`" => "Commission (transaction %)",
+		"IF(    CHAR_LENGTH(`member_group1`.`id`) || CHAR_LENGTH(`member_group1`.`name`), CONCAT_WS('',   `member_group1`.`id`, `member_group1`.`name`), '') /* Member Area Group */" => "Member Area Group"
 	);
 
 	// Fields that can be quick searched
@@ -115,13 +119,14 @@
 		"IF(    CHAR_LENGTH(`psn_type1`.`type`), CONCAT_WS('',   `psn_type1`.`type`), '') /* Type1 */" => "type1",
 		"IF(    CHAR_LENGTH(`psn_type2`.`type`), CONCAT_WS('',   `psn_type2`.`type`), '') /* Type2 */" => "type2",
 		"IF(    CHAR_LENGTH(`psn_type3`.`type`), CONCAT_WS('',   `psn_type3`.`type`), '') /* Type3 */" => "type3",
-		"`partner`.`commission_rate`" => "commission_rate"
+		"`partner`.`commission_rate`" => "commission_rate",
+		"IF(    CHAR_LENGTH(`member_group1`.`id`) || CHAR_LENGTH(`member_group1`.`name`), CONCAT_WS('',   `member_group1`.`id`, `member_group1`.`name`), '') /* Member Area Group */" => "membergroupid"
 	);
 
 	// Lookup fields that can be used as filterers
-	$x->filterers = array(  'title' => 'Title', 'address_id' => 'Address id', 'type1' => 'Type1', 'type2' => 'Type2', 'type3' => 'Type3');
+	$x->filterers = array(  'title' => 'Title', 'address_id' => 'Address id', 'type1' => 'Type1', 'type2' => 'Type2', 'type3' => 'Type3', 'membergroupid' => 'Member Area Group');
 
-	$x->QueryFrom = "`partner` LEFT JOIN `psn_title` as psn_title1 ON `psn_title1`.`id`=`partner`.`title` LEFT JOIN `address` as address1 ON `address1`.`id`=`partner`.`address_id` LEFT JOIN `psn_type` as psn_type1 ON `psn_type1`.`id`=`partner`.`type1` LEFT JOIN `psn_type` as psn_type2 ON `psn_type2`.`id`=`partner`.`type2` LEFT JOIN `psn_type` as psn_type3 ON `psn_type3`.`id`=`partner`.`type3` ";
+	$x->QueryFrom = "`partner` LEFT JOIN `psn_title` as psn_title1 ON `psn_title1`.`id`=`partner`.`title` LEFT JOIN `address` as address1 ON `address1`.`id`=`partner`.`address_id` LEFT JOIN `psn_type` as psn_type1 ON `psn_type1`.`id`=`partner`.`type1` LEFT JOIN `psn_type` as psn_type2 ON `psn_type2`.`id`=`partner`.`type2` LEFT JOIN `psn_type` as psn_type3 ON `psn_type3`.`id`=`partner`.`type3` LEFT JOIN `member_group` as member_group1 ON `member_group1`.`id`=`partner`.`membergroupid` ";
 	$x->QueryWhere = '';
 	$x->QueryOrder = '';
 
@@ -148,10 +153,10 @@
 	$x->TableIcon = "table.gif";
 	$x->PrimaryKey = "`partner`.`id`";
 
-	$x->ColWidth   = array(  150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150);
-	$x->ColCaption = array("Company name", "Title", "First Name", "Last Name", "Mailname", "Email", "Tel1", "Mobile", "Address id", "Username", "Password", "Type1", "Type2", "Type3", "Commission (transaction %)");
-	$x->ColFieldName = array('company_name', 'title', 'fname', 'lname', 'mailname', 'email', 'phone', 'mobile', 'address_id', 'username', 'password', 'type1', 'type2', 'type3', 'commission_rate');
-	$x->ColNumber  = array(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+	$x->ColWidth   = array(  150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150);
+	$x->ColCaption = array("Company name", "Title", "First Name", "Last Name", "Mailname", "Email", "Tel1", "Mobile", "Address id", "Username", "Password", "Type1", "Type2", "Type3", "Commission (transaction %)", "Member Area Group");
+	$x->ColFieldName = array('company_name', 'title', 'fname', 'lname', 'mailname', 'email', 'phone', 'mobile', 'address_id', 'username', 'password', 'type1', 'type2', 'type3', 'commission_rate', 'membergroupid');
+	$x->ColNumber  = array(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17);
 
 	// template paths below are based on the app main directory
 	$x->Template = 'templates/partner_templateTV.html';

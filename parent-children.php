@@ -31,6 +31,8 @@
 			'psn_type' => array(   
 			),
 			'leads' => array(   
+			),
+			'member_group' => array(   
 			)
 		);
 

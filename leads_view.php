@@ -130,10 +130,10 @@
 	$x->DefaultSortField = '2';
 	$x->DefaultSortDirection = 'desc';
 
-	$x->ColWidth   = array(  150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150);
-	$x->ColCaption = array("Date entered", "Referral source", "Client Name", "Contact details", "First part postcode", "Estimated value", "Tenanted", "Monthly Rental income", "Notes", "Estimated Commission", "Date contacted");
-	$x->ColFieldName = array('date_entered', 'referer', 'lead_name', 'contact', 'prop_area', 'estimated_value', 'tenanted', 'rental_income', 'notes', 'est_commission', 'date_contacted');
-	$x->ColNumber  = array(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
+	$x->ColWidth   = array(  150, 150, 150, 150, 150, 150, 150, 150);
+	$x->ColCaption = array("Client Name", "Contact details", "First part postcode", "Estimated value", "Tenanted", "Monthly Rental income", "Notes", "Estimated Commission");
+	$x->ColFieldName = array('lead_name', 'contact', 'prop_area', 'estimated_value', 'tenanted', 'rental_income', 'notes', 'est_commission');
+	$x->ColNumber  = array(4, 5, 6, 7, 8, 9, 10, 11);
 
 	// template paths below are based on the app main directory
 	$x->Template = 'templates/leads_templateTV.html';
