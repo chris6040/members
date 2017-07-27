@@ -209,9 +209,6 @@ jQuery(function(){
 
 	/* remove empty email links from TV, TVP */
 	$j('a[href="mailto:"]').remove();
-
-	/* for RTL languages, flip *-right and *-left classes */
-	jQuery('.navbar-left, .navbar-right, .pull-left, .pull-right').addClass('flip');
 });
 
 /* show/hide TV action buttons based on whether records are selected or not */

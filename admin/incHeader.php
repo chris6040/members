@@ -14,7 +14,6 @@
 		<link id="browser_favicon" rel="shortcut icon" href="<?php echo PREPEND_PATH; ?>resources/table_icons/administrator.png">
 
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>resources/initializr/css/cerulean.css">
-		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>resources/initializr/css/rtl.css">
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>dynamic.css.php">
 
 		<!--[if lt IE 9]>
@@ -152,7 +151,7 @@
 		</style>
 	</head>
 	<body>
-	<div class="container theme-cerulean theme-rtl theme-compact">
+	<div class="container theme-cerulean theme-compact">
 
 		<!-- top navbar -->
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
