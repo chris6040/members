@@ -6,13 +6,17 @@
 	/*************************************/
 
 		$pcConfig = array(
+			'leads' => array(   
+			),
 			'property' => array(   
 			),
-			'partner' => array(   
+			'transaction' => array(   
+			),
+			'loan' => array(   
+			),
+			'client' => array(   
 			),
 			'address' => array(   
-			),
-			'transaction' => array(   
 			),
 			'acc_type' => array(   
 			),
@@ -20,17 +24,13 @@
 			),
 			'psn_title' => array(   
 			),
-			'loan' => array(   
-			),
 			'loan_type' => array(   
+			),
+			'psn_type' => array(   
 			),
 			'county' => array(   
 			),
 			'country' => array(   
-			),
-			'psn_type' => array(   
-			),
-			'leads' => array(   
 			),
 			'member_group' => array(   
 			)

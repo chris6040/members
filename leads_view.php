@@ -23,17 +23,22 @@
 	// Fields that can be displayed in the table view
 	$x->QueryFieldsTV = array(   
 		"`leads`.`id`" => "id",
-		"`leads`.`date_entered`" => "date_entered",
-		"`leads`.`referer`" => "referer",
-		"`leads`.`lead_name`" => "lead_name",
-		"`leads`.`contact`" => "contact",
+		"`leads`.`name`" => "name",
+		"`leads`.`email`" => "email",
+		"`leads`.`phone`" => "phone",
 		"`leads`.`prop_area`" => "prop_area",
-		"`leads`.`estimated_value`" => "estimated_value",
 		"`leads`.`tenanted`" => "tenanted",
-		"`leads`.`rental_income`" => "rental_income",
 		"`leads`.`notes`" => "notes",
-		"`leads`.`est_commission`" => "est_commission",
-		"if(`leads`.`date_contacted`,date_format(`leads`.`date_contacted`,'%d/%m/%Y'),'')" => "date_contacted"
+		"if(`leads`.`date_entered`,date_format(`leads`.`date_entered`,'%d/%m/%Y'),'')" => "date_entered",
+		"if(`leads`.`date_contacted`,date_format(`leads`.`date_contacted`,'%d/%m/%Y'),'')" => "date_contacted",
+		"`leads`.`est_value`" => "est_value",
+		"`leads`.`os_capital`" => "os_capital",
+		"`leads`.`rental_income`" => "rental_income",
+		"`leads`.`finance_costs`" => "finance_costs",
+		"`leads`.`other_costs`" => "other_costs",
+		"`leads`.`income_tax_band`" => "income_tax_band",
+		"`leads`.`referer`" => "referer",
+		"`leads`.`est_commission`" => "est_commission"
 	);
 	// mapping incoming sort by requests to actual query fields
 	$x->SortFields = array(   
@@ -43,59 +48,79 @@
 		4 => 4,
 		5 => 5,
 		6 => 6,
-		7 => '`leads`.`estimated_value`',
-		8 => 8,
-		9 => 9,
+		7 => 7,
+		8 => '`leads`.`date_entered`',
+		9 => '`leads`.`date_contacted`',
 		10 => 10,
-		11 => '`leads`.`est_commission`',
-		12 => '`leads`.`date_contacted`'
+		11 => 11,
+		12 => '`leads`.`rental_income`',
+		13 => '`leads`.`finance_costs`',
+		14 => '`leads`.`other_costs`',
+		15 => '`leads`.`income_tax_band`',
+		16 => 16,
+		17 => '`leads`.`est_commission`'
 	);
 
 	// Fields that can be displayed in the csv file
 	$x->QueryFieldsCSV = array(   
 		"`leads`.`id`" => "id",
-		"`leads`.`date_entered`" => "date_entered",
-		"`leads`.`referer`" => "referer",
-		"`leads`.`lead_name`" => "lead_name",
-		"`leads`.`contact`" => "contact",
+		"`leads`.`name`" => "name",
+		"`leads`.`email`" => "email",
+		"`leads`.`phone`" => "phone",
 		"`leads`.`prop_area`" => "prop_area",
-		"`leads`.`estimated_value`" => "estimated_value",
 		"`leads`.`tenanted`" => "tenanted",
-		"`leads`.`rental_income`" => "rental_income",
 		"`leads`.`notes`" => "notes",
-		"`leads`.`est_commission`" => "est_commission",
-		"if(`leads`.`date_contacted`,date_format(`leads`.`date_contacted`,'%d/%m/%Y'),'')" => "date_contacted"
+		"if(`leads`.`date_entered`,date_format(`leads`.`date_entered`,'%d/%m/%Y'),'')" => "date_entered",
+		"if(`leads`.`date_contacted`,date_format(`leads`.`date_contacted`,'%d/%m/%Y'),'')" => "date_contacted",
+		"`leads`.`est_value`" => "est_value",
+		"`leads`.`os_capital`" => "os_capital",
+		"`leads`.`rental_income`" => "rental_income",
+		"`leads`.`finance_costs`" => "finance_costs",
+		"`leads`.`other_costs`" => "other_costs",
+		"`leads`.`income_tax_band`" => "income_tax_band",
+		"`leads`.`referer`" => "referer",
+		"`leads`.`est_commission`" => "est_commission"
 	);
 	// Fields that can be filtered
 	$x->QueryFieldsFilters = array(   
-		"`leads`.`id`" => "Reference",
-		"`leads`.`date_entered`" => "Date entered",
-		"`leads`.`referer`" => "Referral source",
-		"`leads`.`lead_name`" => "Client Name",
-		"`leads`.`contact`" => "Contact details",
-		"`leads`.`prop_area`" => "First part postcode",
-		"`leads`.`estimated_value`" => "Estimated value",
+		"`leads`.`id`" => "ID",
+		"`leads`.`name`" => "Name",
+		"`leads`.`email`" => "Email",
+		"`leads`.`phone`" => "Phone",
+		"`leads`.`prop_area`" => "Property area",
 		"`leads`.`tenanted`" => "Tenanted",
-		"`leads`.`rental_income`" => "Monthly Rental income",
 		"`leads`.`notes`" => "Notes",
-		"`leads`.`est_commission`" => "Estimated Commission",
-		"`leads`.`date_contacted`" => "Date contacted"
+		"`leads`.`date_entered`" => "Date entered",
+		"`leads`.`date_contacted`" => "Date contacted",
+		"`leads`.`est_value`" => "Est. market value",
+		"`leads`.`os_capital`" => "O/S capital",
+		"`leads`.`rental_income`" => "Rental income",
+		"`leads`.`finance_costs`" => "Finance costs",
+		"`leads`.`other_costs`" => "Other costs",
+		"`leads`.`income_tax_band`" => "Income tax band",
+		"`leads`.`referer`" => "Referer",
+		"`leads`.`est_commission`" => "Est commission"
 	);
 
 	// Fields that can be quick searched
 	$x->QueryFieldsQS = array(   
 		"`leads`.`id`" => "id",
-		"`leads`.`date_entered`" => "date_entered",
-		"`leads`.`referer`" => "referer",
-		"`leads`.`lead_name`" => "lead_name",
-		"`leads`.`contact`" => "contact",
+		"`leads`.`name`" => "name",
+		"`leads`.`email`" => "email",
+		"`leads`.`phone`" => "phone",
 		"`leads`.`prop_area`" => "prop_area",
-		"`leads`.`estimated_value`" => "estimated_value",
 		"`leads`.`tenanted`" => "tenanted",
-		"`leads`.`rental_income`" => "rental_income",
 		"`leads`.`notes`" => "notes",
-		"`leads`.`est_commission`" => "est_commission",
-		"if(`leads`.`date_contacted`,date_format(`leads`.`date_contacted`,'%d/%m/%Y'),'')" => "date_contacted"
+		"if(`leads`.`date_entered`,date_format(`leads`.`date_entered`,'%d/%m/%Y'),'')" => "date_entered",
+		"if(`leads`.`date_contacted`,date_format(`leads`.`date_contacted`,'%d/%m/%Y'),'')" => "date_contacted",
+		"`leads`.`est_value`" => "est_value",
+		"`leads`.`os_capital`" => "os_capital",
+		"`leads`.`rental_income`" => "rental_income",
+		"`leads`.`finance_costs`" => "finance_costs",
+		"`leads`.`other_costs`" => "other_costs",
+		"`leads`.`income_tax_band`" => "income_tax_band",
+		"`leads`.`referer`" => "referer",
+		"`leads`.`est_commission`" => "est_commission"
 	);
 
 	// Lookup fields that can be used as filterers
@@ -117,9 +142,9 @@
 	$x->AllowSavingFilters = 0;
 	$x->AllowSorting = 1;
 	$x->AllowNavigation = 1;
-	$x->AllowPrinting = 0;
-	$x->AllowCSV = 0;
-	$x->RecordsPerPage = 20;
+	$x->AllowPrinting = 1;
+	$x->AllowCSV = 1;
+	$x->RecordsPerPage = 10;
 	$x->QuickSearch = 1;
 	$x->QuickSearchText = $Translation["quick search"];
 	$x->ScriptFileName = "leads_view.php";
@@ -127,13 +152,11 @@
 	$x->TableTitle = "Leads";
 	$x->TableIcon = "table.gif";
 	$x->PrimaryKey = "`leads`.`id`";
-	$x->DefaultSortField = '2';
-	$x->DefaultSortDirection = 'desc';
 
-	$x->ColWidth   = array(  150, 150, 150, 150, 150, 150, 150, 150);
-	$x->ColCaption = array("Client Name", "Contact details", "First part postcode", "Estimated value", "Tenanted", "Monthly Rental income", "Notes", "Estimated Commission");
-	$x->ColFieldName = array('lead_name', 'contact', 'prop_area', 'estimated_value', 'tenanted', 'rental_income', 'notes', 'est_commission');
-	$x->ColNumber  = array(4, 5, 6, 7, 8, 9, 10, 11);
+	$x->ColWidth   = array(  150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150);
+	$x->ColCaption = array("Name", "Email", "Phone", "Property area", "Tenanted", "Notes", "Est. market value", "O/S capital", "Rental income", "Finance costs", "Other costs", "Income tax band");
+	$x->ColFieldName = array('name', 'email', 'phone', 'prop_area', 'tenanted', 'notes', 'est_value', 'os_capital', 'rental_income', 'finance_costs', 'other_costs', 'income_tax_band');
+	$x->ColNumber  = array(2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15);
 
 	// template paths below are based on the app main directory
 	$x->Template = 'templates/leads_templateTV.html';

@@ -6,9 +6,28 @@
 
 	/* application schema as created in AppGini */
 	$schema = array(   
+		'leads' => array(   
+			'id' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
+			'name' => array('appgini' => 'VARCHAR(40) '),
+			'email' => array('appgini' => 'VARCHAR(40) '),
+			'phone' => array('appgini' => 'VARCHAR(20) '),
+			'prop_area' => array('appgini' => 'VARCHAR(10) '),
+			'tenanted' => array('appgini' => 'VARCHAR(4) '),
+			'notes' => array('appgini' => 'TEXT '),
+			'date_entered' => array('appgini' => 'DATE '),
+			'date_contacted' => array('appgini' => 'DATE '),
+			'est_value' => array('appgini' => 'VARCHAR(10) default \'0\' '),
+			'os_capital' => array('appgini' => 'VARCHAR(15) '),
+			'rental_income' => array('appgini' => 'DECIMAL(6,2) '),
+			'finance_costs' => array('appgini' => 'DOUBLE(7,2) '),
+			'other_costs' => array('appgini' => 'DOUBLE(6,2) '),
+			'income_tax_band' => array('appgini' => 'TINYINT '),
+			'referer' => array('appgini' => 'VARCHAR(40) '),
+			'est_commission' => array('appgini' => 'DOUBLE(6,2) ')
+		),
 		'property' => array(   
 			'id' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
-			'partner_id' => array('appgini' => 'INT unsigned '),
+			'client_id' => array('appgini' => 'INT unsigned '),
 			'referer' => array('appgini' => 'INT unsigned '),
 			'address_id' => array('appgini' => 'INT unsigned '),
 			'contact_date' => array('appgini' => 'DATE '),
@@ -19,14 +38,34 @@
 			'no_beds' => array('appgini' => 'TINYINT '),
 			'notes' => array('appgini' => 'TEXT ')
 		),
-		'partner' => array(   
+		'transaction' => array(   
+			'id' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
+			'date' => array('appgini' => 'VARCHAR(40) default \'1\' '),
+			'property_id' => array('appgini' => 'TINYINT '),
+			'type' => array('appgini' => 'TINYINT '),
+			'amount' => array('appgini' => 'DOUBLE(10,2) ')
+		),
+		'loan' => array(   
+			'id' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
+			'loan_type' => array('appgini' => 'TINYINT unsigned '),
+			'property_id' => array('appgini' => 'INT unsigned '),
+			'broker_id' => array('appgini' => 'INT unsigned '),
+			'date' => array('appgini' => 'DATE '),
+			'amount' => array('appgini' => 'VARCHAR(40) '),
+			'costs' => array('appgini' => 'VARCHAR(40) '),
+			'apr' => array('appgini' => 'VARCHAR(40) '),
+			'outstanding' => array('appgini' => 'VARCHAR(40) '),
+			'lender_id' => array('appgini' => 'INT unsigned '),
+			'lender_ref' => array('appgini' => 'VARCHAR(40) ')
+		),
+		'client' => array(   
 			'id' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
 			'company_name' => array('appgini' => 'VARCHAR(40) '),
 			'title' => array('appgini' => 'TINYINT unsigned '),
 			'fname' => array('appgini' => 'VARCHAR(40) '),
 			'lname' => array('appgini' => 'VARCHAR(40) '),
 			'mailname' => array('appgini' => 'VARCHAR(40) '),
-			'email' => array('appgini' => 'VARCHAR(40) '),
+			'email' => array('appgini' => 'VARCHAR(80) '),
 			'phone' => array('appgini' => 'VARCHAR(40) '),
 			'mobile' => array('appgini' => 'VARCHAR(40) '),
 			'address_id' => array('appgini' => 'INT unsigned '),
@@ -49,13 +88,6 @@
 			'postcode1' => array('appgini' => 'VARCHAR(4) '),
 			'postcode2' => array('appgini' => 'VARCHAR(4) ')
 		),
-		'transaction' => array(   
-			'id' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
-			'date' => array('appgini' => 'VARCHAR(40) default \'1\' '),
-			'property_id' => array('appgini' => 'TINYINT '),
-			'type' => array('appgini' => 'TINYINT '),
-			'amount' => array('appgini' => 'DOUBLE(10,2) ')
-		),
 		'acc_type' => array(   
 			'id' => array('appgini' => 'TINYINT unsigned not null primary key auto_increment '),
 			'type' => array('appgini' => 'VARCHAR(40) '),
@@ -71,21 +103,13 @@
 			'id' => array('appgini' => 'TINYINT unsigned not null primary key auto_increment '),
 			'title' => array('appgini' => 'VARCHAR(40) ')
 		),
-		'loan' => array(   
-			'id' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
-			'loan_type' => array('appgini' => 'TINYINT unsigned '),
-			'property_id' => array('appgini' => 'INT unsigned '),
-			'broker_id' => array('appgini' => 'INT unsigned '),
-			'date' => array('appgini' => 'DATE '),
-			'amount' => array('appgini' => 'VARCHAR(40) '),
-			'costs' => array('appgini' => 'VARCHAR(40) '),
-			'apr' => array('appgini' => 'VARCHAR(40) '),
-			'outstanding' => array('appgini' => 'VARCHAR(40) '),
-			'lender_id' => array('appgini' => 'INT unsigned '),
-			'lender_ref' => array('appgini' => 'VARCHAR(40) ')
-		),
 		'loan_type' => array(   
 			'id' => array('appgini' => 'TINYINT unsigned not null primary key auto_increment '),
+			'type' => array('appgini' => 'VARCHAR(40) '),
+			'description' => array('appgini' => 'TEXT ')
+		),
+		'psn_type' => array(   
+			'id' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
 			'type' => array('appgini' => 'VARCHAR(40) '),
 			'description' => array('appgini' => 'TEXT ')
 		),
@@ -96,25 +120,6 @@
 		'country' => array(   
 			'id' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
 			'country' => array('appgini' => 'VARCHAR(40) ')
-		),
-		'psn_type' => array(   
-			'id' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
-			'type' => array('appgini' => 'VARCHAR(40) '),
-			'description' => array('appgini' => 'TEXT ')
-		),
-		'leads' => array(   
-			'id' => array('appgini' => 'INT unsigned not null primary key auto_increment '),
-			'date_entered' => array('appgini' => 'VARCHAR(40) '),
-			'referer' => array('appgini' => 'VARCHAR(40) '),
-			'lead_name' => array('appgini' => 'VARCHAR(40) '),
-			'contact' => array('appgini' => 'VARCHAR(40) '),
-			'prop_area' => array('appgini' => 'VARCHAR(4) '),
-			'estimated_value' => array('appgini' => 'INT unsigned '),
-			'tenanted' => array('appgini' => 'TINYTEXT '),
-			'rental_income' => array('appgini' => 'VARCHAR(20) '),
-			'notes' => array('appgini' => 'TEXT '),
-			'est_commission' => array('appgini' => 'DOUBLE(10,2) '),
-			'date_contacted' => array('appgini' => 'DATE ')
 		),
 		'member_group' => array(   
 			'id' => array('appgini' => 'SMALLINT unsigned not null primary key auto_increment '),

@@ -25,13 +25,13 @@
 		"`loan`.`id`" => "id",
 		"IF(    CHAR_LENGTH(`loan_type1`.`type`), CONCAT_WS('',   `loan_type1`.`type`), '') /* Loan type */" => "loan_type",
 		"IF(    CHAR_LENGTH(`address1`.`postcode1`) || CHAR_LENGTH(`address1`.`address1`), CONCAT_WS('',   `address1`.`postcode1`, ' - ', `address1`.`address1`), '') /* Property id */" => "property_id",
-		"IF(    CHAR_LENGTH(`partner1`.`company_name`), CONCAT_WS('',   `partner1`.`company_name`), '') /* Broker id */" => "broker_id",
+		"IF(    CHAR_LENGTH(`client1`.`company_name`), CONCAT_WS('',   `client1`.`company_name`), '') /* Broker id */" => "broker_id",
 		"if(`loan`.`date`,date_format(`loan`.`date`,'%d/%m/%Y'),'')" => "date",
 		"`loan`.`amount`" => "amount",
 		"`loan`.`costs`" => "costs",
 		"`loan`.`apr`" => "apr",
 		"`loan`.`outstanding`" => "outstanding",
-		"IF(    CHAR_LENGTH(`partner2`.`company_name`), CONCAT_WS('',   `partner2`.`company_name`), '') /* Lender id */" => "lender_id",
+		"IF(    CHAR_LENGTH(`client2`.`company_name`), CONCAT_WS('',   `client2`.`company_name`), '') /* Lender id */" => "lender_id",
 		"`loan`.`lender_ref`" => "lender_ref"
 	);
 	// mapping incoming sort by requests to actual query fields
@@ -39,13 +39,13 @@
 		1 => '`loan`.`id`',
 		2 => '`loan_type1`.`type`',
 		3 => 3,
-		4 => '`partner1`.`company_name`',
+		4 => '`client1`.`company_name`',
 		5 => '`loan`.`date`',
 		6 => 6,
 		7 => 7,
 		8 => 8,
 		9 => 9,
-		10 => '`partner2`.`company_name`',
+		10 => '`client2`.`company_name`',
 		11 => 11
 	);
 
@@ -54,13 +54,13 @@
 		"`loan`.`id`" => "id",
 		"IF(    CHAR_LENGTH(`loan_type1`.`type`), CONCAT_WS('',   `loan_type1`.`type`), '') /* Loan type */" => "loan_type",
 		"IF(    CHAR_LENGTH(`address1`.`postcode1`) || CHAR_LENGTH(`address1`.`address1`), CONCAT_WS('',   `address1`.`postcode1`, ' - ', `address1`.`address1`), '') /* Property id */" => "property_id",
-		"IF(    CHAR_LENGTH(`partner1`.`company_name`), CONCAT_WS('',   `partner1`.`company_name`), '') /* Broker id */" => "broker_id",
+		"IF(    CHAR_LENGTH(`client1`.`company_name`), CONCAT_WS('',   `client1`.`company_name`), '') /* Broker id */" => "broker_id",
 		"if(`loan`.`date`,date_format(`loan`.`date`,'%d/%m/%Y'),'')" => "date",
 		"`loan`.`amount`" => "amount",
 		"`loan`.`costs`" => "costs",
 		"`loan`.`apr`" => "apr",
 		"`loan`.`outstanding`" => "outstanding",
-		"IF(    CHAR_LENGTH(`partner2`.`company_name`), CONCAT_WS('',   `partner2`.`company_name`), '') /* Lender id */" => "lender_id",
+		"IF(    CHAR_LENGTH(`client2`.`company_name`), CONCAT_WS('',   `client2`.`company_name`), '') /* Lender id */" => "lender_id",
 		"`loan`.`lender_ref`" => "lender_ref"
 	);
 	// Fields that can be filtered
@@ -68,13 +68,13 @@
 		"`loan`.`id`" => "ID",
 		"IF(    CHAR_LENGTH(`loan_type1`.`type`), CONCAT_WS('',   `loan_type1`.`type`), '') /* Loan type */" => "Loan type",
 		"IF(    CHAR_LENGTH(`address1`.`postcode1`) || CHAR_LENGTH(`address1`.`address1`), CONCAT_WS('',   `address1`.`postcode1`, ' - ', `address1`.`address1`), '') /* Property id */" => "Property id",
-		"IF(    CHAR_LENGTH(`partner1`.`company_name`), CONCAT_WS('',   `partner1`.`company_name`), '') /* Broker id */" => "Broker id",
+		"IF(    CHAR_LENGTH(`client1`.`company_name`), CONCAT_WS('',   `client1`.`company_name`), '') /* Broker id */" => "Broker id",
 		"`loan`.`date`" => "Date",
 		"`loan`.`amount`" => "Amount",
 		"`loan`.`costs`" => "Costs",
 		"`loan`.`apr`" => "Apr",
 		"`loan`.`outstanding`" => "Outstanding",
-		"IF(    CHAR_LENGTH(`partner2`.`company_name`), CONCAT_WS('',   `partner2`.`company_name`), '') /* Lender id */" => "Lender id",
+		"IF(    CHAR_LENGTH(`client2`.`company_name`), CONCAT_WS('',   `client2`.`company_name`), '') /* Lender id */" => "Lender id",
 		"`loan`.`lender_ref`" => "Lender ref"
 	);
 
@@ -83,20 +83,20 @@
 		"`loan`.`id`" => "id",
 		"IF(    CHAR_LENGTH(`loan_type1`.`type`), CONCAT_WS('',   `loan_type1`.`type`), '') /* Loan type */" => "loan_type",
 		"IF(    CHAR_LENGTH(`address1`.`postcode1`) || CHAR_LENGTH(`address1`.`address1`), CONCAT_WS('',   `address1`.`postcode1`, ' - ', `address1`.`address1`), '') /* Property id */" => "property_id",
-		"IF(    CHAR_LENGTH(`partner1`.`company_name`), CONCAT_WS('',   `partner1`.`company_name`), '') /* Broker id */" => "broker_id",
+		"IF(    CHAR_LENGTH(`client1`.`company_name`), CONCAT_WS('',   `client1`.`company_name`), '') /* Broker id */" => "broker_id",
 		"if(`loan`.`date`,date_format(`loan`.`date`,'%d/%m/%Y'),'')" => "date",
 		"`loan`.`amount`" => "amount",
 		"`loan`.`costs`" => "costs",
 		"`loan`.`apr`" => "apr",
 		"`loan`.`outstanding`" => "outstanding",
-		"IF(    CHAR_LENGTH(`partner2`.`company_name`), CONCAT_WS('',   `partner2`.`company_name`), '') /* Lender id */" => "lender_id",
+		"IF(    CHAR_LENGTH(`client2`.`company_name`), CONCAT_WS('',   `client2`.`company_name`), '') /* Lender id */" => "lender_id",
 		"`loan`.`lender_ref`" => "lender_ref"
 	);
 
 	// Lookup fields that can be used as filterers
 	$x->filterers = array(  'loan_type' => 'Loan type', 'property_id' => 'Property id', 'broker_id' => 'Broker id', 'lender_id' => 'Lender id');
 
-	$x->QueryFrom = "`loan` LEFT JOIN `loan_type` as loan_type1 ON `loan_type1`.`id`=`loan`.`loan_type` LEFT JOIN `address` as address1 ON `address1`.`id`=`loan`.`property_id` LEFT JOIN `partner` as partner1 ON `partner1`.`id`=`loan`.`broker_id` LEFT JOIN `partner` as partner2 ON `partner2`.`id`=`loan`.`lender_id` ";
+	$x->QueryFrom = "`loan` LEFT JOIN `loan_type` as loan_type1 ON `loan_type1`.`id`=`loan`.`loan_type` LEFT JOIN `address` as address1 ON `address1`.`id`=`loan`.`property_id` LEFT JOIN `client` as client1 ON `client1`.`id`=`loan`.`broker_id` LEFT JOIN `client` as client2 ON `client2`.`id`=`loan`.`lender_id` ";
 	$x->QueryWhere = '';
 	$x->QueryOrder = '';
 

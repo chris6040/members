@@ -105,25 +105,6 @@ function address_delete($selected_id, $AllowDeleteOfParents=false, $skipChecks=f
 		return $RetMsg;
 	}
 
-	// child table: partner
-	$res = sql("select `id` from `address` where `id`='$selected_id'", $eo);
-	$id = db_fetch_row($res);
-	$rires = sql("select count(1) from `partner` where `address_id`='".addslashes($id[0])."'", $eo);
-	$rirow = db_fetch_row($rires);
-	if($rirow[0] && !$AllowDeleteOfParents && !$skipChecks){
-		$RetMsg = $Translation["couldn't delete"];
-		$RetMsg = str_replace("<RelatedRecords>", $rirow[0], $RetMsg);
-		$RetMsg = str_replace("<TableName>", "partner", $RetMsg);
-		return $RetMsg;
-	}elseif($rirow[0] && $AllowDeleteOfParents && !$skipChecks){
-		$RetMsg = $Translation["confirm delete"];
-		$RetMsg = str_replace("<RelatedRecords>", $rirow[0], $RetMsg);
-		$RetMsg = str_replace("<TableName>", "partner", $RetMsg);
-		$RetMsg = str_replace("<Delete>", "<input type=\"button\" class=\"button\" value=\"".$Translation['yes']."\" onClick=\"window.location='address_view.php?SelectedID=".urlencode($selected_id)."&delete_x=1&confirmed=1';\">", $RetMsg);
-		$RetMsg = str_replace("<Cancel>", "<input type=\"button\" class=\"button\" value=\"".$Translation['no']."\" onClick=\"window.location='address_view.php?SelectedID=".urlencode($selected_id)."';\">", $RetMsg);
-		return $RetMsg;
-	}
-
 	// child table: loan
 	$res = sql("select `id` from `address` where `id`='$selected_id'", $eo);
 	$id = db_fetch_row($res);
@@ -138,6 +119,25 @@ function address_delete($selected_id, $AllowDeleteOfParents=false, $skipChecks=f
 		$RetMsg = $Translation["confirm delete"];
 		$RetMsg = str_replace("<RelatedRecords>", $rirow[0], $RetMsg);
 		$RetMsg = str_replace("<TableName>", "loan", $RetMsg);
+		$RetMsg = str_replace("<Delete>", "<input type=\"button\" class=\"button\" value=\"".$Translation['yes']."\" onClick=\"window.location='address_view.php?SelectedID=".urlencode($selected_id)."&delete_x=1&confirmed=1';\">", $RetMsg);
+		$RetMsg = str_replace("<Cancel>", "<input type=\"button\" class=\"button\" value=\"".$Translation['no']."\" onClick=\"window.location='address_view.php?SelectedID=".urlencode($selected_id)."';\">", $RetMsg);
+		return $RetMsg;
+	}
+
+	// child table: client
+	$res = sql("select `id` from `address` where `id`='$selected_id'", $eo);
+	$id = db_fetch_row($res);
+	$rires = sql("select count(1) from `client` where `address_id`='".addslashes($id[0])."'", $eo);
+	$rirow = db_fetch_row($rires);
+	if($rirow[0] && !$AllowDeleteOfParents && !$skipChecks){
+		$RetMsg = $Translation["couldn't delete"];
+		$RetMsg = str_replace("<RelatedRecords>", $rirow[0], $RetMsg);
+		$RetMsg = str_replace("<TableName>", "client", $RetMsg);
+		return $RetMsg;
+	}elseif($rirow[0] && $AllowDeleteOfParents && !$skipChecks){
+		$RetMsg = $Translation["confirm delete"];
+		$RetMsg = str_replace("<RelatedRecords>", $rirow[0], $RetMsg);
+		$RetMsg = str_replace("<TableName>", "client", $RetMsg);
 		$RetMsg = str_replace("<Delete>", "<input type=\"button\" class=\"button\" value=\"".$Translation['yes']."\" onClick=\"window.location='address_view.php?SelectedID=".urlencode($selected_id)."&delete_x=1&confirmed=1';\">", $RetMsg);
 		$RetMsg = str_replace("<Cancel>", "<input type=\"button\" class=\"button\" value=\"".$Translation['no']."\" onClick=\"window.location='address_view.php?SelectedID=".urlencode($selected_id)."';\">", $RetMsg);
 		return $RetMsg;

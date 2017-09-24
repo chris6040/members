@@ -2,7 +2,7 @@
 
 	/**
 	 * @file
-	 * This file contains hook functions that get called when data operations are performed on 'leads' table. 
+	 * This file contains hook functions that get called when data operations are performed on 'client' table. 
 	 * For example, when a new record is added, when a record is edited, when a record is deleted, … etc.
 	*/
 
@@ -25,7 +25,7 @@
 	 * an error message to the user and stop displaying any data).
 	*/
 
-	function leads_init(&$options, $memberInfo, &$args){
+	function client_init(&$options, $memberInfo, &$args){
 
 		return TRUE;
 	}
@@ -49,7 +49,7 @@
 	 * the default header besides your customized header, include the <%%HEADER%%> placeholder in the returned string.
 	*/
 
-	function leads_header($contentType, $memberInfo, &$args){
+	function client_header($contentType, $memberInfo, &$args){
 		$header='';
 
 		switch($contentType){
@@ -100,7 +100,7 @@
 	 * the default footer besides your customized footer, include the <%%FOOTER%%> placeholder in the returned string.
 	*/
 
-	function leads_footer($contentType, $memberInfo, &$args){
+	function client_footer($contentType, $memberInfo, &$args){
 		$footer='';
 
 		switch($contentType){
@@ -139,7 +139,7 @@
 	 * An associative array where the keys are field names and the values are the field data values to be inserted into the new record.
 	 * Note: if a field is set as read-only or hidden in detail view, it can't be modified through $data. You should use a direct SQL statement instead.
 	 * For this table, the array items are: 
-	 *     $data['lead_name'], $data['contact'], $data['prop_area'], $data['estimated_value'], $data['tenanted'], $data['rental_income'], $data['notes']
+	 *     $data['company_name'], $data['title'], $data['fname'], $data['lname'], $data['mailname'], $data['email'], $data['phone'], $data['mobile'], $data['address_id'], $data['username'], $data['password'], $data['type1'], $data['type2'], $data['type3'], $data['commission_rate'], $data['membergroupid']
 	 * $data array is passed by reference so that modifications to it apply to the insert query.
 	 * 
 	 * @param $memberInfo
@@ -153,7 +153,7 @@
 	 * A boolean TRUE to perform the insert operation, or FALSE to cancel it.
 	*/
 
-	function leads_before_insert(&$data, $memberInfo, &$args){
+	function client_before_insert(&$data, $memberInfo, &$args){
 
 		return TRUE;
 	}
@@ -164,7 +164,7 @@
 	 * @param $data
 	 * An associative array where the keys are field names and the values are the field data values that were inserted into the new record.
 	 * For this table, the array items are: 
-	 *     $data['referer'], $data['lead_name'], $data['contact'], $data['prop_area'], $data['estimated_value'], $data['tenanted'], $data['rental_income'], $data['notes']
+	 *     $data['company_name'], $data['title'], $data['fname'], $data['lname'], $data['mailname'], $data['email'], $data['phone'], $data['mobile'], $data['address_id'], $data['username'], $data['password'], $data['type1'], $data['type2'], $data['type3'], $data['commission_rate'], $data['membergroupid']
 	 * Also includes the item $data['selectedID'] which stores the value of the primary key for the new record.
 	 * 
 	 * @param $memberInfo
@@ -179,7 +179,7 @@
 	 * Warning: if a FALSE is returned, the new record will have no ownership info.
 	*/
 
-	function leads_after_insert($data, $memberInfo, &$args){
+	function client_after_insert($data, $memberInfo, &$args){
 
 		return TRUE;
 	}
@@ -191,7 +191,7 @@
 	 * An associative array where the keys are field names and the values are the field data values.
 	 * Note: if a field is set as read-only or hidden in detail view, it can't be modified through $data. You should use a direct SQL statement instead.
 	 * For this table, the array items are: 
-	 *     $data['id'], $data['lead_name'], $data['contact'], $data['prop_area'], $data['estimated_value'], $data['tenanted'], $data['rental_income'], $data['notes']
+	 *     $data['id'], $data['company_name'], $data['title'], $data['fname'], $data['lname'], $data['mailname'], $data['email'], $data['phone'], $data['mobile'], $data['address_id'], $data['username'], $data['password'], $data['type1'], $data['type2'], $data['type3'], $data['commission_rate'], $data['membergroupid']
 	 * Also includes the item $data['selectedID'] which stores the value of the primary key for the record to be updated.
 	 * $data array is passed by reference so that modifications to it apply to the update query.
 	 * 
@@ -206,7 +206,7 @@
 	 * True to perform the update operation or false to cancel it.
 	*/
 
-	function leads_before_update(&$data, $memberInfo, &$args){
+	function client_before_update(&$data, $memberInfo, &$args){
 
 		return TRUE;
 	}
@@ -217,7 +217,7 @@
 	 * @param $data
 	 * An associative array where the keys are field names and the values are the field data values.
 	 * For this table, the array items are: 
-	 *     $data['id'], $data['referer'], $data['lead_name'], $data['contact'], $data['prop_area'], $data['estimated_value'], $data['tenanted'], $data['rental_income'], $data['notes']
+	 *     $data['id'], $data['company_name'], $data['title'], $data['fname'], $data['lname'], $data['mailname'], $data['email'], $data['phone'], $data['mobile'], $data['address_id'], $data['username'], $data['password'], $data['type1'], $data['type2'], $data['type3'], $data['commission_rate'], $data['membergroupid']
 	 * Also includes the item $data['selectedID'] which stores the value of the primary key for the record.
 	 * 
 	 * @param $memberInfo
@@ -231,7 +231,7 @@
 	 * True to perform the ownership update operation or false to cancel it. 
 	*/
 
-	function leads_after_update($data, $memberInfo, &$args){
+	function client_after_update($data, $memberInfo, &$args){
 
 		return TRUE;
 	}
@@ -257,7 +257,7 @@
 	 * True to perform the delete operation or false to cancel it.
 	*/
 
-	function leads_before_delete($selectedID, &$skipChecks, $memberInfo, &$args){
+	function client_before_delete($selectedID, &$skipChecks, $memberInfo, &$args){
 
 		return TRUE;
 	}
@@ -279,7 +279,7 @@
 	 * None.
 	*/
 
-	function leads_after_delete($selectedID, $memberInfo, &$args){
+	function client_after_delete($selectedID, $memberInfo, &$args){
 
 	}
 
@@ -305,7 +305,7 @@
 	 * None.
 	*/
 
-	function leads_dv($selectedID, $memberInfo, &$html, &$args){
+	function client_dv($selectedID, $memberInfo, &$html, &$args){
 
 	}
 
@@ -326,7 +326,7 @@
 	 * A string containing the query to use for fetching the CSV data. If FALSE or empty is returned, the default query is used.
 	*/
 
-	function leads_csv($query, $memberInfo, &$args){
+	function client_csv($query, $memberInfo, &$args){
 
 		return $query;
 	}
@@ -345,7 +345,7 @@
 	 *   )
 	*/
 
-	function leads_batch_actions(&$args){
+	function client_batch_actions(&$args){
 
 		return array();
 	}

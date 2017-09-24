@@ -23,8 +23,8 @@
 	// Fields that can be displayed in the table view
 	$x->QueryFieldsTV = array(   
 		"`property`.`id`" => "id",
-		"IF(    CHAR_LENGTH(`partner1`.`company_name`) || CHAR_LENGTH(`partner1`.`mailname`), CONCAT_WS('',   `partner1`.`company_name`, ' - ', `partner1`.`mailname`), '') /* Client */" => "partner_id",
-		"IF(    CHAR_LENGTH(`partner2`.`company_name`) || CHAR_LENGTH(`partner2`.`mailname`), CONCAT_WS('',   `partner2`.`company_name`, ' - ', `partner2`.`mailname`), '') /* Referer */" => "referer",
+		"IF(    CHAR_LENGTH(`client1`.`company_name`) || CHAR_LENGTH(`client1`.`mailname`), CONCAT_WS('',   `client1`.`company_name`, ' - ', `client1`.`mailname`), '') /* Client */" => "client_id",
+		"IF(    CHAR_LENGTH(`client2`.`company_name`) || CHAR_LENGTH(`client2`.`mailname`), CONCAT_WS('',   `client2`.`company_name`, ' - ', `client2`.`mailname`), '') /* Referer */" => "referer",
 		"IF(    CHAR_LENGTH(`address1`.`postcode1`) || CHAR_LENGTH(`address1`.`address1`), CONCAT_WS('',   `address1`.`postcode1`, ' - ', `address1`.`address1`), '') /* Address_id */" => "address_id",
 		"if(`property`.`contact_date`,date_format(`property`.`contact_date`,'%d/%m/%Y'),'')" => "contact_date",
 		"if(`property`.`purchase_date`,date_format(`property`.`purchase_date`,'%d/%m/%Y'),'')" => "purchase_date",
@@ -52,8 +52,8 @@
 	// Fields that can be displayed in the csv file
 	$x->QueryFieldsCSV = array(   
 		"`property`.`id`" => "id",
-		"IF(    CHAR_LENGTH(`partner1`.`company_name`) || CHAR_LENGTH(`partner1`.`mailname`), CONCAT_WS('',   `partner1`.`company_name`, ' - ', `partner1`.`mailname`), '') /* Client */" => "partner_id",
-		"IF(    CHAR_LENGTH(`partner2`.`company_name`) || CHAR_LENGTH(`partner2`.`mailname`), CONCAT_WS('',   `partner2`.`company_name`, ' - ', `partner2`.`mailname`), '') /* Referer */" => "referer",
+		"IF(    CHAR_LENGTH(`client1`.`company_name`) || CHAR_LENGTH(`client1`.`mailname`), CONCAT_WS('',   `client1`.`company_name`, ' - ', `client1`.`mailname`), '') /* Client */" => "client_id",
+		"IF(    CHAR_LENGTH(`client2`.`company_name`) || CHAR_LENGTH(`client2`.`mailname`), CONCAT_WS('',   `client2`.`company_name`, ' - ', `client2`.`mailname`), '') /* Referer */" => "referer",
 		"IF(    CHAR_LENGTH(`address1`.`postcode1`) || CHAR_LENGTH(`address1`.`address1`), CONCAT_WS('',   `address1`.`postcode1`, ' - ', `address1`.`address1`), '') /* Address_id */" => "address_id",
 		"if(`property`.`contact_date`,date_format(`property`.`contact_date`,'%d/%m/%Y'),'')" => "contact_date",
 		"if(`property`.`purchase_date`,date_format(`property`.`purchase_date`,'%d/%m/%Y'),'')" => "purchase_date",
@@ -66,8 +66,8 @@
 	// Fields that can be filtered
 	$x->QueryFieldsFilters = array(   
 		"`property`.`id`" => "ID",
-		"IF(    CHAR_LENGTH(`partner1`.`company_name`) || CHAR_LENGTH(`partner1`.`mailname`), CONCAT_WS('',   `partner1`.`company_name`, ' - ', `partner1`.`mailname`), '') /* Client */" => "Client",
-		"IF(    CHAR_LENGTH(`partner2`.`company_name`) || CHAR_LENGTH(`partner2`.`mailname`), CONCAT_WS('',   `partner2`.`company_name`, ' - ', `partner2`.`mailname`), '') /* Referer */" => "Referer",
+		"IF(    CHAR_LENGTH(`client1`.`company_name`) || CHAR_LENGTH(`client1`.`mailname`), CONCAT_WS('',   `client1`.`company_name`, ' - ', `client1`.`mailname`), '') /* Client */" => "Client",
+		"IF(    CHAR_LENGTH(`client2`.`company_name`) || CHAR_LENGTH(`client2`.`mailname`), CONCAT_WS('',   `client2`.`company_name`, ' - ', `client2`.`mailname`), '') /* Referer */" => "Referer",
 		"IF(    CHAR_LENGTH(`address1`.`postcode1`) || CHAR_LENGTH(`address1`.`address1`), CONCAT_WS('',   `address1`.`postcode1`, ' - ', `address1`.`address1`), '') /* Address_id */" => "Address_id",
 		"`property`.`contact_date`" => "First contact",
 		"`property`.`purchase_date`" => "Purchase date",
@@ -81,8 +81,8 @@
 	// Fields that can be quick searched
 	$x->QueryFieldsQS = array(   
 		"`property`.`id`" => "id",
-		"IF(    CHAR_LENGTH(`partner1`.`company_name`) || CHAR_LENGTH(`partner1`.`mailname`), CONCAT_WS('',   `partner1`.`company_name`, ' - ', `partner1`.`mailname`), '') /* Client */" => "partner_id",
-		"IF(    CHAR_LENGTH(`partner2`.`company_name`) || CHAR_LENGTH(`partner2`.`mailname`), CONCAT_WS('',   `partner2`.`company_name`, ' - ', `partner2`.`mailname`), '') /* Referer */" => "referer",
+		"IF(    CHAR_LENGTH(`client1`.`company_name`) || CHAR_LENGTH(`client1`.`mailname`), CONCAT_WS('',   `client1`.`company_name`, ' - ', `client1`.`mailname`), '') /* Client */" => "client_id",
+		"IF(    CHAR_LENGTH(`client2`.`company_name`) || CHAR_LENGTH(`client2`.`mailname`), CONCAT_WS('',   `client2`.`company_name`, ' - ', `client2`.`mailname`), '') /* Referer */" => "referer",
 		"IF(    CHAR_LENGTH(`address1`.`postcode1`) || CHAR_LENGTH(`address1`.`address1`), CONCAT_WS('',   `address1`.`postcode1`, ' - ', `address1`.`address1`), '') /* Address_id */" => "address_id",
 		"if(`property`.`contact_date`,date_format(`property`.`contact_date`,'%d/%m/%Y'),'')" => "contact_date",
 		"if(`property`.`purchase_date`,date_format(`property`.`purchase_date`,'%d/%m/%Y'),'')" => "purchase_date",
@@ -94,9 +94,9 @@
 	);
 
 	// Lookup fields that can be used as filterers
-	$x->filterers = array(  'partner_id' => 'Client', 'referer' => 'Referer', 'address_id' => 'Address_id');
+	$x->filterers = array(  'client_id' => 'Client', 'referer' => 'Referer', 'address_id' => 'Address_id');
 
-	$x->QueryFrom = "`property` LEFT JOIN `partner` as partner1 ON `partner1`.`id`=`property`.`partner_id` LEFT JOIN `partner` as partner2 ON `partner2`.`id`=`property`.`referer` LEFT JOIN `address` as address1 ON `address1`.`id`=`property`.`address_id` ";
+	$x->QueryFrom = "`property` LEFT JOIN `client` as client1 ON `client1`.`id`=`property`.`client_id` LEFT JOIN `client` as client2 ON `client2`.`id`=`property`.`referer` LEFT JOIN `address` as address1 ON `address1`.`id`=`property`.`address_id` ";
 	$x->QueryWhere = '';
 	$x->QueryOrder = '';
 
@@ -125,7 +125,7 @@
 
 	$x->ColWidth   = array(  150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150);
 	$x->ColCaption = array("ID", "Client", "Referer", "Address_id", "First contact", "Purchase date", "Detachment", "Type", "Tenancy type", "No beds", "Notes");
-	$x->ColFieldName = array('id', 'partner_id', 'referer', 'address_id', 'contact_date', 'purchase_date', 'detachment', 'type', 'tenancy_type', 'no_beds', 'notes');
+	$x->ColFieldName = array('id', 'client_id', 'referer', 'address_id', 'contact_date', 'purchase_date', 'detachment', 'type', 'tenancy_type', 'no_beds', 'notes');
 	$x->ColNumber  = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
 
 	// template paths below are based on the app main directory

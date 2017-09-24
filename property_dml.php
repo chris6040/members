@@ -14,8 +14,8 @@ function property_insert(){
 		return false;
 	}
 
-	$data['partner_id'] = makeSafe($_REQUEST['partner_id']);
-		if($data['partner_id'] == empty_lookup_value){ $data['partner_id'] = ''; }
+	$data['client_id'] = makeSafe($_REQUEST['client_id']);
+		if($data['client_id'] == empty_lookup_value){ $data['client_id'] = ''; }
 	$data['referer'] = makeSafe($_REQUEST['referer']);
 		if($data['referer'] == empty_lookup_value){ $data['referer'] = ''; }
 	$data['address_id'] = makeSafe($_REQUEST['address_id']);
@@ -42,7 +42,7 @@ function property_insert(){
 	}
 
 	$o = array('silentErrors' => true);
-	sql('insert into `property` set       `partner_id`=' . (($data['partner_id'] !== '' && $data['partner_id'] !== NULL) ? "'{$data['partner_id']}'" : 'NULL') . ', `referer`=' . (($data['referer'] !== '' && $data['referer'] !== NULL) ? "'{$data['referer']}'" : 'NULL') . ', `address_id`=' . (($data['address_id'] !== '' && $data['address_id'] !== NULL) ? "'{$data['address_id']}'" : 'NULL') . ', `contact_date`=' . (($data['contact_date'] !== '' && $data['contact_date'] !== NULL) ? "'{$data['contact_date']}'" : 'NULL') . ', `purchase_date`=' . (($data['purchase_date'] !== '' && $data['purchase_date'] !== NULL) ? "'{$data['purchase_date']}'" : 'NULL') . ', `detachment`=' . (($data['detachment'] !== '' && $data['detachment'] !== NULL) ? "'{$data['detachment']}'" : 'NULL') . ', `type`=' . (($data['type'] !== '' && $data['type'] !== NULL) ? "'{$data['type']}'" : 'NULL') . ', `tenancy_type`=' . (($data['tenancy_type'] !== '' && $data['tenancy_type'] !== NULL) ? "'{$data['tenancy_type']}'" : 'NULL') . ', `no_beds`=' . (($data['no_beds'] !== '' && $data['no_beds'] !== NULL) ? "'{$data['no_beds']}'" : 'NULL') . ', `notes`=' . (($data['notes'] !== '' && $data['notes'] !== NULL) ? "'{$data['notes']}'" : 'NULL'), $o);
+	sql('insert into `property` set       `client_id`=' . (($data['client_id'] !== '' && $data['client_id'] !== NULL) ? "'{$data['client_id']}'" : 'NULL') . ', `referer`=' . (($data['referer'] !== '' && $data['referer'] !== NULL) ? "'{$data['referer']}'" : 'NULL') . ', `address_id`=' . (($data['address_id'] !== '' && $data['address_id'] !== NULL) ? "'{$data['address_id']}'" : 'NULL') . ', `contact_date`=' . (($data['contact_date'] !== '' && $data['contact_date'] !== NULL) ? "'{$data['contact_date']}'" : 'NULL') . ', `purchase_date`=' . (($data['purchase_date'] !== '' && $data['purchase_date'] !== NULL) ? "'{$data['purchase_date']}'" : 'NULL') . ', `detachment`=' . (($data['detachment'] !== '' && $data['detachment'] !== NULL) ? "'{$data['detachment']}'" : 'NULL') . ', `type`=' . (($data['type'] !== '' && $data['type'] !== NULL) ? "'{$data['type']}'" : 'NULL') . ', `tenancy_type`=' . (($data['tenancy_type'] !== '' && $data['tenancy_type'] !== NULL) ? "'{$data['tenancy_type']}'" : 'NULL') . ', `no_beds`=' . (($data['no_beds'] !== '' && $data['no_beds'] !== NULL) ? "'{$data['no_beds']}'" : 'NULL') . ', `notes`=' . (($data['notes'] !== '' && $data['notes'] !== NULL) ? "'{$data['notes']}'" : 'NULL'), $o);
 	if($o['error']!=''){
 		echo $o['error'];
 		echo "<a href=\"property_view.php?addNew_x=1\">{$Translation['< back']}</a>";
@@ -115,8 +115,8 @@ function property_update($selected_id){
 		return false;
 	}
 
-	$data['partner_id'] = makeSafe($_REQUEST['partner_id']);
-		if($data['partner_id'] == empty_lookup_value){ $data['partner_id'] = ''; }
+	$data['client_id'] = makeSafe($_REQUEST['client_id']);
+		if($data['client_id'] == empty_lookup_value){ $data['client_id'] = ''; }
 	$data['referer'] = makeSafe($_REQUEST['referer']);
 		if($data['referer'] == empty_lookup_value){ $data['referer'] = ''; }
 	$data['address_id'] = makeSafe($_REQUEST['address_id']);
@@ -144,7 +144,7 @@ function property_update($selected_id){
 	}
 
 	$o=array('silentErrors' => true);
-	sql('update `property` set       `partner_id`=' . (($data['partner_id'] !== '' && $data['partner_id'] !== NULL) ? "'{$data['partner_id']}'" : 'NULL') . ', `referer`=' . (($data['referer'] !== '' && $data['referer'] !== NULL) ? "'{$data['referer']}'" : 'NULL') . ', `address_id`=' . (($data['address_id'] !== '' && $data['address_id'] !== NULL) ? "'{$data['address_id']}'" : 'NULL') . ', `contact_date`=' . (($data['contact_date'] !== '' && $data['contact_date'] !== NULL) ? "'{$data['contact_date']}'" : 'NULL') . ', `purchase_date`=' . (($data['purchase_date'] !== '' && $data['purchase_date'] !== NULL) ? "'{$data['purchase_date']}'" : 'NULL') . ', `detachment`=' . (($data['detachment'] !== '' && $data['detachment'] !== NULL) ? "'{$data['detachment']}'" : 'NULL') . ', `type`=' . (($data['type'] !== '' && $data['type'] !== NULL) ? "'{$data['type']}'" : 'NULL') . ', `tenancy_type`=' . (($data['tenancy_type'] !== '' && $data['tenancy_type'] !== NULL) ? "'{$data['tenancy_type']}'" : 'NULL') . ', `no_beds`=' . (($data['no_beds'] !== '' && $data['no_beds'] !== NULL) ? "'{$data['no_beds']}'" : 'NULL') . ', `notes`=' . (($data['notes'] !== '' && $data['notes'] !== NULL) ? "'{$data['notes']}'" : 'NULL') . " where `id`='".makeSafe($selected_id)."'", $o);
+	sql('update `property` set       `client_id`=' . (($data['client_id'] !== '' && $data['client_id'] !== NULL) ? "'{$data['client_id']}'" : 'NULL') . ', `referer`=' . (($data['referer'] !== '' && $data['referer'] !== NULL) ? "'{$data['referer']}'" : 'NULL') . ', `address_id`=' . (($data['address_id'] !== '' && $data['address_id'] !== NULL) ? "'{$data['address_id']}'" : 'NULL') . ', `contact_date`=' . (($data['contact_date'] !== '' && $data['contact_date'] !== NULL) ? "'{$data['contact_date']}'" : 'NULL') . ', `purchase_date`=' . (($data['purchase_date'] !== '' && $data['purchase_date'] !== NULL) ? "'{$data['purchase_date']}'" : 'NULL') . ', `detachment`=' . (($data['detachment'] !== '' && $data['detachment'] !== NULL) ? "'{$data['detachment']}'" : 'NULL') . ', `type`=' . (($data['type'] !== '' && $data['type'] !== NULL) ? "'{$data['type']}'" : 'NULL') . ', `tenancy_type`=' . (($data['tenancy_type'] !== '' && $data['tenancy_type'] !== NULL) ? "'{$data['tenancy_type']}'" : 'NULL') . ', `no_beds`=' . (($data['no_beds'] !== '' && $data['no_beds'] !== NULL) ? "'{$data['no_beds']}'" : 'NULL') . ', `notes`=' . (($data['notes'] !== '' && $data['notes'] !== NULL) ? "'{$data['notes']}'" : 'NULL') . " where `id`='".makeSafe($selected_id)."'", $o);
 	if($o['error']!=''){
 		echo $o['error'];
 		echo '<a href="property_view.php?SelectedID='.urlencode($selected_id)."\">{$Translation['< back']}</a>";
@@ -186,7 +186,7 @@ function property_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 		$dvprint = true;
 	}
 
-	$filterer_partner_id = thisOr(undo_magic_quotes($_REQUEST['filterer_partner_id']), '');
+	$filterer_client_id = thisOr(undo_magic_quotes($_REQUEST['filterer_client_id']), '');
 	$filterer_referer = thisOr(undo_magic_quotes($_REQUEST['filterer_referer']), '');
 	$filterer_address_id = thisOr(undo_magic_quotes($_REQUEST['filterer_address_id']), '');
 
@@ -194,8 +194,8 @@ function property_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 
 	// unique random identifier
 	$rnd1 = ($dvprint ? rand(1000000, 9999999) : '');
-	// combobox: partner_id
-	$combo_partner_id = new DataCombo;
+	// combobox: client_id
+	$combo_client_id = new DataCombo;
 	// combobox: referer
 	$combo_referer = new DataCombo;
 	// combobox: address_id
@@ -291,7 +291,7 @@ function property_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 		$urow = $row; /* unsanitized data */
 		$hc = new CI_Input();
 		$row = $hc->xss_clean($row); /* sanitize data */
-		$combo_partner_id->SelectedData = $row['partner_id'];
+		$combo_client_id->SelectedData = $row['client_id'];
 		$combo_referer->SelectedData = $row['referer'];
 		$combo_address_id->SelectedData = $row['address_id'];
 		$combo_contact_date->DefaultDate = $row['contact_date'];
@@ -300,15 +300,15 @@ function property_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 		$combo_type->SelectedData = $row['type'];
 		$combo_tenancy_type->SelectedData = $row['tenancy_type'];
 	}else{
-		$combo_partner_id->SelectedData = $filterer_partner_id;
+		$combo_client_id->SelectedData = $filterer_client_id;
 		$combo_referer->SelectedData = $filterer_referer;
 		$combo_address_id->SelectedData = $filterer_address_id;
 		$combo_detachment->SelectedText = ( $_REQUEST['FilterField'][1]=='7' && $_REQUEST['FilterOperator'][1]=='<=>' ? (get_magic_quotes_gpc() ? stripslashes($_REQUEST['FilterValue'][1]) : $_REQUEST['FilterValue'][1]) : "");
 		$combo_type->SelectedText = ( $_REQUEST['FilterField'][1]=='8' && $_REQUEST['FilterOperator'][1]=='<=>' ? (get_magic_quotes_gpc() ? stripslashes($_REQUEST['FilterValue'][1]) : $_REQUEST['FilterValue'][1]) : "");
 		$combo_tenancy_type->SelectedText = ( $_REQUEST['FilterField'][1]=='9' && $_REQUEST['FilterOperator'][1]=='<=>' ? (get_magic_quotes_gpc() ? stripslashes($_REQUEST['FilterValue'][1]) : $_REQUEST['FilterValue'][1]) : "");
 	}
-	$combo_partner_id->HTML = '<span id="partner_id-container' . $rnd1 . '"></span><input type="hidden" name="partner_id" id="partner_id' . $rnd1 . '" value="' . html_attr($combo_partner_id->SelectedData) . '">';
-	$combo_partner_id->MatchText = '<span id="partner_id-container-readonly' . $rnd1 . '"></span><input type="hidden" name="partner_id" id="partner_id' . $rnd1 . '" value="' . html_attr($combo_partner_id->SelectedData) . '">';
+	$combo_client_id->HTML = '<span id="client_id-container' . $rnd1 . '"></span><input type="hidden" name="client_id" id="client_id' . $rnd1 . '" value="' . html_attr($combo_client_id->SelectedData) . '">';
+	$combo_client_id->MatchText = '<span id="client_id-container-readonly' . $rnd1 . '"></span><input type="hidden" name="client_id" id="client_id' . $rnd1 . '" value="' . html_attr($combo_client_id->SelectedData) . '">';
 	$combo_referer->HTML = '<span id="referer-container' . $rnd1 . '"></span><input type="hidden" name="referer" id="referer' . $rnd1 . '" value="' . html_attr($combo_referer->SelectedData) . '">';
 	$combo_referer->MatchText = '<span id="referer-container-readonly' . $rnd1 . '"></span><input type="hidden" name="referer" id="referer' . $rnd1 . '" value="' . html_attr($combo_referer->SelectedData) . '">';
 	$combo_address_id->HTML = '<span id="address_id-container' . $rnd1 . '"></span><input type="hidden" name="address_id" id="address_id' . $rnd1 . '" value="' . html_attr($combo_address_id->SelectedData) . '">';
@@ -322,38 +322,38 @@ function property_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 
 	<script>
 		// initial lookup values
-		AppGini.current_partner_id__RAND__ = { text: "", value: "<?php echo addslashes($selected_id ? $urow['partner_id'] : $filterer_partner_id); ?>"};
+		AppGini.current_client_id__RAND__ = { text: "", value: "<?php echo addslashes($selected_id ? $urow['client_id'] : $filterer_client_id); ?>"};
 		AppGini.current_referer__RAND__ = { text: "", value: "<?php echo addslashes($selected_id ? $urow['referer'] : $filterer_referer); ?>"};
 		AppGini.current_address_id__RAND__ = { text: "", value: "<?php echo addslashes($selected_id ? $urow['address_id'] : $filterer_address_id); ?>"};
 
 		jQuery(function() {
 			setTimeout(function(){
-				if(typeof(partner_id_reload__RAND__) == 'function') partner_id_reload__RAND__();
+				if(typeof(client_id_reload__RAND__) == 'function') client_id_reload__RAND__();
 				if(typeof(referer_reload__RAND__) == 'function') referer_reload__RAND__();
 				if(typeof(address_id_reload__RAND__) == 'function') address_id_reload__RAND__();
 			}, 10); /* we need to slightly delay client-side execution of the above code to allow AppGini.ajaxCache to work */
 		});
-		function partner_id_reload__RAND__(){
+		function client_id_reload__RAND__(){
 		<?php if(($AllowUpdate || $AllowInsert) && !$dvprint){ ?>
 
-			$j("#partner_id-container__RAND__").select2({
+			$j("#client_id-container__RAND__").select2({
 				/* initial default value */
 				initSelection: function(e, c){
 					$j.ajax({
 						url: 'ajax_combo.php',
 						dataType: 'json',
-						data: { id: AppGini.current_partner_id__RAND__.value, t: 'property', f: 'partner_id' },
+						data: { id: AppGini.current_client_id__RAND__.value, t: 'property', f: 'client_id' },
 						success: function(resp){
 							c({
 								id: resp.results[0].id,
 								text: resp.results[0].text
 							});
-							$j('[name="partner_id"]').val(resp.results[0].id);
-							$j('[id=partner_id-container-readonly__RAND__]').html('<span id="partner_id-match-text">' + resp.results[0].text + '</span>');
-							if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=partner_view_parent]').hide(); }else{ $j('.btn[id=partner_view_parent]').show(); }
+							$j('[name="client_id"]').val(resp.results[0].id);
+							$j('[id=client_id-container-readonly__RAND__]').html('<span id="client_id-match-text">' + resp.results[0].text + '</span>');
+							if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=client_view_parent]').hide(); }else{ $j('.btn[id=client_view_parent]').show(); }
 
 
-							if(typeof(partner_id_update_autofills__RAND__) == 'function') partner_id_update_autofills__RAND__();
+							if(typeof(client_id_update_autofills__RAND__) == 'function') client_id_update_autofills__RAND__();
 						}
 					});
 				},
@@ -365,31 +365,31 @@ function property_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 					url: 'ajax_combo.php',
 					dataType: 'json',
 					cache: true,
-					data: function(term, page){ return { s: term, p: page, t: 'property', f: 'partner_id' }; },
+					data: function(term, page){ return { s: term, p: page, t: 'property', f: 'client_id' }; },
 					results: function(resp, page){ return resp; }
 				},
 				escapeMarkup: function(str){ return str; }
 			}).on('change', function(e){
-				AppGini.current_partner_id__RAND__.value = e.added.id;
-				AppGini.current_partner_id__RAND__.text = e.added.text;
-				$j('[name="partner_id"]').val(e.added.id);
-				if(e.added.id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=partner_view_parent]').hide(); }else{ $j('.btn[id=partner_view_parent]').show(); }
+				AppGini.current_client_id__RAND__.value = e.added.id;
+				AppGini.current_client_id__RAND__.text = e.added.text;
+				$j('[name="client_id"]').val(e.added.id);
+				if(e.added.id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=client_view_parent]').hide(); }else{ $j('.btn[id=client_view_parent]').show(); }
 
 
-				if(typeof(partner_id_update_autofills__RAND__) == 'function') partner_id_update_autofills__RAND__();
+				if(typeof(client_id_update_autofills__RAND__) == 'function') client_id_update_autofills__RAND__();
 			});
 
-			if(!$j("#partner_id-container__RAND__").length){
+			if(!$j("#client_id-container__RAND__").length){
 				$j.ajax({
 					url: 'ajax_combo.php',
 					dataType: 'json',
-					data: { id: AppGini.current_partner_id__RAND__.value, t: 'property', f: 'partner_id' },
+					data: { id: AppGini.current_client_id__RAND__.value, t: 'property', f: 'client_id' },
 					success: function(resp){
-						$j('[name="partner_id"]').val(resp.results[0].id);
-						$j('[id=partner_id-container-readonly__RAND__]').html('<span id="partner_id-match-text">' + resp.results[0].text + '</span>');
-						if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=partner_view_parent]').hide(); }else{ $j('.btn[id=partner_view_parent]').show(); }
+						$j('[name="client_id"]').val(resp.results[0].id);
+						$j('[id=client_id-container-readonly__RAND__]').html('<span id="client_id-match-text">' + resp.results[0].text + '</span>');
+						if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=client_view_parent]').hide(); }else{ $j('.btn[id=client_view_parent]').show(); }
 
-						if(typeof(partner_id_update_autofills__RAND__) == 'function') partner_id_update_autofills__RAND__();
+						if(typeof(client_id_update_autofills__RAND__) == 'function') client_id_update_autofills__RAND__();
 					}
 				});
 			}
@@ -399,12 +399,12 @@ function property_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 			$j.ajax({
 				url: 'ajax_combo.php',
 				dataType: 'json',
-				data: { id: AppGini.current_partner_id__RAND__.value, t: 'property', f: 'partner_id' },
+				data: { id: AppGini.current_client_id__RAND__.value, t: 'property', f: 'client_id' },
 				success: function(resp){
-					$j('[id=partner_id-container__RAND__], [id=partner_id-container-readonly__RAND__]').html('<span id="partner_id-match-text">' + resp.results[0].text + '</span>');
-					if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=partner_view_parent]').hide(); }else{ $j('.btn[id=partner_view_parent]').show(); }
+					$j('[id=client_id-container__RAND__], [id=client_id-container-readonly__RAND__]').html('<span id="client_id-match-text">' + resp.results[0].text + '</span>');
+					if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=client_view_parent]').hide(); }else{ $j('.btn[id=client_view_parent]').show(); }
 
-					if(typeof(partner_id_update_autofills__RAND__) == 'function') partner_id_update_autofills__RAND__();
+					if(typeof(client_id_update_autofills__RAND__) == 'function') client_id_update_autofills__RAND__();
 				}
 			});
 		<?php } ?>
@@ -427,7 +427,7 @@ function property_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 							});
 							$j('[name="referer"]').val(resp.results[0].id);
 							$j('[id=referer-container-readonly__RAND__]').html('<span id="referer-match-text">' + resp.results[0].text + '</span>');
-							if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=partner_view_parent]').hide(); }else{ $j('.btn[id=partner_view_parent]').show(); }
+							if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=client_view_parent]').hide(); }else{ $j('.btn[id=client_view_parent]').show(); }
 
 
 							if(typeof(referer_update_autofills__RAND__) == 'function') referer_update_autofills__RAND__();
@@ -450,7 +450,7 @@ function property_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 				AppGini.current_referer__RAND__.value = e.added.id;
 				AppGini.current_referer__RAND__.text = e.added.text;
 				$j('[name="referer"]').val(e.added.id);
-				if(e.added.id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=partner_view_parent]').hide(); }else{ $j('.btn[id=partner_view_parent]').show(); }
+				if(e.added.id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=client_view_parent]').hide(); }else{ $j('.btn[id=client_view_parent]').show(); }
 
 
 				if(typeof(referer_update_autofills__RAND__) == 'function') referer_update_autofills__RAND__();
@@ -464,7 +464,7 @@ function property_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 					success: function(resp){
 						$j('[name="referer"]').val(resp.results[0].id);
 						$j('[id=referer-container-readonly__RAND__]').html('<span id="referer-match-text">' + resp.results[0].text + '</span>');
-						if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=partner_view_parent]').hide(); }else{ $j('.btn[id=partner_view_parent]').show(); }
+						if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=client_view_parent]').hide(); }else{ $j('.btn[id=client_view_parent]').show(); }
 
 						if(typeof(referer_update_autofills__RAND__) == 'function') referer_update_autofills__RAND__();
 					}
@@ -479,7 +479,7 @@ function property_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 				data: { id: AppGini.current_referer__RAND__.value, t: 'property', f: 'referer' },
 				success: function(resp){
 					$j('[id=referer-container__RAND__], [id=referer-container-readonly__RAND__]').html('<span id="referer-match-text">' + resp.results[0].text + '</span>');
-					if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=partner_view_parent]').hide(); }else{ $j('.btn[id=partner_view_parent]').show(); }
+					if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=client_view_parent]').hide(); }else{ $j('.btn[id=client_view_parent]').show(); }
 
 					if(typeof(referer_update_autofills__RAND__) == 'function') referer_update_autofills__RAND__();
 				}
@@ -622,8 +622,8 @@ function property_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 
 	// set records to read only if user can't insert new records and can't edit current record
 	if(($selected_id && !$AllowUpdate && !$AllowInsert) || (!$selected_id && !$AllowInsert)){
-		$jsReadOnly .= "\tjQuery('#partner_id').prop('disabled', true).css({ color: '#555', backgroundColor: '#fff' });\n";
-		$jsReadOnly .= "\tjQuery('#partner_id_caption').prop('disabled', true).css({ color: '#555', backgroundColor: 'white' });\n";
+		$jsReadOnly .= "\tjQuery('#client_id').prop('disabled', true).css({ color: '#555', backgroundColor: '#fff' });\n";
+		$jsReadOnly .= "\tjQuery('#client_id_caption').prop('disabled', true).css({ color: '#555', backgroundColor: 'white' });\n";
 		$jsReadOnly .= "\tjQuery('#referer').prop('disabled', true).css({ color: '#555', backgroundColor: '#fff' });\n";
 		$jsReadOnly .= "\tjQuery('#referer_caption').prop('disabled', true).css({ color: '#555', backgroundColor: 'white' });\n";
 		$jsReadOnly .= "\tjQuery('#address_id').prop('disabled', true).css({ color: '#555', backgroundColor: '#fff' });\n";
@@ -645,9 +645,9 @@ function property_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 	}
 
 	// process combos
-	$templateCode=str_replace('<%%COMBO(partner_id)%%>', $combo_partner_id->HTML, $templateCode);
-	$templateCode=str_replace('<%%COMBOTEXT(partner_id)%%>', $combo_partner_id->MatchText, $templateCode);
-	$templateCode=str_replace('<%%URLCOMBOTEXT(partner_id)%%>', urlencode($combo_partner_id->MatchText), $templateCode);
+	$templateCode=str_replace('<%%COMBO(client_id)%%>', $combo_client_id->HTML, $templateCode);
+	$templateCode=str_replace('<%%COMBOTEXT(client_id)%%>', $combo_client_id->MatchText, $templateCode);
+	$templateCode=str_replace('<%%URLCOMBOTEXT(client_id)%%>', urlencode($combo_client_id->MatchText), $templateCode);
 	$templateCode=str_replace('<%%COMBO(referer)%%>', $combo_referer->HTML, $templateCode);
 	$templateCode=str_replace('<%%COMBOTEXT(referer)%%>', $combo_referer->MatchText, $templateCode);
 	$templateCode=str_replace('<%%URLCOMBOTEXT(referer)%%>', urlencode($combo_referer->MatchText), $templateCode);
@@ -666,7 +666,7 @@ function property_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 	$templateCode=str_replace('<%%COMBOTEXT(tenancy_type)%%>', $combo_tenancy_type->SelectedData, $templateCode);
 
 	/* lookup fields array: 'lookup field name' => array('parent table name', 'lookup field caption') */
-	$lookup_fields = array(  'partner_id' => array('partner', 'Client'), 'referer' => array('partner', 'Referer'), 'address_id' => array('address', 'Address_id'));
+	$lookup_fields = array(  'client_id' => array('client', 'Client'), 'referer' => array('client', 'Referer'), 'address_id' => array('address', 'Address_id'));
 	foreach($lookup_fields as $luf => $ptfc){
 		$pt_perm = getTablePermissions($ptfc[0]);
 
@@ -683,7 +683,7 @@ function property_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 
 	// process images
 	$templateCode=str_replace('<%%UPLOADFILE(id)%%>', '', $templateCode);
-	$templateCode=str_replace('<%%UPLOADFILE(partner_id)%%>', '', $templateCode);
+	$templateCode=str_replace('<%%UPLOADFILE(client_id)%%>', '', $templateCode);
 	$templateCode=str_replace('<%%UPLOADFILE(referer)%%>', '', $templateCode);
 	$templateCode=str_replace('<%%UPLOADFILE(address_id)%%>', '', $templateCode);
 	$templateCode=str_replace('<%%UPLOADFILE(contact_date)%%>', '', $templateCode);
@@ -698,8 +698,8 @@ function property_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 	if($selected_id){
 		$templateCode=str_replace('<%%VALUE(id)%%>', html_attr($row['id']), $templateCode);
 		$templateCode=str_replace('<%%URLVALUE(id)%%>', urlencode($urow['id']), $templateCode);
-		$templateCode=str_replace('<%%VALUE(partner_id)%%>', html_attr($row['partner_id']), $templateCode);
-		$templateCode=str_replace('<%%URLVALUE(partner_id)%%>', urlencode($urow['partner_id']), $templateCode);
+		$templateCode=str_replace('<%%VALUE(client_id)%%>', html_attr($row['client_id']), $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(client_id)%%>', urlencode($urow['client_id']), $templateCode);
 		$templateCode=str_replace('<%%VALUE(referer)%%>', html_attr($row['referer']), $templateCode);
 		$templateCode=str_replace('<%%URLVALUE(referer)%%>', urlencode($urow['referer']), $templateCode);
 		$templateCode=str_replace('<%%VALUE(address_id)%%>', html_attr($row['address_id']), $templateCode);
@@ -726,8 +726,8 @@ function property_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 	}else{
 		$templateCode=str_replace('<%%VALUE(id)%%>', '', $templateCode);
 		$templateCode=str_replace('<%%URLVALUE(id)%%>', urlencode(''), $templateCode);
-		$templateCode=str_replace('<%%VALUE(partner_id)%%>', '', $templateCode);
-		$templateCode=str_replace('<%%URLVALUE(partner_id)%%>', urlencode(''), $templateCode);
+		$templateCode=str_replace('<%%VALUE(client_id)%%>', '', $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(client_id)%%>', urlencode(''), $templateCode);
 		$templateCode=str_replace('<%%VALUE(referer)%%>', '', $templateCode);
 		$templateCode=str_replace('<%%URLVALUE(referer)%%>', urlencode(''), $templateCode);
 		$templateCode=str_replace('<%%VALUE(address_id)%%>', '', $templateCode);

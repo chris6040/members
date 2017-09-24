@@ -3,19 +3,16 @@
 <a name="detail-view"></a>
 <div class="panel-heading"><h3 class="panel-title"><strong><%%DETAIL_VIEW_TITLE%%></strong></h3></div>
 
-<div class="panel-body" id="address_dv_container">
+<div class="panel-body" id="client_dv_container">
 	<!-- child links -->
 	<div class="row">
 		<div class="col-xs-12">
-			<a class="hidden-xs btn btn-default btn-lg pull-right hidden hspacer-sm" href="property_view.php?filterer_address_id=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>" id="property_link"><i class="glyphicon glyphicon-list-alt"></i> Property</a>
-			<a class="visible-xs btn btn-default btn-lg btn-block hidden vspacer-sm" href="property_view.php?filterer_address_id=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>" id="xs_property_link"><i class="glyphicon glyphicon-list-alt"></i> Property</a>
-			<input type="hidden" id="property_hclink" value="property_view.php?filterer_address_id=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
-			<a class="hidden-xs btn btn-default btn-lg pull-right hidden hspacer-sm" href="loan_view.php?filterer_property_id=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>" id="loan_link"><i class="glyphicon glyphicon-list-alt"></i> Loan</a>
-			<a class="visible-xs btn btn-default btn-lg btn-block hidden vspacer-sm" href="loan_view.php?filterer_property_id=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>" id="xs_loan_link"><i class="glyphicon glyphicon-list-alt"></i> Loan</a>
-			<input type="hidden" id="loan_hclink" value="loan_view.php?filterer_property_id=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
-			<a class="hidden-xs btn btn-default btn-lg pull-right hidden hspacer-sm" href="client_view.php?filterer_address_id=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>" id="client_link"><i class="glyphicon glyphicon-list-alt"></i> Client</a>
-			<a class="visible-xs btn btn-default btn-lg btn-block hidden vspacer-sm" href="client_view.php?filterer_address_id=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>" id="xs_client_link"><i class="glyphicon glyphicon-list-alt"></i> Client</a>
-			<input type="hidden" id="client_hclink" value="client_view.php?filterer_address_id=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<a class="hidden-xs btn btn-default btn-lg pull-right hidden hspacer-sm" href="property_view.php?filterer_client_id=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>" id="property_link"><i class="glyphicon glyphicon-list-alt"></i> Property</a>
+			<a class="visible-xs btn btn-default btn-lg btn-block hidden vspacer-sm" href="property_view.php?filterer_client_id=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>" id="xs_property_link"><i class="glyphicon glyphicon-list-alt"></i> Property</a>
+			<input type="hidden" id="property_hclink" value="property_view.php?filterer_client_id=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<a class="hidden-xs btn btn-default btn-lg pull-right hidden hspacer-sm" href="loan_view.php?filterer_broker_id=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>" id="loan_link"><i class="glyphicon glyphicon-list-alt"></i> Loan</a>
+			<a class="visible-xs btn btn-default btn-lg btn-block hidden vspacer-sm" href="loan_view.php?filterer_broker_id=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>" id="xs_loan_link"><i class="glyphicon glyphicon-list-alt"></i> Loan</a>
+			<input type="hidden" id="loan_hclink" value="loan_view.php?filterer_broker_id=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
 			<div class="clearfix"></div>
 		</div>
 	</div>
@@ -23,7 +20,7 @@
 
 	<div class="row">
 		<!-- form inputs -->
-		<div class="col-md-8 col-lg-10" id="address_dv_form">
+		<div class="col-md-8 col-lg-10" id="client_dv_form">
 			<fieldset class="form-horizontal">
 
 				<div class="form-group">
@@ -34,58 +31,119 @@
 				</div>
 
 				<div class="form-group">
-					<label for="address1" class="control-label col-lg-3">Address1</label>
+					<label for="company_name" class="control-label col-lg-3">Comapny name</label>
 					<div class="col-lg-9">
-						<input maxlength="40" type="text" class="form-control" name="address1" id="address1" value="<%%VALUE(address1)%%>">
+						<input maxlength="40" type="text" class="form-control" name="company_name" id="company_name" value="<%%VALUE(company_name)%%>">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="address2" class="control-label col-lg-3">Address2</label>
+					<label for="title" class="control-label col-lg-3" data-parent_link="view_parent_modal">Title</label>
 					<div class="col-lg-9">
-						<input maxlength="40" type="text" class="form-control" name="address2" id="address2" value="<%%VALUE(address2)%%>">
+						<div class="row form-control-static"><div class="col-xs-11"><%%COMBO(title)%%><%%PLINK(title)%%><%%ADDNEW(psn_title)%%></div></div>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="address3" class="control-label col-lg-3">Address3</label>
+					<label for="fname" class="control-label col-lg-3">Fname</label>
 					<div class="col-lg-9">
-						<input maxlength="40" type="text" class="form-control" name="address3" id="address3" value="<%%VALUE(address3)%%>">
+						<input maxlength="40" type="text" class="form-control" name="fname" id="fname" value="<%%VALUE(fname)%%>">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="town" class="control-label col-lg-3">Town</label>
+					<label for="lname" class="control-label col-lg-3">Lname</label>
 					<div class="col-lg-9">
-						<input maxlength="40" type="text" class="form-control" name="town" id="town" value="<%%VALUE(town)%%>">
+						<input maxlength="40" type="text" class="form-control" name="lname" id="lname" value="<%%VALUE(lname)%%>">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="county" class="control-label col-lg-3" data-parent_link="view_parent_modal">County</label>
+					<label for="mailname" class="control-label col-lg-3">Mailname</label>
 					<div class="col-lg-9">
-						<div class="row form-control-static"><div class="col-xs-11"><%%COMBO(county)%%><%%PLINK(county)%%><%%ADDNEW(county)%%></div></div>
+						<input maxlength="40" type="text" class="form-control" name="mailname" id="mailname" value="<%%VALUE(mailname)%%>">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="country" class="control-label col-lg-3" data-parent_link="view_parent_modal">Country</label>
+					<label for="email" class="control-label col-lg-3">Email</label>
 					<div class="col-lg-9">
-						<div class="row form-control-static"><div class="col-xs-11"><%%COMBO(country)%%><%%PLINK(country)%%><%%ADDNEW(country)%%></div></div>
+						
+						<div>
+							<a id="email-link" href="mailto:<%%VALUE(email)%%>" target="_blank"><i class="glyphicon glyphicon-envelope text-info" title="<%%VALUE(email)%%>"></i></a>
+							<label for="email"><button type="button" id="email-edit-link" class="btn btn-default hspacer-lg vspacer-sm" data-toggle="collapse" data-target="#email" title="<%%TRANSLATION(Edit)%%>"><i class="glyphicon glyphicon-pencil"></i></button></label>
+						</div>
+						<script>jQuery(function(){ var e_email = '<%%VALUE(email)%%>'; if(e_email == '' || e_email == '&nbsp;' || e_email == 'blank.gif') jQuery('#email-link').hide(); });</script><input maxlength="80" type="text" class="form-control collapse" name="email" id="email" value="<%%VALUE(email)%%>">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="postcode1" class="control-label col-lg-3">Postcode</label>
+					<label for="phone" class="control-label col-lg-3">Phone</label>
 					<div class="col-lg-9">
-						<input maxlength="4" type="text" class="form-control" name="postcode1" id="postcode1" value="<%%VALUE(postcode1)%%>">
+						<input maxlength="40" type="text" class="form-control" name="phone" id="phone" value="<%%VALUE(phone)%%>">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="postcode2" class="control-label col-lg-3">Postcode2</label>
+					<label for="mobile" class="control-label col-lg-3">Mobile</label>
 					<div class="col-lg-9">
-						<input maxlength="4" type="text" class="form-control" name="postcode2" id="postcode2" value="<%%VALUE(postcode2)%%>">
+						<input maxlength="40" type="text" class="form-control" name="mobile" id="mobile" value="<%%VALUE(mobile)%%>">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="address_id" class="control-label col-lg-3" data-parent_link="view_parent_modal">Address id</label>
+					<div class="col-lg-9">
+						<div class="row form-control-static"><div class="col-xs-11"><%%COMBO(address_id)%%><%%PLINK(address_id)%%><%%ADDNEW(address)%%></div></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="username" class="control-label col-lg-3">Username</label>
+					<div class="col-lg-9">
+						<input maxlength="40" type="text" class="form-control" name="username" id="username" value="<%%VALUE(username)%%>">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="password" class="control-label col-lg-3">Password</label>
+					<div class="col-lg-9">
+						<input maxlength="40" type="text" class="form-control" name="password" id="password" value="<%%VALUE(password)%%>">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="type1" class="control-label col-lg-3" data-parent_link="view_parent_modal">Type1</label>
+					<div class="col-lg-9">
+						<div class="row form-control-static"><div class="col-xs-11"><%%COMBO(type1)%%><%%PLINK(type1)%%><%%ADDNEW(psn_type)%%></div></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="type2" class="control-label col-lg-3" data-parent_link="view_parent_modal">Type2</label>
+					<div class="col-lg-9">
+						<div class="row form-control-static"><div class="col-xs-11"><%%COMBO(type2)%%><%%PLINK(type2)%%><%%ADDNEW(psn_type)%%></div></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="type3" class="control-label col-lg-3" data-parent_link="view_parent_modal">Type3</label>
+					<div class="col-lg-9">
+						<div class="row form-control-static"><div class="col-xs-11"><%%COMBO(type3)%%><%%PLINK(type3)%%><%%ADDNEW(psn_type)%%></div></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="commission_rate" class="control-label col-lg-3">Commission rate</label>
+					<div class="col-lg-9">
+						<input maxlength="6" type="text" class="form-control" name="commission_rate" id="commission_rate" value="<%%VALUE(commission_rate)%%>">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="membergroupid" class="control-label col-lg-3" data-parent_link="view_parent_modal">Membergroupid</label>
+					<div class="col-lg-9">
+						<div class="row form-control-static"><div class="col-xs-11"><%%COMBO(membergroupid)%%><%%PLINK(membergroupid)%%><%%ADDNEW(member_group)%%></div></div>
 					</div>
 				</div>
 
@@ -93,7 +151,7 @@
 		</div>
 
 		<!-- DV action buttons -->
-		<div class="col-md-4 col-lg-2" id="address_dv_action_buttons">
+		<div class="col-md-4 col-lg-2" id="client_dv_action_buttons">
 			<div class="btn-toolbar">
 				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
 					<%%UPDATE_BUTTON%%>
@@ -115,7 +173,7 @@
 	<hr>
 	<div class="row">
 		<div class="col-lg-10 col-lg-offset-1">
-			<div id="address-children" class="children-tabs"></div>
+			<div id="client-children" class="children-tabs"></div>
 		</div>
 	</div>
 
@@ -172,11 +230,11 @@
 			}else{
 				post(
 					'parent-children.php', {
-						ParentTable: 'address',
+						ParentTable: 'client',
 						SelectedID: '<%%VALUE(id)%%>',
 						Operation: 'show-children'
 					},
-					'address-children'
+					'client-children'
 				);
 			}
 
@@ -248,10 +306,10 @@
 			if(!add_new_mode){
 				$j('body').append('<div id="admin-tools-appendix"></div>');
 				$j('#admin-tools-appendix').load(
-					'ajax_admin_tools.php?table=address&id=<%%URLVALUE(id)%%>',
+					'ajax_admin_tools.php?table=client&id=<%%URLVALUE(id)%%>',
 					function(resp){
 						if(!resp.length) return;
-						$j.ajax('ajax_admin_tools.php?action=get_admin_tools_js&table=address&id=<%%URLVALUE(id)%%>');
+						$j.ajax('ajax_admin_tools.php?action=get_admin_tools_js&table=client&id=<%%URLVALUE(id)%%>');
 					}
 				);
 			}

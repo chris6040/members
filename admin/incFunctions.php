@@ -49,19 +49,19 @@
 	if(!function_exists('getTableList')){
 		function getTableList($skip_authentication = false){
 			$arrTables = array(   
+				'leads' => 'Leads',
 				'property' => 'Property',
-				'partner' => 'Partner',
-				'address' => 'Address',
 				'transaction' => 'Transaction',
+				'loan' => 'Loan',
+				'client' => 'Client',
+				'address' => 'Address',
 				'acc_type' => 'acc_type',
 				'trans_type' => 'Trans type',
 				'psn_title' => 'Title',
-				'loan' => 'Loan',
 				'loan_type' => 'Loan type',
+				'psn_type' => 'Psn type',
 				'county' => 'County',
 				'country' => 'Country',
-				'psn_type' => 'Psn type',
-				'leads' => 'Leads',
 				'member_group' => 'Member group'
 			);
 

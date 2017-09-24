@@ -14,24 +14,36 @@ function leads_insert(){
 		return false;
 	}
 
-	$data['date_entered'] = parseCode('<%%creationDate%%>', true);
-	$data['referer'] = parseCode('<%%creatorUsername%%>', true);
-	$data['lead_name'] = makeSafe($_REQUEST['lead_name']);
-		if($data['lead_name'] == empty_lookup_value){ $data['lead_name'] = ''; }
-	$data['contact'] = makeSafe($_REQUEST['contact']);
-		if($data['contact'] == empty_lookup_value){ $data['contact'] = ''; }
+	$data['name'] = makeSafe($_REQUEST['name']);
+		if($data['name'] == empty_lookup_value){ $data['name'] = ''; }
+	$data['email'] = makeSafe($_REQUEST['email']);
+		if($data['email'] == empty_lookup_value){ $data['email'] = ''; }
+	$data['phone'] = makeSafe($_REQUEST['phone']);
+		if($data['phone'] == empty_lookup_value){ $data['phone'] = ''; }
 	$data['prop_area'] = makeSafe($_REQUEST['prop_area']);
 		if($data['prop_area'] == empty_lookup_value){ $data['prop_area'] = ''; }
-	$data['estimated_value'] = makeSafe($_REQUEST['estimated_value']);
-		if($data['estimated_value'] == empty_lookup_value){ $data['estimated_value'] = ''; }
 	$data['tenanted'] = makeSafe($_REQUEST['tenanted']);
 		if($data['tenanted'] == empty_lookup_value){ $data['tenanted'] = ''; }
-	$data['rental_income'] = makeSafe($_REQUEST['rental_income']);
-		if($data['rental_income'] == empty_lookup_value){ $data['rental_income'] = ''; }
-	$data['notes'] = makeSafe($_REQUEST['notes']);
-		if($data['notes'] == empty_lookup_value){ $data['notes'] = ''; }
+	$data['notes'] = br2nl(makeSafe($_REQUEST['notes']));
+	$data['date_entered'] = parseCode('<%%creationDate%%>', true, true);
 	$data['date_contacted'] = intval($_REQUEST['date_contactedYear']) . '-' . intval($_REQUEST['date_contactedMonth']) . '-' . intval($_REQUEST['date_contactedDay']);
 	$data['date_contacted'] = parseMySQLDate($data['date_contacted'], '');
+	$data['est_value'] = makeSafe($_REQUEST['est_value']);
+		if($data['est_value'] == empty_lookup_value){ $data['est_value'] = ''; }
+	$data['os_capital'] = makeSafe($_REQUEST['os_capital']);
+		if($data['os_capital'] == empty_lookup_value){ $data['os_capital'] = ''; }
+	$data['rental_income'] = makeSafe($_REQUEST['rental_income']);
+		if($data['rental_income'] == empty_lookup_value){ $data['rental_income'] = ''; }
+	$data['finance_costs'] = makeSafe($_REQUEST['finance_costs']);
+		if($data['finance_costs'] == empty_lookup_value){ $data['finance_costs'] = ''; }
+	$data['other_costs'] = makeSafe($_REQUEST['other_costs']);
+		if($data['other_costs'] == empty_lookup_value){ $data['other_costs'] = ''; }
+	$data['income_tax_band'] = makeSafe($_REQUEST['income_tax_band']);
+		if($data['income_tax_band'] == empty_lookup_value){ $data['income_tax_band'] = ''; }
+	$data['referer'] = parseCode('<%%creatorUsername%%>', true);
+	$data['est_commission'] = makeSafe($_REQUEST['est_commission']);
+		if($data['est_commission'] == empty_lookup_value){ $data['est_commission'] = ''; }
+	if($data['est_value'] == '') $data['est_value'] = "0";
 
 	// hook: leads_before_insert
 	if(function_exists('leads_before_insert')){
@@ -40,7 +52,7 @@ function leads_insert(){
 	}
 
 	$o = array('silentErrors' => true);
-	sql('insert into `leads` set       `date_entered`=' . "'{$data['date_entered']}'" . ', `referer`=' . "'{$data['referer']}'" . ', `lead_name`=' . (($data['lead_name'] !== '' && $data['lead_name'] !== NULL) ? "'{$data['lead_name']}'" : 'NULL') . ', `contact`=' . (($data['contact'] !== '' && $data['contact'] !== NULL) ? "'{$data['contact']}'" : 'NULL') . ', `prop_area`=' . (($data['prop_area'] !== '' && $data['prop_area'] !== NULL) ? "'{$data['prop_area']}'" : 'NULL') . ', `estimated_value`=' . (($data['estimated_value'] !== '' && $data['estimated_value'] !== NULL) ? "'{$data['estimated_value']}'" : 'NULL') . ', `tenanted`=' . (($data['tenanted'] !== '' && $data['tenanted'] !== NULL) ? "'{$data['tenanted']}'" : 'NULL') . ', `rental_income`=' . (($data['rental_income'] !== '' && $data['rental_income'] !== NULL) ? "'{$data['rental_income']}'" : 'NULL') . ', `notes`=' . (($data['notes'] !== '' && $data['notes'] !== NULL) ? "'{$data['notes']}'" : 'NULL'), $o);
+	sql('insert into `leads` set       `name`=' . (($data['name'] !== '' && $data['name'] !== NULL) ? "'{$data['name']}'" : 'NULL') . ', `email`=' . (($data['email'] !== '' && $data['email'] !== NULL) ? "'{$data['email']}'" : 'NULL') . ', `phone`=' . (($data['phone'] !== '' && $data['phone'] !== NULL) ? "'{$data['phone']}'" : 'NULL') . ', `prop_area`=' . (($data['prop_area'] !== '' && $data['prop_area'] !== NULL) ? "'{$data['prop_area']}'" : 'NULL') . ', `tenanted`=' . (($data['tenanted'] !== '' && $data['tenanted'] !== NULL) ? "'{$data['tenanted']}'" : 'NULL') . ', `notes`=' . (($data['notes'] !== '' && $data['notes'] !== NULL) ? "'{$data['notes']}'" : 'NULL') . ', `date_entered`=' . "'{$data['date_entered']}'" . ', `date_contacted`=' . (($data['date_contacted'] !== '' && $data['date_contacted'] !== NULL) ? "'{$data['date_contacted']}'" : 'NULL') . ', `est_value`=' . (($data['est_value'] !== '' && $data['est_value'] !== NULL) ? "'{$data['est_value']}'" : 'NULL') . ', `os_capital`=' . (($data['os_capital'] !== '' && $data['os_capital'] !== NULL) ? "'{$data['os_capital']}'" : 'NULL') . ', `rental_income`=' . (($data['rental_income'] !== '' && $data['rental_income'] !== NULL) ? "'{$data['rental_income']}'" : 'NULL') . ', `finance_costs`=' . (($data['finance_costs'] !== '' && $data['finance_costs'] !== NULL) ? "'{$data['finance_costs']}'" : 'NULL') . ', `other_costs`=' . (($data['other_costs'] !== '' && $data['other_costs'] !== NULL) ? "'{$data['other_costs']}'" : 'NULL') . ', `income_tax_band`=' . (($data['income_tax_band'] !== '' && $data['income_tax_band'] !== NULL) ? "'{$data['income_tax_band']}'" : 'NULL') . ', `referer`=' . "'{$data['referer']}'", $o);
 	if($o['error']!=''){
 		echo $o['error'];
 		echo "<a href=\"leads_view.php?addNew_x=1\">{$Translation['< back']}</a>";
@@ -113,22 +125,34 @@ function leads_update($selected_id){
 		return false;
 	}
 
-	$data['lead_name'] = makeSafe($_REQUEST['lead_name']);
-		if($data['lead_name'] == empty_lookup_value){ $data['lead_name'] = ''; }
-	$data['contact'] = makeSafe($_REQUEST['contact']);
-		if($data['contact'] == empty_lookup_value){ $data['contact'] = ''; }
+	$data['name'] = makeSafe($_REQUEST['name']);
+		if($data['name'] == empty_lookup_value){ $data['name'] = ''; }
+	$data['email'] = makeSafe($_REQUEST['email']);
+		if($data['email'] == empty_lookup_value){ $data['email'] = ''; }
+	$data['phone'] = makeSafe($_REQUEST['phone']);
+		if($data['phone'] == empty_lookup_value){ $data['phone'] = ''; }
 	$data['prop_area'] = makeSafe($_REQUEST['prop_area']);
 		if($data['prop_area'] == empty_lookup_value){ $data['prop_area'] = ''; }
-	$data['estimated_value'] = makeSafe($_REQUEST['estimated_value']);
-		if($data['estimated_value'] == empty_lookup_value){ $data['estimated_value'] = ''; }
 	$data['tenanted'] = makeSafe($_REQUEST['tenanted']);
 		if($data['tenanted'] == empty_lookup_value){ $data['tenanted'] = ''; }
-	$data['rental_income'] = makeSafe($_REQUEST['rental_income']);
-		if($data['rental_income'] == empty_lookup_value){ $data['rental_income'] = ''; }
-	$data['notes'] = makeSafe($_REQUEST['notes']);
-		if($data['notes'] == empty_lookup_value){ $data['notes'] = ''; }
+	$data['notes'] = br2nl(makeSafe($_REQUEST['notes']));
+	$data['date_entered'] = parseMySQLDate('', '<%%creationDate%%>');
 	$data['date_contacted'] = intval($_REQUEST['date_contactedYear']) . '-' . intval($_REQUEST['date_contactedMonth']) . '-' . intval($_REQUEST['date_contactedDay']);
 	$data['date_contacted'] = parseMySQLDate($data['date_contacted'], '');
+	$data['est_value'] = makeSafe($_REQUEST['est_value']);
+		if($data['est_value'] == empty_lookup_value){ $data['est_value'] = ''; }
+	$data['os_capital'] = makeSafe($_REQUEST['os_capital']);
+		if($data['os_capital'] == empty_lookup_value){ $data['os_capital'] = ''; }
+	$data['rental_income'] = makeSafe($_REQUEST['rental_income']);
+		if($data['rental_income'] == empty_lookup_value){ $data['rental_income'] = ''; }
+	$data['finance_costs'] = makeSafe($_REQUEST['finance_costs']);
+		if($data['finance_costs'] == empty_lookup_value){ $data['finance_costs'] = ''; }
+	$data['other_costs'] = makeSafe($_REQUEST['other_costs']);
+		if($data['other_costs'] == empty_lookup_value){ $data['other_costs'] = ''; }
+	$data['income_tax_band'] = makeSafe($_REQUEST['income_tax_band']);
+		if($data['income_tax_band'] == empty_lookup_value){ $data['income_tax_band'] = ''; }
+	$data['est_commission'] = makeSafe($_REQUEST['est_commission']);
+		if($data['est_commission'] == empty_lookup_value){ $data['est_commission'] = ''; }
 	$data['selectedID']=makeSafe($selected_id);
 
 	// hook: leads_before_update
@@ -138,7 +162,7 @@ function leads_update($selected_id){
 	}
 
 	$o=array('silentErrors' => true);
-	sql('update `leads` set       `date_entered`=`date_entered`' . ', `lead_name`=' . (($data['lead_name'] !== '' && $data['lead_name'] !== NULL) ? "'{$data['lead_name']}'" : 'NULL') . ', `contact`=' . (($data['contact'] !== '' && $data['contact'] !== NULL) ? "'{$data['contact']}'" : 'NULL') . ', `prop_area`=' . (($data['prop_area'] !== '' && $data['prop_area'] !== NULL) ? "'{$data['prop_area']}'" : 'NULL') . ', `estimated_value`=' . (($data['estimated_value'] !== '' && $data['estimated_value'] !== NULL) ? "'{$data['estimated_value']}'" : 'NULL') . ', `tenanted`=' . (($data['tenanted'] !== '' && $data['tenanted'] !== NULL) ? "'{$data['tenanted']}'" : 'NULL') . ', `rental_income`=' . (($data['rental_income'] !== '' && $data['rental_income'] !== NULL) ? "'{$data['rental_income']}'" : 'NULL') . ', `notes`=' . (($data['notes'] !== '' && $data['notes'] !== NULL) ? "'{$data['notes']}'" : 'NULL') . " where `id`='".makeSafe($selected_id)."'", $o);
+	sql('update `leads` set       `name`=' . (($data['name'] !== '' && $data['name'] !== NULL) ? "'{$data['name']}'" : 'NULL') . ', `email`=' . (($data['email'] !== '' && $data['email'] !== NULL) ? "'{$data['email']}'" : 'NULL') . ', `phone`=' . (($data['phone'] !== '' && $data['phone'] !== NULL) ? "'{$data['phone']}'" : 'NULL') . ', `prop_area`=' . (($data['prop_area'] !== '' && $data['prop_area'] !== NULL) ? "'{$data['prop_area']}'" : 'NULL') . ', `tenanted`=' . (($data['tenanted'] !== '' && $data['tenanted'] !== NULL) ? "'{$data['tenanted']}'" : 'NULL') . ', `notes`=' . (($data['notes'] !== '' && $data['notes'] !== NULL) ? "'{$data['notes']}'" : 'NULL') . ', `date_entered`=`date_entered`' . ', `date_contacted`=' . (($data['date_contacted'] !== '' && $data['date_contacted'] !== NULL) ? "'{$data['date_contacted']}'" : 'NULL') . ', `est_value`=' . (($data['est_value'] !== '' && $data['est_value'] !== NULL) ? "'{$data['est_value']}'" : 'NULL') . ', `os_capital`=' . (($data['os_capital'] !== '' && $data['os_capital'] !== NULL) ? "'{$data['os_capital']}'" : 'NULL') . ', `rental_income`=' . (($data['rental_income'] !== '' && $data['rental_income'] !== NULL) ? "'{$data['rental_income']}'" : 'NULL') . ', `finance_costs`=' . (($data['finance_costs'] !== '' && $data['finance_costs'] !== NULL) ? "'{$data['finance_costs']}'" : 'NULL') . ', `other_costs`=' . (($data['other_costs'] !== '' && $data['other_costs'] !== NULL) ? "'{$data['other_costs']}'" : 'NULL') . ', `income_tax_band`=' . (($data['income_tax_band'] !== '' && $data['income_tax_band'] !== NULL) ? "'{$data['income_tax_band']}'" : 'NULL') . " where `id`='".makeSafe($selected_id)."'", $o);
 	if($o['error']!=''){
 		echo $o['error'];
 		echo '<a href="leads_view.php?SelectedID='.urlencode($selected_id)."\">{$Translation['< back']}</a>";
@@ -187,7 +211,7 @@ function leads_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Allo
 	$rnd1 = ($dvprint ? rand(1000000, 9999999) : '');
 	// combobox: tenanted
 	$combo_tenanted = new Combo;
-	$combo_tenanted->ListType = 0;
+	$combo_tenanted->ListType = 2;
 	$combo_tenanted->MultipleSeparator = ', ';
 	$combo_tenanted->ListBoxHeight = 10;
 	$combo_tenanted->RadiosPerLine = 1;
@@ -196,10 +220,18 @@ function leads_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Allo
 		$combo_tenanted->ListItem = explode('||', entitiesToUTF8(convertLegacyOptions($tenanted_data)));
 		$combo_tenanted->ListData = $combo_tenanted->ListItem;
 	}else{
-		$combo_tenanted->ListItem = explode('||', entitiesToUTF8(convertLegacyOptions("Yes;;No")));
+		$combo_tenanted->ListItem = explode('||', entitiesToUTF8(convertLegacyOptions("Yes")));
 		$combo_tenanted->ListData = $combo_tenanted->ListItem;
 	}
 	$combo_tenanted->SelectName = 'tenanted';
+	// combobox: date_entered
+	$combo_date_entered = new DateCombo;
+	$combo_date_entered->DateFormat = "dmy";
+	$combo_date_entered->MinYear = 1900;
+	$combo_date_entered->MaxYear = 2100;
+	$combo_date_entered->DefaultDate = parseMySQLDate('<%%creationDate%%>', '<%%creationDate%%>');
+	$combo_date_entered->MonthNames = $Translation['month names'];
+	$combo_date_entered->NamePrefix = 'date_entered';
 	// combobox: date_contacted
 	$combo_date_contacted = new DateCombo;
 	$combo_date_contacted->DateFormat = "dmy";
@@ -208,6 +240,21 @@ function leads_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Allo
 	$combo_date_contacted->DefaultDate = parseMySQLDate('', '');
 	$combo_date_contacted->MonthNames = $Translation['month names'];
 	$combo_date_contacted->NamePrefix = 'date_contacted';
+	// combobox: income_tax_band
+	$combo_income_tax_band = new Combo;
+	$combo_income_tax_band->ListType = 2;
+	$combo_income_tax_band->MultipleSeparator = ', ';
+	$combo_income_tax_band->ListBoxHeight = 10;
+	$combo_income_tax_band->RadiosPerLine = 1;
+	if(is_file(dirname(__FILE__).'/hooks/leads.income_tax_band.csv')){
+		$income_tax_band_data = addslashes(implode('', @file(dirname(__FILE__).'/hooks/leads.income_tax_band.csv')));
+		$combo_income_tax_band->ListItem = explode('||', entitiesToUTF8(convertLegacyOptions($income_tax_band_data)));
+		$combo_income_tax_band->ListData = $combo_income_tax_band->ListItem;
+	}else{
+		$combo_income_tax_band->ListItem = explode('||', entitiesToUTF8(convertLegacyOptions("20%;; 40%;; 45%")));
+		$combo_income_tax_band->ListData = $combo_income_tax_band->ListItem;
+	}
+	$combo_income_tax_band->SelectName = 'income_tax_band';
 
 	if($selected_id){
 		// mm: check member permissions
@@ -239,33 +286,26 @@ function leads_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Allo
 		$hc = new CI_Input();
 		$row = $hc->xss_clean($row); /* sanitize data */
 		$combo_tenanted->SelectedData = $row['tenanted'];
+		$combo_date_entered->DefaultDate = $row['date_entered'];
 		$combo_date_contacted->DefaultDate = $row['date_contacted'];
+		$combo_income_tax_band->SelectedData = $row['income_tax_band'];
 	}else{
-		$combo_tenanted->SelectedText = ( $_REQUEST['FilterField'][1]=='8' && $_REQUEST['FilterOperator'][1]=='<=>' ? (get_magic_quotes_gpc() ? stripslashes($_REQUEST['FilterValue'][1]) : $_REQUEST['FilterValue'][1]) : "");
+		$combo_tenanted->SelectedText = ( $_REQUEST['FilterField'][1]=='6' && $_REQUEST['FilterOperator'][1]=='<=>' ? (get_magic_quotes_gpc() ? stripslashes($_REQUEST['FilterValue'][1]) : $_REQUEST['FilterValue'][1]) : "");
+		$combo_income_tax_band->SelectedText = ( $_REQUEST['FilterField'][1]=='15' && $_REQUEST['FilterOperator'][1]=='<=>' ? (get_magic_quotes_gpc() ? stripslashes($_REQUEST['FilterValue'][1]) : $_REQUEST['FilterValue'][1]) : "");
 	}
 	$combo_tenanted->Render();
-
-	ob_start();
-	?>
-
-	<script>
-		// initial lookup values
-
-		jQuery(function() {
-			setTimeout(function(){
-			}, 10); /* we need to slightly delay client-side execution of the above code to allow AppGini.ajaxCache to work */
-		});
-	</script>
-	<?php
-
-	$lookups = str_replace('__RAND__', $rnd1, ob_get_contents());
-	ob_end_clean();
-
+	$combo_income_tax_band->Render();
 
 	// code for template based detail view forms
 
 	// open the detail view template
-	$templateCode = @file_get_contents('./templates/leads_templateDV.html');
+	if($dvprint){
+		$template_file = is_file("./{$TemplateDVP}") ? "./{$TemplateDVP}" : './templates/leads_templateDVP.html';
+		$templateCode = @file_get_contents($template_file);
+	}else{
+		$template_file = is_file("./{$TemplateDV}") ? "./{$TemplateDV}" : './templates/leads_templateDV.html';
+		$templateCode = @file_get_contents($template_file);
+	}
 
 	// process form title
 	$templateCode = str_replace('<%%DETAIL_VIEW_TITLE%%>', 'Lead details', $templateCode);
@@ -287,6 +327,7 @@ function leads_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Allo
 	}
 
 	if($selected_id){
+		if(!$_REQUEST['Embedded']) $templateCode=str_replace('<%%DVPRINT_BUTTON%%>', '<button type="submit" class="btn btn-default" id="dvprint" name="dvprint_x" value="1" onclick="$$(\'form\')[0].writeAttribute(\'novalidate\', \'novalidate\'); document.myform.reset(); return true;" title="' . html_attr($Translation['Print Preview']) . '"><i class="glyphicon glyphicon-print"></i> ' . $Translation['Print Preview'] . '</button>', $templateCode);
 		if($AllowUpdate){
 			$templateCode=str_replace('<%%UPDATE_BUTTON%%>', '<button type="submit" class="btn btn-success btn-lg" id="update" name="update_x" value="1" onclick="return leads_validateData();" title="' . html_attr($Translation['Save Changes']) . '"><i class="glyphicon glyphicon-ok"></i> ' . $Translation['Save Changes'] . '</button>', $templateCode);
 		}else{
@@ -306,12 +347,21 @@ function leads_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Allo
 
 	// set records to read only if user can't insert new records and can't edit current record
 	if(($selected_id && !$AllowUpdate && !$AllowInsert) || (!$selected_id && !$AllowInsert)){
-		$jsReadOnly .= "\tjQuery('#lead_name').replaceWith('<div class=\"form-control-static\" id=\"lead_name\">' + (jQuery('#lead_name').val() || '') + '</div>');\n";
-		$jsReadOnly .= "\tjQuery('#contact').replaceWith('<div class=\"form-control-static\" id=\"contact\">' + (jQuery('#contact').val() || '') + '</div>');\n";
+		$jsReadOnly .= "\tjQuery('#name').replaceWith('<div class=\"form-control-static\" id=\"name\">' + (jQuery('#name').val() || '') + '</div>');\n";
+		$jsReadOnly .= "\tjQuery('#email').replaceWith('<div class=\"form-control-static\" id=\"email\">' + (jQuery('#email').val() || '') + '</div>');\n";
+		$jsReadOnly .= "\tjQuery('#email, #email-edit-link').hide();\n";
+		$jsReadOnly .= "\tjQuery('#phone').replaceWith('<div class=\"form-control-static\" id=\"phone\">' + (jQuery('#phone').val() || '') + '</div>');\n";
 		$jsReadOnly .= "\tjQuery('#prop_area').replaceWith('<div class=\"form-control-static\" id=\"prop_area\">' + (jQuery('#prop_area').val() || '') + '</div>');\n";
-		$jsReadOnly .= "\tjQuery('#estimated_value').replaceWith('<div class=\"form-control-static\" id=\"estimated_value\">' + (jQuery('#estimated_value').val() || '') + '</div>');\n";
-		$jsReadOnly .= "\tjQuery('#tenanted').replaceWith('<div class=\"form-control-static\" id=\"tenanted\">' + (jQuery('#tenanted').val() || '') + '</div>'); jQuery('#tenanted-multi-selection-help').hide();\n";
+		$jsReadOnly .= "\tjQuery('input[name=tenanted]').parent().html('<div class=\"form-control-static\">' + jQuery('input[name=tenanted]:checked').next().text() + '</div>')\n";
+		$jsReadOnly .= "\tjQuery('#notes').replaceWith('<div class=\"form-control-static\" id=\"notes\">' + (jQuery('#notes').val() || '') + '</div>');\n";
+		$jsReadOnly .= "\tjQuery('#date_contacted').prop('readonly', true);\n";
+		$jsReadOnly .= "\tjQuery('#date_contactedDay, #date_contactedMonth, #date_contactedYear').prop('disabled', true).css({ color: '#555', backgroundColor: '#fff' });\n";
+		$jsReadOnly .= "\tjQuery('#est_value').replaceWith('<div class=\"form-control-static\" id=\"est_value\">' + (jQuery('#est_value').val() || '') + '</div>');\n";
+		$jsReadOnly .= "\tjQuery('#os_capital').replaceWith('<div class=\"form-control-static\" id=\"os_capital\">' + (jQuery('#os_capital').val() || '') + '</div>');\n";
 		$jsReadOnly .= "\tjQuery('#rental_income').replaceWith('<div class=\"form-control-static\" id=\"rental_income\">' + (jQuery('#rental_income').val() || '') + '</div>');\n";
+		$jsReadOnly .= "\tjQuery('#finance_costs').replaceWith('<div class=\"form-control-static\" id=\"finance_costs\">' + (jQuery('#finance_costs').val() || '') + '</div>');\n";
+		$jsReadOnly .= "\tjQuery('#other_costs').replaceWith('<div class=\"form-control-static\" id=\"other_costs\">' + (jQuery('#other_costs').val() || '') + '</div>');\n";
+		$jsReadOnly .= "\tjQuery('input[name=income_tax_band]').parent().html('<div class=\"form-control-static\">' + jQuery('input[name=income_tax_band]:checked').next().text() + '</div>')\n";
 		$jsReadOnly .= "\tjQuery('.select2-container').hide();\n";
 
 		$noUploads = true;
@@ -323,8 +373,12 @@ function leads_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Allo
 	// process combos
 	$templateCode=str_replace('<%%COMBO(tenanted)%%>', $combo_tenanted->HTML, $templateCode);
 	$templateCode=str_replace('<%%COMBOTEXT(tenanted)%%>', $combo_tenanted->SelectedData, $templateCode);
+	$templateCode=str_replace('<%%COMBO(date_entered)%%>', ($selected_id && !$arrPerm[3] ? '<div class="form-control-static">' . $combo_date_entered->GetHTML(true) . '</div>' : $combo_date_entered->GetHTML()), $templateCode);
+	$templateCode=str_replace('<%%COMBOTEXT(date_entered)%%>', $combo_date_entered->GetHTML(true), $templateCode);
 	$templateCode=str_replace('<%%COMBO(date_contacted)%%>', ($selected_id && !$arrPerm[3] ? '<div class="form-control-static">' . $combo_date_contacted->GetHTML(true) . '</div>' : $combo_date_contacted->GetHTML()), $templateCode);
 	$templateCode=str_replace('<%%COMBOTEXT(date_contacted)%%>', $combo_date_contacted->GetHTML(true), $templateCode);
+	$templateCode=str_replace('<%%COMBO(income_tax_band)%%>', $combo_income_tax_band->HTML, $templateCode);
+	$templateCode=str_replace('<%%COMBOTEXT(income_tax_band)%%>', $combo_income_tax_band->SelectedData, $templateCode);
 
 	/* lookup fields array: 'lookup field name' => array('parent table name', 'lookup field caption') */
 	$lookup_fields = array();
@@ -344,73 +398,98 @@ function leads_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Allo
 
 	// process images
 	$templateCode=str_replace('<%%UPLOADFILE(id)%%>', '', $templateCode);
-	$templateCode=str_replace('<%%UPLOADFILE(date_entered)%%>', '', $templateCode);
-	$templateCode=str_replace('<%%UPLOADFILE(referer)%%>', '', $templateCode);
-	$templateCode=str_replace('<%%UPLOADFILE(lead_name)%%>', '', $templateCode);
-	$templateCode=str_replace('<%%UPLOADFILE(contact)%%>', '', $templateCode);
+	$templateCode=str_replace('<%%UPLOADFILE(name)%%>', '', $templateCode);
+	$templateCode=str_replace('<%%UPLOADFILE(email)%%>', '', $templateCode);
+	$templateCode=str_replace('<%%UPLOADFILE(phone)%%>', '', $templateCode);
 	$templateCode=str_replace('<%%UPLOADFILE(prop_area)%%>', '', $templateCode);
-	$templateCode=str_replace('<%%UPLOADFILE(estimated_value)%%>', '', $templateCode);
 	$templateCode=str_replace('<%%UPLOADFILE(tenanted)%%>', '', $templateCode);
-	$templateCode=str_replace('<%%UPLOADFILE(rental_income)%%>', '', $templateCode);
 	$templateCode=str_replace('<%%UPLOADFILE(notes)%%>', '', $templateCode);
-	$templateCode=str_replace('<%%UPLOADFILE(est_commission)%%>', '', $templateCode);
+	$templateCode=str_replace('<%%UPLOADFILE(date_entered)%%>', '', $templateCode);
 	$templateCode=str_replace('<%%UPLOADFILE(date_contacted)%%>', '', $templateCode);
+	$templateCode=str_replace('<%%UPLOADFILE(est_value)%%>', '', $templateCode);
+	$templateCode=str_replace('<%%UPLOADFILE(os_capital)%%>', '', $templateCode);
+	$templateCode=str_replace('<%%UPLOADFILE(rental_income)%%>', '', $templateCode);
+	$templateCode=str_replace('<%%UPLOADFILE(finance_costs)%%>', '', $templateCode);
+	$templateCode=str_replace('<%%UPLOADFILE(other_costs)%%>', '', $templateCode);
+	$templateCode=str_replace('<%%UPLOADFILE(income_tax_band)%%>', '', $templateCode);
+	$templateCode=str_replace('<%%UPLOADFILE(referer)%%>', '', $templateCode);
+	$templateCode=str_replace('<%%UPLOADFILE(est_commission)%%>', '', $templateCode);
 
 	// process values
 	if($selected_id){
 		$templateCode=str_replace('<%%VALUE(id)%%>', html_attr($row['id']), $templateCode);
 		$templateCode=str_replace('<%%URLVALUE(id)%%>', urlencode($urow['id']), $templateCode);
-		$templateCode=str_replace('<%%VALUE(date_entered)%%>', html_attr($row['date_entered']), $templateCode);
-		$templateCode=str_replace('<%%URLVALUE(date_entered)%%>', urlencode($urow['date_entered']), $templateCode);
-		$templateCode=str_replace('<%%VALUE(referer)%%>', html_attr($row['referer']), $templateCode);
-		$templateCode=str_replace('<%%URLVALUE(referer)%%>', urlencode($urow['referer']), $templateCode);
-		$templateCode=str_replace('<%%VALUE(lead_name)%%>', html_attr($row['lead_name']), $templateCode);
-		$templateCode=str_replace('<%%URLVALUE(lead_name)%%>', urlencode($urow['lead_name']), $templateCode);
-		$templateCode=str_replace('<%%VALUE(contact)%%>', html_attr($row['contact']), $templateCode);
-		$templateCode=str_replace('<%%URLVALUE(contact)%%>', urlencode($urow['contact']), $templateCode);
+		$templateCode=str_replace('<%%VALUE(name)%%>', html_attr($row['name']), $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(name)%%>', urlencode($urow['name']), $templateCode);
+		$templateCode=str_replace('<%%VALUE(email)%%>', html_attr($row['email']), $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(email)%%>', urlencode($urow['email']), $templateCode);
+		$templateCode=str_replace('<%%VALUE(phone)%%>', html_attr($row['phone']), $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(phone)%%>', urlencode($urow['phone']), $templateCode);
 		$templateCode=str_replace('<%%VALUE(prop_area)%%>', html_attr($row['prop_area']), $templateCode);
 		$templateCode=str_replace('<%%URLVALUE(prop_area)%%>', urlencode($urow['prop_area']), $templateCode);
-		$templateCode=str_replace('<%%VALUE(estimated_value)%%>', html_attr($row['estimated_value']), $templateCode);
-		$templateCode=str_replace('<%%URLVALUE(estimated_value)%%>', urlencode($urow['estimated_value']), $templateCode);
 		$templateCode=str_replace('<%%VALUE(tenanted)%%>', html_attr($row['tenanted']), $templateCode);
 		$templateCode=str_replace('<%%URLVALUE(tenanted)%%>', urlencode($urow['tenanted']), $templateCode);
-		$templateCode=str_replace('<%%VALUE(rental_income)%%>', html_attr($row['rental_income']), $templateCode);
-		$templateCode=str_replace('<%%URLVALUE(rental_income)%%>', urlencode($urow['rental_income']), $templateCode);
-		if($AllowUpdate || $AllowInsert){
-			$templateCode = str_replace('<%%HTMLAREA(notes)%%>', '<textarea name="notes" id="notes" rows="5">' . html_attr($row['notes']) . '</textarea>', $templateCode);
+		if($dvprint){
+			$templateCode = str_replace('<%%VALUE(notes)%%>', nl2br(html_attr($row['notes'])), $templateCode);
 		}else{
-			$templateCode = str_replace('<%%HTMLAREA(notes)%%>', '<div id="notes" class="form-control-static">' . $row['notes'] . '</div>', $templateCode);
+			$templateCode = str_replace('<%%VALUE(notes)%%>', html_attr($row['notes']), $templateCode);
 		}
-		$templateCode=str_replace('<%%VALUE(notes)%%>', nl2br($row['notes']), $templateCode);
 		$templateCode=str_replace('<%%URLVALUE(notes)%%>', urlencode($urow['notes']), $templateCode);
-		$templateCode=str_replace('<%%VALUE(est_commission)%%>', html_attr($row['est_commission']), $templateCode);
-		$templateCode=str_replace('<%%URLVALUE(est_commission)%%>', urlencode($urow['est_commission']), $templateCode);
+		$templateCode=str_replace('<%%VALUE(date_entered)%%>', @date('d/m/Y', @strtotime(html_attr($row['date_entered']))), $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(date_entered)%%>', urlencode(@date('d/m/Y', @strtotime(html_attr($urow['date_entered'])))), $templateCode);
 		$templateCode=str_replace('<%%VALUE(date_contacted)%%>', @date('d/m/Y', @strtotime(html_attr($row['date_contacted']))), $templateCode);
 		$templateCode=str_replace('<%%URLVALUE(date_contacted)%%>', urlencode(@date('d/m/Y', @strtotime(html_attr($urow['date_contacted'])))), $templateCode);
+		$templateCode=str_replace('<%%VALUE(est_value)%%>', html_attr($row['est_value']), $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(est_value)%%>', urlencode($urow['est_value']), $templateCode);
+		$templateCode=str_replace('<%%VALUE(os_capital)%%>', html_attr($row['os_capital']), $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(os_capital)%%>', urlencode($urow['os_capital']), $templateCode);
+		$templateCode=str_replace('<%%VALUE(rental_income)%%>', html_attr($row['rental_income']), $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(rental_income)%%>', urlencode($urow['rental_income']), $templateCode);
+		$templateCode=str_replace('<%%VALUE(finance_costs)%%>', html_attr($row['finance_costs']), $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(finance_costs)%%>', urlencode($urow['finance_costs']), $templateCode);
+		$templateCode=str_replace('<%%VALUE(other_costs)%%>', html_attr($row['other_costs']), $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(other_costs)%%>', urlencode($urow['other_costs']), $templateCode);
+		$templateCode=str_replace('<%%VALUE(income_tax_band)%%>', html_attr($row['income_tax_band']), $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(income_tax_band)%%>', urlencode($urow['income_tax_band']), $templateCode);
+		$templateCode=str_replace('<%%VALUE(referer)%%>', html_attr($row['referer']), $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(referer)%%>', urlencode($urow['referer']), $templateCode);
+		$templateCode=str_replace('<%%VALUE(est_commission)%%>', html_attr($row['est_commission']), $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(est_commission)%%>', urlencode($urow['est_commission']), $templateCode);
 	}else{
 		$templateCode=str_replace('<%%VALUE(id)%%>', '', $templateCode);
 		$templateCode=str_replace('<%%URLVALUE(id)%%>', urlencode(''), $templateCode);
-		$templateCode=str_replace('<%%VALUE(date_entered)%%>', '<%%creationDate%%>', $templateCode);
-		$templateCode=str_replace('<%%URLVALUE(date_entered)%%>', urlencode('<%%creationDate%%>'), $templateCode);
-		$templateCode=str_replace('<%%VALUE(referer)%%>', '<%%creatorUsername%%>', $templateCode);
-		$templateCode=str_replace('<%%URLVALUE(referer)%%>', urlencode('<%%creatorUsername%%>'), $templateCode);
-		$templateCode=str_replace('<%%VALUE(lead_name)%%>', '', $templateCode);
-		$templateCode=str_replace('<%%URLVALUE(lead_name)%%>', urlencode(''), $templateCode);
-		$templateCode=str_replace('<%%VALUE(contact)%%>', '', $templateCode);
-		$templateCode=str_replace('<%%URLVALUE(contact)%%>', urlencode(''), $templateCode);
+		$templateCode=str_replace('<%%VALUE(name)%%>', '', $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(name)%%>', urlencode(''), $templateCode);
+		$templateCode=str_replace('<%%VALUE(email)%%>', '', $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(email)%%>', urlencode(''), $templateCode);
+		$templateCode=str_replace('<%%VALUE(phone)%%>', '', $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(phone)%%>', urlencode(''), $templateCode);
 		$templateCode=str_replace('<%%VALUE(prop_area)%%>', '', $templateCode);
 		$templateCode=str_replace('<%%URLVALUE(prop_area)%%>', urlencode(''), $templateCode);
-		$templateCode=str_replace('<%%VALUE(estimated_value)%%>', '', $templateCode);
-		$templateCode=str_replace('<%%URLVALUE(estimated_value)%%>', urlencode(''), $templateCode);
 		$templateCode=str_replace('<%%VALUE(tenanted)%%>', '', $templateCode);
 		$templateCode=str_replace('<%%URLVALUE(tenanted)%%>', urlencode(''), $templateCode);
-		$templateCode=str_replace('<%%VALUE(rental_income)%%>', '', $templateCode);
-		$templateCode=str_replace('<%%URLVALUE(rental_income)%%>', urlencode(''), $templateCode);
-		$templateCode=str_replace('<%%HTMLAREA(notes)%%>', '<textarea name="notes" id="notes" rows="5"></textarea>', $templateCode);
-		$templateCode=str_replace('<%%VALUE(est_commission)%%>', '', $templateCode);
-		$templateCode=str_replace('<%%URLVALUE(est_commission)%%>', urlencode(''), $templateCode);
+		$templateCode=str_replace('<%%VALUE(notes)%%>', '', $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(notes)%%>', urlencode(''), $templateCode);
+		$templateCode=str_replace('<%%VALUE(date_entered)%%>', '<%%creationDate%%>', $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(date_entered)%%>', urlencode('<%%creationDate%%>'), $templateCode);
 		$templateCode=str_replace('<%%VALUE(date_contacted)%%>', '', $templateCode);
 		$templateCode=str_replace('<%%URLVALUE(date_contacted)%%>', urlencode(''), $templateCode);
+		$templateCode=str_replace('<%%VALUE(est_value)%%>', '0', $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(est_value)%%>', urlencode('0'), $templateCode);
+		$templateCode=str_replace('<%%VALUE(os_capital)%%>', '', $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(os_capital)%%>', urlencode(''), $templateCode);
+		$templateCode=str_replace('<%%VALUE(rental_income)%%>', '', $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(rental_income)%%>', urlencode(''), $templateCode);
+		$templateCode=str_replace('<%%VALUE(finance_costs)%%>', '', $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(finance_costs)%%>', urlencode(''), $templateCode);
+		$templateCode=str_replace('<%%VALUE(other_costs)%%>', '', $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(other_costs)%%>', urlencode(''), $templateCode);
+		$templateCode=str_replace('<%%VALUE(income_tax_band)%%>', '', $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(income_tax_band)%%>', urlencode(''), $templateCode);
+		$templateCode=str_replace('<%%VALUE(referer)%%>', '<%%creatorUsername%%>', $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(referer)%%>', urlencode('<%%creatorUsername%%>'), $templateCode);
+		$templateCode=str_replace('<%%VALUE(est_commission)%%>', '', $templateCode);
+		$templateCode=str_replace('<%%URLVALUE(est_commission)%%>', urlencode(''), $templateCode);
 	}
 
 	// process translations
@@ -435,6 +514,8 @@ function leads_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Allo
 		$templateCode .= $jsEditable;
 
 		if(!$selected_id){
+			$templateCode.="\n\tif(document.getElementById('emailEdit')){ document.getElementById('emailEdit').style.display='inline'; }";
+			$templateCode.="\n\tif(document.getElementById('emailEditLink')){ document.getElementById('emailEditLink').style.display='none'; }";
 		}
 
 		$templateCode.="\n});</script>\n";

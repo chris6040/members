@@ -15,45 +15,33 @@
 <div class="panel-body">
 	<fieldset class="form-horizontal">
 		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
-			<label class="col-xs-3 control-label">Reference</label>
+			<label class="col-xs-3 control-label">ID</label>
 			<div class="col-xs-9">
 				<div class="form-control-static"><%%VALUE(id)%%></div>
 			</div>
 		</div>
 		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
-			<label class="col-xs-3 control-label">Date entered</label>
+			<label class="col-xs-3 control-label">Name</label>
 			<div class="col-xs-9">
-				<div class="form-control-static"><%%VALUE(date_entered)%%></div>
+				<div class="form-control-static"><%%VALUE(name)%%></div>
 			</div>
 		</div>
 		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
-			<label class="col-xs-3 control-label">Referral source</label>
+			<label class="col-xs-3 control-label">Email</label>
 			<div class="col-xs-9">
-				<div class="form-control-static"><%%VALUE(referer)%%></div>
+				<div class="form-control-static"><%%VALUE(email)%%></div>
 			</div>
 		</div>
 		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
-			<label class="col-xs-3 control-label">Client Name</label>
+			<label class="col-xs-3 control-label">Phone</label>
 			<div class="col-xs-9">
-				<div class="form-control-static"><%%VALUE(lead_name)%%></div>
+				<div class="form-control-static"><%%VALUE(phone)%%></div>
 			</div>
 		</div>
 		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
-			<label class="col-xs-3 control-label">Contact details</label>
-			<div class="col-xs-9">
-				<div class="form-control-static"><%%VALUE(contact)%%></div>
-			</div>
-		</div>
-		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
-			<label class="col-xs-3 control-label">First part postcode</label>
+			<label class="col-xs-3 control-label">Property area</label>
 			<div class="col-xs-9">
 				<div class="form-control-static"><%%VALUE(prop_area)%%></div>
-			</div>
-		</div>
-		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
-			<label class="col-xs-3 control-label">Estimated value</label>
-			<div class="col-xs-9">
-				<div class="form-control-static"><%%VALUE(estimated_value)%%></div>
 			</div>
 		</div>
 		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
@@ -63,27 +51,57 @@
 			</div>
 		</div>
 		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
-			<label class="col-xs-3 control-label">Monthly Rental income</label>
-			<div class="col-xs-9">
-				<div class="form-control-static"><%%VALUE(rental_income)%%></div>
-			</div>
-		</div>
-		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
 			<label class="col-xs-3 control-label">Notes</label>
 			<div class="col-xs-9">
 				<div class="form-control-static"><%%VALUE(notes)%%></div>
 			</div>
 		</div>
 		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
-			<label class="col-xs-3 control-label">Estimated Commission</label>
+			<label class="col-xs-3 control-label">Date entered</label>
 			<div class="col-xs-9">
-				<div class="form-control-static"><%%VALUE(est_commission)%%></div>
+				<div class="form-control-static"><%%COMBOTEXT(date_entered)%%></div>
 			</div>
 		</div>
 		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
 			<label class="col-xs-3 control-label">Date contacted</label>
 			<div class="col-xs-9">
 				<div class="form-control-static"><%%COMBOTEXT(date_contacted)%%></div>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Est. market value</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%VALUE(est_value)%%></div>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">O/S capital</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%VALUE(os_capital)%%></div>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Rental income</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%VALUE(rental_income)%%></div>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Finance costs</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%VALUE(finance_costs)%%></div>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Other costs</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%VALUE(other_costs)%%></div>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Income tax band</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%COMBOTEXT(income_tax_band)%%></div>
 			</div>
 		</div>
 	</fieldset>

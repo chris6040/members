@@ -33,12 +33,14 @@
 
 	// drop-downs config
 	$lookups = array(   
+		'leads' => array(  
+		),
 		'property' => array(   
-			'partner_id' => array(
-				'parent_table' => 'partner',
+			'client_id' => array(
+				'parent_table' => 'client',
 				'parent_pk_field' => 'id',
-				'parent_caption' => 'IF(CHAR_LENGTH(`partner`.`company_name`) || CHAR_LENGTH(`partner`.`mailname`), CONCAT_WS(\'\', `partner`.`company_name`, \' - \', `partner`.`mailname`), \'\')',
-				'parent_from' => '`partner` LEFT JOIN `psn_title` as psn_title1 ON `psn_title1`.`id`=`partner`.`title` LEFT JOIN `address` as address1 ON `address1`.`id`=`partner`.`address_id` LEFT JOIN `psn_type` as psn_type1 ON `psn_type1`.`id`=`partner`.`type1` LEFT JOIN `psn_type` as psn_type2 ON `psn_type2`.`id`=`partner`.`type2` LEFT JOIN `psn_type` as psn_type3 ON `psn_type3`.`id`=`partner`.`type3` LEFT JOIN `member_group` as member_group1 ON `member_group1`.`id`=`partner`.`membergroupid` ',
+				'parent_caption' => 'IF(CHAR_LENGTH(`client`.`company_name`) || CHAR_LENGTH(`client`.`mailname`), CONCAT_WS(\'\', `client`.`company_name`, \' - \', `client`.`mailname`), \'\')',
+				'parent_from' => '`client` LEFT JOIN `psn_title` as psn_title1 ON `psn_title1`.`id`=`client`.`title` LEFT JOIN `address` as address1 ON `address1`.`id`=`client`.`address_id` LEFT JOIN `psn_type` as psn_type1 ON `psn_type1`.`id`=`client`.`type1` LEFT JOIN `psn_type` as psn_type2 ON `psn_type2`.`id`=`client`.`type2` LEFT JOIN `psn_type` as psn_type3 ON `psn_type3`.`id`=`client`.`type3` LEFT JOIN `member_group` as member_group1 ON `member_group1`.`id`=`client`.`membergroupid` ',
 				'filterers' => array(),
 				'custom_query' => '',
 				'inherit_permissions' => false,
@@ -46,10 +48,10 @@
 				'not_null' => false
 			),
 			'referer' => array(
-				'parent_table' => 'partner',
+				'parent_table' => 'client',
 				'parent_pk_field' => 'id',
-				'parent_caption' => 'IF(CHAR_LENGTH(`partner`.`company_name`) || CHAR_LENGTH(`partner`.`mailname`), CONCAT_WS(\'\', `partner`.`company_name`, \' - \', `partner`.`mailname`), \'\')',
-				'parent_from' => '`partner` LEFT JOIN `psn_title` as psn_title1 ON `psn_title1`.`id`=`partner`.`title` LEFT JOIN `address` as address1 ON `address1`.`id`=`partner`.`address_id` LEFT JOIN `psn_type` as psn_type1 ON `psn_type1`.`id`=`partner`.`type1` LEFT JOIN `psn_type` as psn_type2 ON `psn_type2`.`id`=`partner`.`type2` LEFT JOIN `psn_type` as psn_type3 ON `psn_type3`.`id`=`partner`.`type3` LEFT JOIN `member_group` as member_group1 ON `member_group1`.`id`=`partner`.`membergroupid` ',
+				'parent_caption' => 'IF(CHAR_LENGTH(`client`.`company_name`) || CHAR_LENGTH(`client`.`mailname`), CONCAT_WS(\'\', `client`.`company_name`, \' - \', `client`.`mailname`), \'\')',
+				'parent_from' => '`client` LEFT JOIN `psn_title` as psn_title1 ON `psn_title1`.`id`=`client`.`title` LEFT JOIN `address` as address1 ON `address1`.`id`=`client`.`address_id` LEFT JOIN `psn_type` as psn_type1 ON `psn_type1`.`id`=`client`.`type1` LEFT JOIN `psn_type` as psn_type2 ON `psn_type2`.`id`=`client`.`type2` LEFT JOIN `psn_type` as psn_type3 ON `psn_type3`.`id`=`client`.`type3` LEFT JOIN `member_group` as member_group1 ON `member_group1`.`id`=`client`.`membergroupid` ',
 				'filterers' => array(),
 				'custom_query' => '',
 				'inherit_permissions' => false,
@@ -68,7 +70,55 @@
 				'not_null' => false
 			)
 		),
-		'partner' => array(   
+		'transaction' => array(  
+		),
+		'loan' => array(   
+			'loan_type' => array(
+				'parent_table' => 'loan_type',
+				'parent_pk_field' => 'id',
+				'parent_caption' => '`loan_type`.`type`',
+				'parent_from' => '`loan_type` ',
+				'filterers' => array(),
+				'custom_query' => '',
+				'inherit_permissions' => false,
+				'list_type' => 0,
+				'not_null' => false
+			),
+			'property_id' => array(
+				'parent_table' => 'address',
+				'parent_pk_field' => 'id',
+				'parent_caption' => 'IF(CHAR_LENGTH(`address`.`postcode1`) || CHAR_LENGTH(`address`.`address1`), CONCAT_WS(\'\', `address`.`postcode1`, \' - \', `address`.`address1`), \'\')',
+				'parent_from' => '`address` LEFT JOIN `county` as county1 ON `county1`.`id`=`address`.`county` LEFT JOIN `country` as country1 ON `country1`.`id`=`address`.`country` ',
+				'filterers' => array(),
+				'custom_query' => 'SELECT `property`.`id`, IF(    CHAR_LENGTH(`address1`.`postcode1`) || CHAR_LENGTH(`address1`.`address1`), CONCAT_WS(\'\',   `address1`.`postcode1`, \' - \', `address1`.`address1`), \'\') FROM `property` LEFT JOIN `partner` as partner1 ON `partner1`.`id`=`property`.`partner_id` LEFT JOIN `address` as address1 ON `address1`.`id`=`property`.`address_id` LEFT JOIN `partner` as partner2 ON `partner2`.`id`=`property`.`referer` ORDER BY 2',
+				'inherit_permissions' => false,
+				'list_type' => 0,
+				'not_null' => false
+			),
+			'broker_id' => array(
+				'parent_table' => 'client',
+				'parent_pk_field' => 'id',
+				'parent_caption' => '`client`.`company_name`',
+				'parent_from' => '`client` LEFT JOIN `psn_title` as psn_title1 ON `psn_title1`.`id`=`client`.`title` LEFT JOIN `address` as address1 ON `address1`.`id`=`client`.`address_id` LEFT JOIN `psn_type` as psn_type1 ON `psn_type1`.`id`=`client`.`type1` LEFT JOIN `psn_type` as psn_type2 ON `psn_type2`.`id`=`client`.`type2` LEFT JOIN `psn_type` as psn_type3 ON `psn_type3`.`id`=`client`.`type3` LEFT JOIN `member_group` as member_group1 ON `member_group1`.`id`=`client`.`membergroupid` ',
+				'filterers' => array(),
+				'custom_query' => '',
+				'inherit_permissions' => false,
+				'list_type' => 0,
+				'not_null' => false
+			),
+			'lender_id' => array(
+				'parent_table' => 'client',
+				'parent_pk_field' => 'id',
+				'parent_caption' => '`client`.`company_name`',
+				'parent_from' => '`client` LEFT JOIN `psn_title` as psn_title1 ON `psn_title1`.`id`=`client`.`title` LEFT JOIN `address` as address1 ON `address1`.`id`=`client`.`address_id` LEFT JOIN `psn_type` as psn_type1 ON `psn_type1`.`id`=`client`.`type1` LEFT JOIN `psn_type` as psn_type2 ON `psn_type2`.`id`=`client`.`type2` LEFT JOIN `psn_type` as psn_type3 ON `psn_type3`.`id`=`client`.`type3` LEFT JOIN `member_group` as member_group1 ON `member_group1`.`id`=`client`.`membergroupid` ',
+				'filterers' => array(),
+				'custom_query' => '',
+				'inherit_permissions' => false,
+				'list_type' => 0,
+				'not_null' => false
+			)
+		),
+		'client' => array(   
 			'title' => array(
 				'parent_table' => 'psn_title',
 				'parent_pk_field' => 'id',
@@ -77,7 +127,7 @@
 				'filterers' => array(),
 				'custom_query' => '',
 				'inherit_permissions' => false,
-				'list_type' => 2,
+				'list_type' => 0,
 				'not_null' => false
 			),
 			'address_id' => array(
@@ -127,7 +177,7 @@
 			'membergroupid' => array(
 				'parent_table' => 'member_group',
 				'parent_pk_field' => 'id',
-				'parent_caption' => 'IF(CHAR_LENGTH(`member_group`.`id`) || CHAR_LENGTH(`member_group`.`name`), CONCAT_WS(\'\', `member_group`.`id`, `member_group`.`name`), \'\')',
+				'parent_caption' => 'IF(CHAR_LENGTH(`member_group`.`id`), CONCAT_WS(\'\', `member_group`.`id`, \' - \'), \'\')',
 				'parent_from' => '`member_group` ',
 				'filterers' => array(),
 				'custom_query' => '',
@@ -160,8 +210,6 @@
 				'not_null' => false
 			)
 		),
-		'transaction' => array(  
-		),
 		'acc_type' => array(  
 		),
 		'trans_type' => array(   
@@ -179,61 +227,13 @@
 		),
 		'psn_title' => array(  
 		),
-		'loan' => array(   
-			'loan_type' => array(
-				'parent_table' => 'loan_type',
-				'parent_pk_field' => 'id',
-				'parent_caption' => '`loan_type`.`type`',
-				'parent_from' => '`loan_type` ',
-				'filterers' => array(),
-				'custom_query' => '',
-				'inherit_permissions' => false,
-				'list_type' => 0,
-				'not_null' => false
-			),
-			'property_id' => array(
-				'parent_table' => 'address',
-				'parent_pk_field' => 'id',
-				'parent_caption' => 'IF(CHAR_LENGTH(`address`.`postcode1`) || CHAR_LENGTH(`address`.`address1`), CONCAT_WS(\'\', `address`.`postcode1`, \' - \', `address`.`address1`), \'\')',
-				'parent_from' => '`address` LEFT JOIN `county` as county1 ON `county1`.`id`=`address`.`county` LEFT JOIN `country` as country1 ON `country1`.`id`=`address`.`country` ',
-				'filterers' => array(),
-				'custom_query' => 'SELECT `property`.`id`, IF(    CHAR_LENGTH(`address1`.`postcode1`) || CHAR_LENGTH(`address1`.`address1`), CONCAT_WS(\'\',   `address1`.`postcode1`, \' - \', `address1`.`address1`), \'\') FROM `property` LEFT JOIN `partner` as partner1 ON `partner1`.`id`=`property`.`partner_id` LEFT JOIN `address` as address1 ON `address1`.`id`=`property`.`address_id` LEFT JOIN `partner` as partner2 ON `partner2`.`id`=`property`.`referer` ORDER BY 2',
-				'inherit_permissions' => false,
-				'list_type' => 0,
-				'not_null' => false
-			),
-			'broker_id' => array(
-				'parent_table' => 'partner',
-				'parent_pk_field' => 'id',
-				'parent_caption' => '`partner`.`company_name`',
-				'parent_from' => '`partner` LEFT JOIN `psn_title` as psn_title1 ON `psn_title1`.`id`=`partner`.`title` LEFT JOIN `address` as address1 ON `address1`.`id`=`partner`.`address_id` LEFT JOIN `psn_type` as psn_type1 ON `psn_type1`.`id`=`partner`.`type1` LEFT JOIN `psn_type` as psn_type2 ON `psn_type2`.`id`=`partner`.`type2` LEFT JOIN `psn_type` as psn_type3 ON `psn_type3`.`id`=`partner`.`type3` LEFT JOIN `member_group` as member_group1 ON `member_group1`.`id`=`partner`.`membergroupid` ',
-				'filterers' => array(),
-				'custom_query' => '',
-				'inherit_permissions' => false,
-				'list_type' => 0,
-				'not_null' => false
-			),
-			'lender_id' => array(
-				'parent_table' => 'partner',
-				'parent_pk_field' => 'id',
-				'parent_caption' => '`partner`.`company_name`',
-				'parent_from' => '`partner` LEFT JOIN `psn_title` as psn_title1 ON `psn_title1`.`id`=`partner`.`title` LEFT JOIN `address` as address1 ON `address1`.`id`=`partner`.`address_id` LEFT JOIN `psn_type` as psn_type1 ON `psn_type1`.`id`=`partner`.`type1` LEFT JOIN `psn_type` as psn_type2 ON `psn_type2`.`id`=`partner`.`type2` LEFT JOIN `psn_type` as psn_type3 ON `psn_type3`.`id`=`partner`.`type3` LEFT JOIN `member_group` as member_group1 ON `member_group1`.`id`=`partner`.`membergroupid` ',
-				'filterers' => array(),
-				'custom_query' => '',
-				'inherit_permissions' => false,
-				'list_type' => 0,
-				'not_null' => false
-			)
-		),
 		'loan_type' => array(  
+		),
+		'psn_type' => array(  
 		),
 		'county' => array(  
 		),
 		'country' => array(  
-		),
-		'psn_type' => array(  
-		),
-		'leads' => array(  
 		),
 		'member_group' => array(  
 		)

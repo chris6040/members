@@ -13,7 +13,6 @@
 			<div class="clearfix"></div>
 		</div>
 	</div>
-	<hr>
 
 	<div class="row">
 		<!-- form inputs -->
@@ -21,81 +20,73 @@
 			<fieldset class="form-horizontal">
 
 				<div class="form-group">
-					<label for="id" class="control-label col-lg-3">Reference</label>
+					<label for="id" class="control-label col-lg-3">ID</label>
 					<div class="col-lg-9">
 						<div class="form-control-static" id="id"><%%VALUE(id)%%></div>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="date_entered" class="control-label col-lg-3">Date entered</label>
+					<label for="name" class="control-label col-lg-3">Name <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#name-description"></i></label>
 					<div class="col-lg-9">
-						<div class="form-control-static" id="date_entered"><%%VALUE(date_entered)%%></div>
+						<span class="help-block collapse" id="name-description"><div class="alert alert-info">The name of the client</div></span>
+
+						<input maxlength="40" type="text" class="form-control" name="name" id="name" value="<%%VALUE(name)%%>">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="referer" class="control-label col-lg-3">Referral source</label>
+					<label for="email" class="control-label col-lg-3">Email <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#email-description"></i></label>
 					<div class="col-lg-9">
-						<div class="form-control-static" id="referer"><%%VALUE(referer)%%></div>
+						<span class="help-block collapse" id="email-description"><div class="alert alert-info">Best Email address to use</div></span>
+
+						
+						<div>
+							<a id="email-link" href="mailto:<%%VALUE(email)%%>" target="_blank"><i class="glyphicon glyphicon-envelope text-info" title="<%%VALUE(email)%%>"></i></a>
+							<label for="email"><button type="button" id="email-edit-link" class="btn btn-default hspacer-lg vspacer-sm" data-toggle="collapse" data-target="#email" title="<%%TRANSLATION(Edit)%%>"><i class="glyphicon glyphicon-pencil"></i></button></label>
+						</div>
+						<script>jQuery(function(){ var e_email = '<%%VALUE(email)%%>'; if(e_email == '' || e_email == '&nbsp;' || e_email == 'blank.gif') jQuery('#email-link').hide(); });</script><input maxlength="40" type="text" class="form-control collapse" name="email" id="email" value="<%%VALUE(email)%%>">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="lead_name" class="control-label col-lg-3">Client Name</label>
+					<label for="phone" class="control-label col-lg-3">Phone <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#phone-description"></i></label>
 					<div class="col-lg-9">
-						<input maxlength="40" type="text" class="form-control" name="lead_name" id="lead_name" value="<%%VALUE(lead_name)%%>">
+						<span class="help-block collapse" id="phone-description"><div class="alert alert-info">Best Phone Number to use</div></span>
+
+						<input maxlength="20" type="text" class="form-control" name="phone" id="phone" value="<%%VALUE(phone)%%>">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="contact" class="control-label col-lg-3">Contact details</label>
+					<label for="prop_area" class="control-label col-lg-3">Property area <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#prop_area-description"></i></label>
 					<div class="col-lg-9">
-						<input maxlength="40" type="text" class="form-control" name="contact" id="contact" value="<%%VALUE(contact)%%>">
+						<span class="help-block collapse" id="prop_area-description"><div class="alert alert-info">Type the first part of the postcode or town name here.</div></span>
+
+						<input maxlength="10" type="text" class="form-control" name="prop_area" id="prop_area" value="<%%VALUE(prop_area)%%>">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="prop_area" class="control-label col-lg-3">First part postcode <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#prop_area-description"></i></label>
+					<label for="tenanted" class="control-label col-lg-3">Tenanted <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#tenanted-description"></i></label>
 					<div class="col-lg-9">
-						<span class="help-block collapse" id="prop_area-description"><div class="alert alert-info">First part of postcode</div></span>
+						<span class="help-block collapse" id="tenanted-description"><div class="alert alert-info">Is the property currently tenanted?</div></span>
 
-						<input maxlength="4" type="text" class="form-control" name="prop_area" id="prop_area" value="<%%VALUE(prop_area)%%>">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="estimated_value" class="control-label col-lg-3">Estimated value</label>
-					<div class="col-lg-9">
-						<input maxlength="" type="text" class="form-control" name="estimated_value" id="estimated_value" value="<%%VALUE(estimated_value)%%>">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="tenanted" class="control-label col-lg-3">Tenanted</label>
-					<div class="col-lg-9">
 						<%%COMBO(tenanted)%%>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="rental_income" class="control-label col-lg-3">Monthly Rental income</label>
-					<div class="col-lg-9">
-						<input maxlength="20" type="text" class="form-control" name="rental_income" id="rental_income" value="<%%VALUE(rental_income)%%>">
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label for="notes" class="control-label col-lg-3">Notes</label>
 					<div class="col-lg-9">
-						<%%HTMLAREA(notes)%%>
+						<textarea class="form-control" name="notes" id="notes" rows="5"><%%VALUE(notes)%%></textarea>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="est_commission" class="control-label col-lg-3">Estimated Commission</label>
+					<label for="date_entered" class="control-label col-lg-3">Date entered</label>
 					<div class="col-lg-9">
-						<div class="form-control-static" id="est_commission"><%%VALUE(est_commission)%%></div>
+						<div class="form-control-static" id="date_entered"><%%COMBOTEXT(date_entered)%%></div>
 					</div>
 				</div>
 
@@ -103,6 +94,60 @@
 					<label for="date_contacted" class="control-label col-lg-3">Date contacted</label>
 					<div class="col-lg-9">
 						<%%COMBO(date_contacted)%%>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="est_value" class="control-label col-lg-3">Est. market value <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#est_value-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="est_value-description"><div class="alert alert-info">What is the stimated current market value of the property?</div></span>
+
+						<input maxlength="10" type="text" class="form-control" name="est_value" id="est_value" value="<%%VALUE(est_value)%%>">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="os_capital" class="control-label col-lg-3">O/S capital <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#os_capital-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="os_capital-description"><div class="alert alert-info">How much is left on the mortgage to pay?</div></span>
+
+						<input maxlength="15" type="text" class="form-control" name="os_capital" id="os_capital" value="<%%VALUE(os_capital)%%>">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="rental_income" class="control-label col-lg-3">Rental income <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#rental_income-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="rental_income-description"><div class="alert alert-info">Monthly rental income</div></span>
+
+						<input maxlength="9" type="text" class="form-control" name="rental_income" id="rental_income" value="<%%VALUE(rental_income)%%>">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="finance_costs" class="control-label col-lg-3">Finance costs <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#finance_costs-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="finance_costs-description"><div class="alert alert-info">Monthly mortgage (or other finance) costs</div></span>
+
+						<input maxlength="10" type="text" class="form-control" name="finance_costs" id="finance_costs" value="<%%VALUE(finance_costs)%%>">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="other_costs" class="control-label col-lg-3">Other costs <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#other_costs-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="other_costs-description"><div class="alert alert-info">Other monthly costs (eg. Managing Agent Fees, Insurances etc.)</div></span>
+
+						<input maxlength="9" type="text" class="form-control" name="other_costs" id="other_costs" value="<%%VALUE(other_costs)%%>">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="income_tax_band" class="control-label col-lg-3">Income tax band <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#income_tax_band-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="income_tax_band-description"><div class="alert alert-info">What income tax band is the client currently in?</div></span>
+
+						<%%COMBO(income_tax_band)%%>
 					</div>
 				</div>
 
@@ -117,6 +162,7 @@
 				</div><p></p>
 				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
 					<%%DESELECT_BUTTON%%>
+					<%%DVPRINT_BUTTON%%>
 					<%%DELETE_BUTTON%%>
 				</div><p></p>
 				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
@@ -128,7 +174,6 @@
 
 
 </div><!-- /div class="panel-body" -->
-	<script src="nicEdit.js"></script>
 	<script>
 		$j(function() {
 			var add_new_mode = (!$j('input[name=SelectedID]').val());
@@ -144,13 +189,6 @@
 				}, 2000);
 			}
 
-			bkLib.onDomLoaded(function(){
-				if($j('textarea#notes').length) new nicEditor({ fullPanel : true }).panelInstance('notes');
-
-				$j('.nicEdit-panelContain').parent().width('90%');
-				$j('.nicEdit-panelContain').parent().next().width('88%');
-				$j('.nicEdit-main').width('99%');
-			});
 			/* enable DV action buttons to float on scrolling down the form */
 			enable_dvab_floating();
 

@@ -1,0 +1,23 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the  and  formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the client_init() hook (in hooks/client.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="client-company_name-<%%VALUE(id)%%>" class="client-company_name"><%%VALUE(company_name)%%></td>
+		<td id="client-title-<%%VALUE(id)%%>" class="client-title text-right"><%%VALUE(title)%%></td>
+		<td id="client-fname-<%%VALUE(id)%%>" class="client-fname"><%%VALUE(fname)%%></td>
+		<td id="client-lname-<%%VALUE(id)%%>" class="client-lname"><%%VALUE(lname)%%></td>
+		<td id="client-mailname-<%%VALUE(id)%%>" class="client-mailname"><%%VALUE(mailname)%%></td>
+		<td id="client-email-<%%VALUE(id)%%>" class="client-email"><a href="mailto:<%%VALUE(email)%%>" title="<%%VALUE(email)%%>" class="btn btn-default"><i class="glyphicon glyphicon-envelope text-info"></i></a></td>
+		<td id="client-phone-<%%VALUE(id)%%>" class="client-phone"><%%VALUE(phone)%%></td>
+		<td id="client-mobile-<%%VALUE(id)%%>" class="client-mobile"><%%VALUE(mobile)%%></td>
+		<td id="client-address_id-<%%VALUE(id)%%>" class="client-address_id text-right"><%%VALUE(address_id)%%></td>
+		<td id="client-username-<%%VALUE(id)%%>" class="client-username"><%%VALUE(username)%%></td>
+		<td id="client-password-<%%VALUE(id)%%>" class="client-password"><%%VALUE(password)%%></td>
+		<td id="client-type1-<%%VALUE(id)%%>" class="client-type1 text-right"><%%VALUE(type1)%%></td>
+		<td id="client-type2-<%%VALUE(id)%%>" class="client-type2 text-right"><%%VALUE(type2)%%></td>
+		<td id="client-type3-<%%VALUE(id)%%>" class="client-type3 text-right"><%%VALUE(type3)%%></td>
+		<td id="client-commission_rate-<%%VALUE(id)%%>" class="client-commission_rate text-right"><%%VALUE(commission_rate)%%></td>
+		<td id="client-membergroupid-<%%VALUE(id)%%>" class="client-membergroupid text-right"><%%VALUE(membergroupid)%%></td>

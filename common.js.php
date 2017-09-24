@@ -237,19 +237,27 @@ function fix_table_responsive_width(){
 	}
 }
 
+function leads_validateData(){
+	$j('.has-error').removeClass('has-error');
+	return true;
+}
 function property_validateData(){
 	$j('.has-error').removeClass('has-error');
 	return true;
 }
-function partner_validateData(){
+function transaction_validateData(){
+	$j('.has-error').removeClass('has-error');
+	return true;
+}
+function loan_validateData(){
+	$j('.has-error').removeClass('has-error');
+	return true;
+}
+function client_validateData(){
 	$j('.has-error').removeClass('has-error');
 	return true;
 }
 function address_validateData(){
-	$j('.has-error').removeClass('has-error');
-	return true;
-}
-function transaction_validateData(){
 	$j('.has-error').removeClass('has-error');
 	return true;
 }
@@ -265,11 +273,11 @@ function psn_title_validateData(){
 	$j('.has-error').removeClass('has-error');
 	return true;
 }
-function loan_validateData(){
+function loan_type_validateData(){
 	$j('.has-error').removeClass('has-error');
 	return true;
 }
-function loan_type_validateData(){
+function psn_type_validateData(){
 	$j('.has-error').removeClass('has-error');
 	return true;
 }
@@ -278,14 +286,6 @@ function county_validateData(){
 	return true;
 }
 function country_validateData(){
-	$j('.has-error').removeClass('has-error');
-	return true;
-}
-function psn_type_validateData(){
-	$j('.has-error').removeClass('has-error');
-	return true;
-}
-function leads_validateData(){
 	$j('.has-error').removeClass('has-error');
 	return true;
 }

@@ -47,19 +47,19 @@
 	function getTableList($skip_authentication = false){
 		$arrAccessTables = array();
 		$arrTables = array(   
+			'leads' => array('Leads', '', 'table.gif', 'None'),
 			'property' => array('Property', '', 'table.gif', 'None'),
-			'partner' => array('Partner', '', 'table.gif', 'None'),
-			'address' => array('Address', '', 'table.gif', 'None'),
 			'transaction' => array('Transaction', 'Transactions that happen with a particular property', 'table.gif', 'None'),
+			'loan' => array('Loan', '', 'table.gif', 'None'),
+			'client' => array('Client', '', 'table.gif', 'None'),
+			'address' => array('Address', '', 'table.gif', 'None'),
 			'acc_type' => array('acc_type', 'Account type', 'table.gif', 'None'),
 			'trans_type' => array('Trans type', 'Categories of transaction', 'table.gif', 'None'),
 			'psn_title' => array('Title', 'Titles given to people', 'table.gif', 'None'),
-			'loan' => array('Loan', '', 'table.gif', 'None'),
 			'loan_type' => array('Loan type', '', 'table.gif', 'None'),
+			'psn_type' => array('Psn type', '', 'table.gif', 'None'),
 			'county' => array('County', '', 'table.gif', 'None'),
 			'country' => array('Country', '', 'table.gif', 'None'),
-			'psn_type' => array('Psn type', '', 'table.gif', 'None'),
-			'leads' => array('Leads', 'Enter the details of a new lead here or amend an existing lead', 'table.gif', 'None'),
 			'member_group' => array('Member group', '', 'table.gif', 'None')
 		);
 		if($skip_authentication || getLoggedAdmin()) return $arrTables;
@@ -147,19 +147,19 @@
 
 	function get_sql_fields($table_name){
 		$sql_fields = array(   
-			'property' => "`property`.`id` as 'id', IF(    CHAR_LENGTH(`partner1`.`company_name`) || CHAR_LENGTH(`partner1`.`mailname`), CONCAT_WS('',   `partner1`.`company_name`, ' - ', `partner1`.`mailname`), '') as 'partner_id', IF(    CHAR_LENGTH(`partner2`.`company_name`) || CHAR_LENGTH(`partner2`.`mailname`), CONCAT_WS('',   `partner2`.`company_name`, ' - ', `partner2`.`mailname`), '') as 'referer', IF(    CHAR_LENGTH(`address1`.`postcode1`) || CHAR_LENGTH(`address1`.`address1`), CONCAT_WS('',   `address1`.`postcode1`, ' - ', `address1`.`address1`), '') as 'address_id', if(`property`.`contact_date`,date_format(`property`.`contact_date`,'%d/%m/%Y'),'') as 'contact_date', if(`property`.`purchase_date`,date_format(`property`.`purchase_date`,'%d/%m/%Y'),'') as 'purchase_date', `property`.`detachment` as 'detachment', `property`.`type` as 'type', `property`.`tenancy_type` as 'tenancy_type', `property`.`no_beds` as 'no_beds', `property`.`notes` as 'notes'",
-			'partner' => "`partner`.`id` as 'id', `partner`.`company_name` as 'company_name', IF(    CHAR_LENGTH(`psn_title1`.`title`), CONCAT_WS('',   `psn_title1`.`title`), '') as 'title', `partner`.`fname` as 'fname', `partner`.`lname` as 'lname', `partner`.`mailname` as 'mailname', `partner`.`email` as 'email', `partner`.`phone` as 'phone', `partner`.`mobile` as 'mobile', IF(    CHAR_LENGTH(`address1`.`postcode1`) || CHAR_LENGTH(`address1`.`address1`), CONCAT_WS('',   `address1`.`postcode1`, ' - ', `address1`.`address1`), '') as 'address_id', `partner`.`username` as 'username', `partner`.`password` as 'password', IF(    CHAR_LENGTH(`psn_type1`.`type`), CONCAT_WS('',   `psn_type1`.`type`), '') as 'type1', IF(    CHAR_LENGTH(`psn_type2`.`type`), CONCAT_WS('',   `psn_type2`.`type`), '') as 'type2', IF(    CHAR_LENGTH(`psn_type3`.`type`), CONCAT_WS('',   `psn_type3`.`type`), '') as 'type3', `partner`.`commission_rate` as 'commission_rate', IF(    CHAR_LENGTH(`member_group1`.`id`) || CHAR_LENGTH(`member_group1`.`name`), CONCAT_WS('',   `member_group1`.`id`, `member_group1`.`name`), '') as 'membergroupid'",
-			'address' => "`address`.`id` as 'id', `address`.`address1` as 'address1', `address`.`address2` as 'address2', `address`.`address3` as 'address3', `address`.`town` as 'town', IF(    CHAR_LENGTH(`county1`.`county`), CONCAT_WS('',   `county1`.`county`), '') as 'county', IF(    CHAR_LENGTH(`country1`.`country`), CONCAT_WS('',   `country1`.`country`), '') as 'country', `address`.`postcode1` as 'postcode1', `address`.`postcode2` as 'postcode2'",
+			'leads' => "`leads`.`id` as 'id', `leads`.`name` as 'name', `leads`.`email` as 'email', `leads`.`phone` as 'phone', `leads`.`prop_area` as 'prop_area', `leads`.`tenanted` as 'tenanted', `leads`.`notes` as 'notes', if(`leads`.`date_entered`,date_format(`leads`.`date_entered`,'%d/%m/%Y'),'') as 'date_entered', if(`leads`.`date_contacted`,date_format(`leads`.`date_contacted`,'%d/%m/%Y'),'') as 'date_contacted', `leads`.`est_value` as 'est_value', `leads`.`os_capital` as 'os_capital', `leads`.`rental_income` as 'rental_income', `leads`.`finance_costs` as 'finance_costs', `leads`.`other_costs` as 'other_costs', `leads`.`income_tax_band` as 'income_tax_band', `leads`.`referer` as 'referer', `leads`.`est_commission` as 'est_commission'",
+			'property' => "`property`.`id` as 'id', IF(    CHAR_LENGTH(`client1`.`company_name`) || CHAR_LENGTH(`client1`.`mailname`), CONCAT_WS('',   `client1`.`company_name`, ' - ', `client1`.`mailname`), '') as 'client_id', IF(    CHAR_LENGTH(`client2`.`company_name`) || CHAR_LENGTH(`client2`.`mailname`), CONCAT_WS('',   `client2`.`company_name`, ' - ', `client2`.`mailname`), '') as 'referer', IF(    CHAR_LENGTH(`address1`.`postcode1`) || CHAR_LENGTH(`address1`.`address1`), CONCAT_WS('',   `address1`.`postcode1`, ' - ', `address1`.`address1`), '') as 'address_id', if(`property`.`contact_date`,date_format(`property`.`contact_date`,'%d/%m/%Y'),'') as 'contact_date', if(`property`.`purchase_date`,date_format(`property`.`purchase_date`,'%d/%m/%Y'),'') as 'purchase_date', `property`.`detachment` as 'detachment', `property`.`type` as 'type', `property`.`tenancy_type` as 'tenancy_type', `property`.`no_beds` as 'no_beds', `property`.`notes` as 'notes'",
 			'transaction' => "`transaction`.`id` as 'id', `transaction`.`date` as 'date', `transaction`.`property_id` as 'property_id', `transaction`.`type` as 'type', CONCAT('&pound;', FORMAT(`transaction`.`amount`, 2)) as 'amount'",
+			'loan' => "`loan`.`id` as 'id', IF(    CHAR_LENGTH(`loan_type1`.`type`), CONCAT_WS('',   `loan_type1`.`type`), '') as 'loan_type', IF(    CHAR_LENGTH(`address1`.`postcode1`) || CHAR_LENGTH(`address1`.`address1`), CONCAT_WS('',   `address1`.`postcode1`, ' - ', `address1`.`address1`), '') as 'property_id', IF(    CHAR_LENGTH(`client1`.`company_name`), CONCAT_WS('',   `client1`.`company_name`), '') as 'broker_id', if(`loan`.`date`,date_format(`loan`.`date`,'%d/%m/%Y'),'') as 'date', `loan`.`amount` as 'amount', `loan`.`costs` as 'costs', `loan`.`apr` as 'apr', `loan`.`outstanding` as 'outstanding', IF(    CHAR_LENGTH(`client2`.`company_name`), CONCAT_WS('',   `client2`.`company_name`), '') as 'lender_id', `loan`.`lender_ref` as 'lender_ref'",
+			'client' => "`client`.`id` as 'id', `client`.`company_name` as 'company_name', IF(    CHAR_LENGTH(`psn_title1`.`title`), CONCAT_WS('',   `psn_title1`.`title`), '') as 'title', `client`.`fname` as 'fname', `client`.`lname` as 'lname', `client`.`mailname` as 'mailname', `client`.`email` as 'email', `client`.`phone` as 'phone', `client`.`mobile` as 'mobile', IF(    CHAR_LENGTH(`address1`.`postcode1`) || CHAR_LENGTH(`address1`.`address1`), CONCAT_WS('',   `address1`.`postcode1`, ' - ', `address1`.`address1`), '') as 'address_id', `client`.`username` as 'username', `client`.`password` as 'password', IF(    CHAR_LENGTH(`psn_type1`.`type`), CONCAT_WS('',   `psn_type1`.`type`), '') as 'type1', IF(    CHAR_LENGTH(`psn_type2`.`type`), CONCAT_WS('',   `psn_type2`.`type`), '') as 'type2', IF(    CHAR_LENGTH(`psn_type3`.`type`), CONCAT_WS('',   `psn_type3`.`type`), '') as 'type3', `client`.`commission_rate` as 'commission_rate', IF(    CHAR_LENGTH(`member_group1`.`id`), CONCAT_WS('',   `member_group1`.`id`, ' - '), '') as 'membergroupid'",
+			'address' => "`address`.`id` as 'id', `address`.`address1` as 'address1', `address`.`address2` as 'address2', `address`.`address3` as 'address3', `address`.`town` as 'town', IF(    CHAR_LENGTH(`county1`.`county`), CONCAT_WS('',   `county1`.`county`), '') as 'county', IF(    CHAR_LENGTH(`country1`.`country`), CONCAT_WS('',   `country1`.`country`), '') as 'country', `address`.`postcode1` as 'postcode1', `address`.`postcode2` as 'postcode2'",
 			'acc_type' => "`acc_type`.`id` as 'id', `acc_type`.`type` as 'type', `acc_type`.`description` as 'description'",
 			'trans_type' => "`trans_type`.`id` as 'id', `trans_type`.`type` as 'type', IF(    CHAR_LENGTH(`acc_type1`.`type`), CONCAT_WS('',   `acc_type1`.`type`), '') as 'acc_type', `trans_type`.`description` as 'description'",
 			'psn_title' => "`psn_title`.`id` as 'id', `psn_title`.`title` as 'title'",
-			'loan' => "`loan`.`id` as 'id', IF(    CHAR_LENGTH(`loan_type1`.`type`), CONCAT_WS('',   `loan_type1`.`type`), '') as 'loan_type', IF(    CHAR_LENGTH(`address1`.`postcode1`) || CHAR_LENGTH(`address1`.`address1`), CONCAT_WS('',   `address1`.`postcode1`, ' - ', `address1`.`address1`), '') as 'property_id', IF(    CHAR_LENGTH(`partner1`.`company_name`), CONCAT_WS('',   `partner1`.`company_name`), '') as 'broker_id', if(`loan`.`date`,date_format(`loan`.`date`,'%d/%m/%Y'),'') as 'date', `loan`.`amount` as 'amount', `loan`.`costs` as 'costs', `loan`.`apr` as 'apr', `loan`.`outstanding` as 'outstanding', IF(    CHAR_LENGTH(`partner2`.`company_name`), CONCAT_WS('',   `partner2`.`company_name`), '') as 'lender_id', `loan`.`lender_ref` as 'lender_ref'",
 			'loan_type' => "`loan_type`.`id` as 'id', `loan_type`.`type` as 'type', `loan_type`.`description` as 'description'",
+			'psn_type' => "`psn_type`.`id` as 'id', `psn_type`.`type` as 'type', `psn_type`.`description` as 'description'",
 			'county' => "`county`.`id` as 'id', `county`.`county` as 'county'",
 			'country' => "`country`.`id` as 'id', `country`.`country` as 'country'",
-			'psn_type' => "`psn_type`.`id` as 'id', `psn_type`.`type` as 'type', `psn_type`.`description` as 'description'",
-			'leads' => "`leads`.`id` as 'id', `leads`.`date_entered` as 'date_entered', `leads`.`referer` as 'referer', `leads`.`lead_name` as 'lead_name', `leads`.`contact` as 'contact', `leads`.`prop_area` as 'prop_area', `leads`.`estimated_value` as 'estimated_value', `leads`.`tenanted` as 'tenanted', `leads`.`rental_income` as 'rental_income', `leads`.`notes` as 'notes', `leads`.`est_commission` as 'est_commission', if(`leads`.`date_contacted`,date_format(`leads`.`date_contacted`,'%d/%m/%Y'),'') as 'date_contacted'",
 			'member_group' => "`member_group`.`id` as 'id', `member_group`.`name` as 'name', `member_group`.`description` as 'description'"
 		);
 
@@ -174,36 +174,36 @@
 
 	function get_sql_from($table_name, $skip_permissions = false){
 		$sql_from = array(   
-			'property' => "`property` LEFT JOIN `partner` as partner1 ON `partner1`.`id`=`property`.`partner_id` LEFT JOIN `partner` as partner2 ON `partner2`.`id`=`property`.`referer` LEFT JOIN `address` as address1 ON `address1`.`id`=`property`.`address_id` ",
-			'partner' => "`partner` LEFT JOIN `psn_title` as psn_title1 ON `psn_title1`.`id`=`partner`.`title` LEFT JOIN `address` as address1 ON `address1`.`id`=`partner`.`address_id` LEFT JOIN `psn_type` as psn_type1 ON `psn_type1`.`id`=`partner`.`type1` LEFT JOIN `psn_type` as psn_type2 ON `psn_type2`.`id`=`partner`.`type2` LEFT JOIN `psn_type` as psn_type3 ON `psn_type3`.`id`=`partner`.`type3` LEFT JOIN `member_group` as member_group1 ON `member_group1`.`id`=`partner`.`membergroupid` ",
-			'address' => "`address` LEFT JOIN `county` as county1 ON `county1`.`id`=`address`.`county` LEFT JOIN `country` as country1 ON `country1`.`id`=`address`.`country` ",
+			'leads' => "`leads` ",
+			'property' => "`property` LEFT JOIN `client` as client1 ON `client1`.`id`=`property`.`client_id` LEFT JOIN `client` as client2 ON `client2`.`id`=`property`.`referer` LEFT JOIN `address` as address1 ON `address1`.`id`=`property`.`address_id` ",
 			'transaction' => "`transaction` ",
+			'loan' => "`loan` LEFT JOIN `loan_type` as loan_type1 ON `loan_type1`.`id`=`loan`.`loan_type` LEFT JOIN `address` as address1 ON `address1`.`id`=`loan`.`property_id` LEFT JOIN `client` as client1 ON `client1`.`id`=`loan`.`broker_id` LEFT JOIN `client` as client2 ON `client2`.`id`=`loan`.`lender_id` ",
+			'client' => "`client` LEFT JOIN `psn_title` as psn_title1 ON `psn_title1`.`id`=`client`.`title` LEFT JOIN `address` as address1 ON `address1`.`id`=`client`.`address_id` LEFT JOIN `psn_type` as psn_type1 ON `psn_type1`.`id`=`client`.`type1` LEFT JOIN `psn_type` as psn_type2 ON `psn_type2`.`id`=`client`.`type2` LEFT JOIN `psn_type` as psn_type3 ON `psn_type3`.`id`=`client`.`type3` LEFT JOIN `member_group` as member_group1 ON `member_group1`.`id`=`client`.`membergroupid` ",
+			'address' => "`address` LEFT JOIN `county` as county1 ON `county1`.`id`=`address`.`county` LEFT JOIN `country` as country1 ON `country1`.`id`=`address`.`country` ",
 			'acc_type' => "`acc_type` ",
 			'trans_type' => "`trans_type` LEFT JOIN `acc_type` as acc_type1 ON `acc_type1`.`id`=`trans_type`.`acc_type` ",
 			'psn_title' => "`psn_title` ",
-			'loan' => "`loan` LEFT JOIN `loan_type` as loan_type1 ON `loan_type1`.`id`=`loan`.`loan_type` LEFT JOIN `address` as address1 ON `address1`.`id`=`loan`.`property_id` LEFT JOIN `partner` as partner1 ON `partner1`.`id`=`loan`.`broker_id` LEFT JOIN `partner` as partner2 ON `partner2`.`id`=`loan`.`lender_id` ",
 			'loan_type' => "`loan_type` ",
+			'psn_type' => "`psn_type` ",
 			'county' => "`county` ",
 			'country' => "`country` ",
-			'psn_type' => "`psn_type` ",
-			'leads' => "`leads` ",
 			'member_group' => "`member_group` "
 		);
 
 		$pkey = array(   
+			'leads' => 'id',
 			'property' => 'id',
-			'partner' => 'id',
-			'address' => 'id',
 			'transaction' => 'id',
+			'loan' => 'id',
+			'client' => 'id',
+			'address' => 'id',
 			'acc_type' => 'id',
 			'trans_type' => 'id',
 			'psn_title' => 'id',
-			'loan' => 'id',
 			'loan_type' => 'id',
+			'psn_type' => 'id',
 			'county' => 'id',
 			'country' => 'id',
-			'psn_type' => 'id',
-			'leads' => 'id',
 			'member_group' => 'id'
 		);
 
@@ -252,9 +252,28 @@
 	function get_defaults($table){
 		/* array of tables and their fields, with default values (or empty), excluding automatic values */
 		$defaults = array(
+			'leads' => array(
+				'id' => '',
+				'name' => '',
+				'email' => '',
+				'phone' => '',
+				'prop_area' => '',
+				'tenanted' => '',
+				'notes' => '',
+				'date_entered' => '',
+				'date_contacted' => '',
+				'est_value' => '0',
+				'os_capital' => '',
+				'rental_income' => '',
+				'finance_costs' => '',
+				'other_costs' => '',
+				'income_tax_band' => '',
+				'referer' => '',
+				'est_commission' => ''
+			),
 			'property' => array(
 				'id' => '',
-				'partner_id' => '',
+				'client_id' => '',
 				'referer' => '',
 				'address_id' => '',
 				'contact_date' => '',
@@ -265,7 +284,27 @@
 				'no_beds' => '',
 				'notes' => ''
 			),
-			'partner' => array(
+			'transaction' => array(
+				'id' => '',
+				'date' => '1',
+				'property_id' => '',
+				'type' => '',
+				'amount' => ''
+			),
+			'loan' => array(
+				'id' => '',
+				'loan_type' => '',
+				'property_id' => '',
+				'broker_id' => '',
+				'date' => '1',
+				'amount' => '',
+				'costs' => '',
+				'apr' => '',
+				'outstanding' => '',
+				'lender_id' => '',
+				'lender_ref' => ''
+			),
+			'client' => array(
 				'id' => '',
 				'company_name' => '',
 				'title' => '',
@@ -295,13 +334,6 @@
 				'postcode1' => '',
 				'postcode2' => ''
 			),
-			'transaction' => array(
-				'id' => '',
-				'date' => '1',
-				'property_id' => '',
-				'type' => '',
-				'amount' => ''
-			),
 			'acc_type' => array(
 				'id' => '',
 				'type' => '',
@@ -317,20 +349,12 @@
 				'id' => '',
 				'title' => ''
 			),
-			'loan' => array(
-				'id' => '',
-				'loan_type' => '',
-				'property_id' => '',
-				'broker_id' => '',
-				'date' => '1',
-				'amount' => '',
-				'costs' => '',
-				'apr' => '',
-				'outstanding' => '',
-				'lender_id' => '',
-				'lender_ref' => ''
-			),
 			'loan_type' => array(
+				'id' => '',
+				'type' => '',
+				'description' => ''
+			),
+			'psn_type' => array(
 				'id' => '',
 				'type' => '',
 				'description' => ''
@@ -342,25 +366,6 @@
 			'country' => array(
 				'id' => '',
 				'country' => ''
-			),
-			'psn_type' => array(
-				'id' => '',
-				'type' => '',
-				'description' => ''
-			),
-			'leads' => array(
-				'id' => '',
-				'date_entered' => '',
-				'referer' => '',
-				'lead_name' => '',
-				'contact' => '',
-				'prop_area' => '',
-				'estimated_value' => '',
-				'tenanted' => '',
-				'rental_income' => '',
-				'notes' => '',
-				'est_commission' => '',
-				'date_contacted' => ''
 			),
 			'member_group' => array(
 				'id' => '',

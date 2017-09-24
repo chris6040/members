@@ -450,7 +450,7 @@ function loan_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Allow
 							});
 							$j('[name="broker_id"]').val(resp.results[0].id);
 							$j('[id=broker_id-container-readonly__RAND__]').html('<span id="broker_id-match-text">' + resp.results[0].text + '</span>');
-							if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=partner_view_parent]').hide(); }else{ $j('.btn[id=partner_view_parent]').show(); }
+							if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=client_view_parent]').hide(); }else{ $j('.btn[id=client_view_parent]').show(); }
 
 
 							if(typeof(broker_id_update_autofills__RAND__) == 'function') broker_id_update_autofills__RAND__();
@@ -473,7 +473,7 @@ function loan_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Allow
 				AppGini.current_broker_id__RAND__.value = e.added.id;
 				AppGini.current_broker_id__RAND__.text = e.added.text;
 				$j('[name="broker_id"]').val(e.added.id);
-				if(e.added.id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=partner_view_parent]').hide(); }else{ $j('.btn[id=partner_view_parent]').show(); }
+				if(e.added.id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=client_view_parent]').hide(); }else{ $j('.btn[id=client_view_parent]').show(); }
 
 
 				if(typeof(broker_id_update_autofills__RAND__) == 'function') broker_id_update_autofills__RAND__();
@@ -487,7 +487,7 @@ function loan_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Allow
 					success: function(resp){
 						$j('[name="broker_id"]').val(resp.results[0].id);
 						$j('[id=broker_id-container-readonly__RAND__]').html('<span id="broker_id-match-text">' + resp.results[0].text + '</span>');
-						if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=partner_view_parent]').hide(); }else{ $j('.btn[id=partner_view_parent]').show(); }
+						if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=client_view_parent]').hide(); }else{ $j('.btn[id=client_view_parent]').show(); }
 
 						if(typeof(broker_id_update_autofills__RAND__) == 'function') broker_id_update_autofills__RAND__();
 					}
@@ -502,7 +502,7 @@ function loan_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Allow
 				data: { id: AppGini.current_broker_id__RAND__.value, t: 'loan', f: 'broker_id' },
 				success: function(resp){
 					$j('[id=broker_id-container__RAND__], [id=broker_id-container-readonly__RAND__]').html('<span id="broker_id-match-text">' + resp.results[0].text + '</span>');
-					if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=partner_view_parent]').hide(); }else{ $j('.btn[id=partner_view_parent]').show(); }
+					if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=client_view_parent]').hide(); }else{ $j('.btn[id=client_view_parent]').show(); }
 
 					if(typeof(broker_id_update_autofills__RAND__) == 'function') broker_id_update_autofills__RAND__();
 				}
@@ -527,7 +527,7 @@ function loan_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Allow
 							});
 							$j('[name="lender_id"]').val(resp.results[0].id);
 							$j('[id=lender_id-container-readonly__RAND__]').html('<span id="lender_id-match-text">' + resp.results[0].text + '</span>');
-							if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=partner_view_parent]').hide(); }else{ $j('.btn[id=partner_view_parent]').show(); }
+							if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=client_view_parent]').hide(); }else{ $j('.btn[id=client_view_parent]').show(); }
 
 
 							if(typeof(lender_id_update_autofills__RAND__) == 'function') lender_id_update_autofills__RAND__();
@@ -550,7 +550,7 @@ function loan_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Allow
 				AppGini.current_lender_id__RAND__.value = e.added.id;
 				AppGini.current_lender_id__RAND__.text = e.added.text;
 				$j('[name="lender_id"]').val(e.added.id);
-				if(e.added.id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=partner_view_parent]').hide(); }else{ $j('.btn[id=partner_view_parent]').show(); }
+				if(e.added.id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=client_view_parent]').hide(); }else{ $j('.btn[id=client_view_parent]').show(); }
 
 
 				if(typeof(lender_id_update_autofills__RAND__) == 'function') lender_id_update_autofills__RAND__();
@@ -564,7 +564,7 @@ function loan_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Allow
 					success: function(resp){
 						$j('[name="lender_id"]').val(resp.results[0].id);
 						$j('[id=lender_id-container-readonly__RAND__]').html('<span id="lender_id-match-text">' + resp.results[0].text + '</span>');
-						if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=partner_view_parent]').hide(); }else{ $j('.btn[id=partner_view_parent]').show(); }
+						if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=client_view_parent]').hide(); }else{ $j('.btn[id=client_view_parent]').show(); }
 
 						if(typeof(lender_id_update_autofills__RAND__) == 'function') lender_id_update_autofills__RAND__();
 					}
@@ -579,7 +579,7 @@ function loan_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Allow
 				data: { id: AppGini.current_lender_id__RAND__.value, t: 'loan', f: 'lender_id' },
 				success: function(resp){
 					$j('[id=lender_id-container__RAND__], [id=lender_id-container-readonly__RAND__]').html('<span id="lender_id-match-text">' + resp.results[0].text + '</span>');
-					if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=partner_view_parent]').hide(); }else{ $j('.btn[id=partner_view_parent]').show(); }
+					if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=client_view_parent]').hide(); }else{ $j('.btn[id=client_view_parent]').show(); }
 
 					if(typeof(lender_id_update_autofills__RAND__) == 'function') lender_id_update_autofills__RAND__();
 				}
@@ -685,7 +685,7 @@ function loan_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $Allow
 	$templateCode=str_replace('<%%URLCOMBOTEXT(lender_id)%%>', urlencode($combo_lender_id->MatchText), $templateCode);
 
 	/* lookup fields array: 'lookup field name' => array('parent table name', 'lookup field caption') */
-	$lookup_fields = array(  'loan_type' => array('loan_type', 'Loan type'), 'property_id' => array('address', 'Property id'), 'broker_id' => array('partner', 'Broker id'), 'lender_id' => array('partner', 'Lender id'));
+	$lookup_fields = array(  'loan_type' => array('loan_type', 'Loan type'), 'property_id' => array('address', 'Property id'), 'broker_id' => array('client', 'Broker id'), 'lender_id' => array('client', 'Lender id'));
 	foreach($lookup_fields as $luf => $ptfc){
 		$pt_perm = getTablePermissions($ptfc[0]);
 

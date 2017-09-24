@@ -5,14 +5,15 @@
 <!-- add the following to the leads_init() hook (in hooks/leads.php file) -->
 <!--     $options->ShowTableHeader = 0;     -->
 
-		<td id="leads-date_entered-<%%VALUE(id)%%>" class="leads-date_entered"><%%VALUE(date_entered)%%></td>
-		<td id="leads-referer-<%%VALUE(id)%%>" class="leads-referer"><%%VALUE(referer)%%></td>
-		<td id="leads-lead_name-<%%VALUE(id)%%>" class="leads-lead_name"><%%VALUE(lead_name)%%></td>
-		<td id="leads-contact-<%%VALUE(id)%%>" class="leads-contact"><%%VALUE(contact)%%></td>
+		<td id="leads-name-<%%VALUE(id)%%>" class="leads-name"><%%VALUE(name)%%></td>
+		<td id="leads-email-<%%VALUE(id)%%>" class="leads-email"><a href="mailto:<%%VALUE(email)%%>" title="<%%VALUE(email)%%>" class="btn btn-default"><i class="glyphicon glyphicon-envelope text-info"></i></a></td>
+		<td id="leads-phone-<%%VALUE(id)%%>" class="leads-phone"><%%VALUE(phone)%%></td>
 		<td id="leads-prop_area-<%%VALUE(id)%%>" class="leads-prop_area"><%%VALUE(prop_area)%%></td>
-		<td id="leads-estimated_value-<%%VALUE(id)%%>" class="leads-estimated_value text-right"><%%VALUE(estimated_value)%%></td>
-		<td id="leads-tenanted-<%%VALUE(id)%%>" class="leads-tenanted text-right"><%%VALUE(tenanted)%%></td>
-		<td id="leads-rental_income-<%%VALUE(id)%%>" class="leads-rental_income"><%%VALUE(rental_income)%%></td>
+		<td id="leads-tenanted-<%%VALUE(id)%%>" class="leads-tenanted"><%%VALUE(tenanted)%%></td>
 		<td id="leads-notes-<%%VALUE(id)%%>" class="leads-notes"><%%VALUE(notes)%%></td>
-		<td id="leads-est_commission-<%%VALUE(id)%%>" class="leads-est_commission text-right"><%%VALUE(est_commission)%%></td>
-		<td id="leads-date_contacted-<%%VALUE(id)%%>" class="leads-date_contacted"><%%VALUE(date_contacted)%%></td>
+		<td id="leads-est_value-<%%VALUE(id)%%>" class="leads-est_value"><%%VALUE(est_value)%%></td>
+		<td id="leads-os_capital-<%%VALUE(id)%%>" class="leads-os_capital"><%%VALUE(os_capital)%%></td>
+		<td id="leads-rental_income-<%%VALUE(id)%%>" class="leads-rental_income text-right"><%%VALUE(rental_income)%%></td>
+		<td id="leads-finance_costs-<%%VALUE(id)%%>" class="leads-finance_costs text-right"><%%VALUE(finance_costs)%%></td>
+		<td id="leads-other_costs-<%%VALUE(id)%%>" class="leads-other_costs text-right"><%%VALUE(other_costs)%%></td>
+		<td id="leads-income_tax_band-<%%VALUE(id)%%>" class="leads-income_tax_band text-right"><%%VALUE(income_tax_band)%%></td>
