@@ -21,7 +21,7 @@
 			'rental_income' => array('appgini' => 'DECIMAL(6,2) '),
 			'finance_costs' => array('appgini' => 'DOUBLE(7,2) '),
 			'other_costs' => array('appgini' => 'DOUBLE(6,2) '),
-			'income_tax_band' => array('appgini' => 'TINYINT '),
+			'income_tax_band' => array('appgini' => 'VARCHAR(3) '),
 			'referer' => array('appgini' => 'VARCHAR(40) '),
 			'est_commission' => array('appgini' => 'DOUBLE(6,2) ')
 		),

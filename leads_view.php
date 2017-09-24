@@ -56,7 +56,7 @@
 		12 => '`leads`.`rental_income`',
 		13 => '`leads`.`finance_costs`',
 		14 => '`leads`.`other_costs`',
-		15 => '`leads`.`income_tax_band`',
+		15 => 15,
 		16 => 16,
 		17 => '`leads`.`est_commission`'
 	);
